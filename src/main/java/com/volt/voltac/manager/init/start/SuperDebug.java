@@ -1,6 +1,6 @@
 package com.volt.voltac.manager.init.start;
 
-import com.volt.voltac.GrimAPI;
+import com.volt.voltac.VoltAPI;
 import com.volt.voltac.checks.Check;
 import com.volt.voltac.checks.type.PostPredictionCheck;
 import com.volt.voltac.player.GrimPlayer;
@@ -62,7 +62,7 @@ public final class SuperDebug extends Check implements PostPredictionCheck {
         if (predictionComplete.getIdentifier() == 0) return; // 1 - 256 are valid possible values
 
         StringBuilder sb = new StringBuilder();
-        sb.append("Grim Version: ").append(GrimAPI.INSTANCE.getExternalAPI().getGrimVersion());
+        sb.append("Grim Version: ").append(VoltAPI.INSTANCE.getExternalAPI().getGrimVersion());
         sb.append("\n");
         sb.append("Player Name: ");
         sb.append(player.user.getName());

@@ -1,6 +1,6 @@
 package com.volt.voltac.commands;
 
-import com.volt.voltac.GrimAPI;
+import com.volt.voltac.VoltAPI;
 import com.volt.voltac.player.GrimPlayer;
 import com.volt.voltac.utils.anticheat.MessageUtil;
 import com.volt.voltac.utils.anticheat.MultiLibUtil;
@@ -27,21 +27,21 @@ public class GrimSpectate extends BaseCommand {
         Player player = (Player) sender;
 
         if (target != null && target.getPlayer().getUniqueId().equals(player.getUniqueId())) {
-            String message = GrimAPI.INSTANCE.getConfigManager().getConfig().getStringElse("cannot-run-on-self", "%prefix% &cYou cannot use this command on yourself!");
+            String message = VoltAPI.INSTANCE.getConfigManager().getConfig().getStringElse("cannot-run-on-self", "%prefix% &cYou cannot use this command on yourself!");
             sender.sendMessage(MessageUtil.format(message));
             return;
         }
 
         if (target == null || (PacketEvents.getAPI().getServerManager().getVersion().isNewerThanOrEquals(ServerVersion.V_1_18) && MultiLibUtil.isExternalPlayer(target.getPlayer()))) {
-            String message = GrimAPI.INSTANCE.getConfigManager().getConfig().getStringElse("player-not-this-server", "%prefix% &cThis player isn't on this server!");
+            String message = VoltAPI.INSTANCE.getConfigManager().getConfig().getStringElse("player-not-this-server", "%prefix% &cThis player isn't on this server!");
             sender.sendMessage(MessageUtil.format(message));
             return;
         }
         //hide player from tab list
-        if (GrimAPI.INSTANCE.getSpectateManager().enable(player)) {
-            GrimPlayer grimPlayer = GrimAPI.INSTANCE.getPlayerDataManager().getPlayer(player);
+        if (VoltAPI.INSTANCE.getSpectateManager().enable(player)) {
+            GrimPlayer grimPlayer = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(player);
             if (grimPlayer != null) {
-                String message = GrimAPI.INSTANCE.getConfigManager().getConfig().getStringElse("spectate-return", "\n%prefix% &fClick here to return to previous location\n");
+                String message = VoltAPI.INSTANCE.getConfigManager().getConfig().getStringElse("spectate-return", "\n%prefix% &fClick here to return to previous location\n");
                 grimPlayer.user.sendMessage(
                         LegacyComponentSerializer.legacy('&')
                                 .deserialize(MessageUtil.formatWithNoColor(message))

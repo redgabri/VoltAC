@@ -1,6 +1,6 @@
 package com.volt.voltac.commands;
 
-import com.volt.voltac.GrimAPI;
+import com.volt.voltac.VoltAPI;
 import com.volt.voltac.utils.anticheat.LogUtil;
 import com.volt.voltac.utils.anticheat.MessageUtil;
 import co.aikar.commands.BaseCommand;
@@ -16,11 +16,11 @@ public class GrimSendAlert extends BaseCommand {
     public void sendAlert(String string) {
         string = MessageUtil.format(string);
 
-        for (Player bukkitPlayer : GrimAPI.INSTANCE.getAlertManager().getEnabledAlerts()) {
+        for (Player bukkitPlayer : VoltAPI.INSTANCE.getAlertManager().getEnabledAlerts()) {
             bukkitPlayer.sendMessage(string);
         }
 
-        if (GrimAPI.INSTANCE.getConfigManager().isPrintAlertsToConsole()) {
+        if (VoltAPI.INSTANCE.getConfigManager().isPrintAlertsToConsole()) {
             LogUtil.console(string); // Print alert to console
         }
     }

@@ -1,6 +1,6 @@
 package com.volt.voltac.manager;
 
-import com.volt.voltac.GrimAPI;
+import com.volt.voltac.VoltAPI;
 import com.volt.voltac.manager.init.Initable;
 import com.volt.voltac.manager.init.load.PacketEventsInit;
 import ac.grim.grimac.manager.init.start.*;
@@ -23,11 +23,11 @@ public class InitManager {
     public InitManager() {
         initializersOnLoad = ImmutableList.<Initable>builder()
                 .add(new PacketEventsInit())
-                .add(() -> GrimAPI.INSTANCE.getExternalAPI().load())
+                .add(() -> VoltAPI.INSTANCE.getExternalAPI().load())
                 .build();
 
         initializersOnStart = ImmutableList.<Initable>builder()
-                .add(GrimAPI.INSTANCE.getExternalAPI())
+                .add(VoltAPI.INSTANCE.getExternalAPI())
                 .add(new ExemptOnlinePlayers())
                 .add(new EventManager())
                 .add(new PacketManager())
@@ -37,8 +37,8 @@ public class InitManager {
                 .add(new CommandRegister())
                 .add(new BStats())
                 .add(new PacketLimiter())
-                .add(GrimAPI.INSTANCE.getDiscordManager())
-                .add(GrimAPI.INSTANCE.getSpectateManager())
+                .add(VoltAPI.INSTANCE.getDiscordManager())
+                .add(VoltAPI.INSTANCE.getSpectateManager())
                 .add(new JavaVersion())
                 .add(new ViaVersion())
                 .build();

@@ -1,6 +1,6 @@
 package com.volt.voltac.manager;
 
-import com.volt.voltac.GrimAPI;
+import com.volt.voltac.VoltAPI;
 import com.volt.voltac.checks.Check;
 import com.volt.voltac.checks.impl.badpackets.BadPacketsN;
 import com.volt.voltac.checks.type.PostPredictionCheck;
@@ -223,7 +223,7 @@ public class SetbackTeleportUtil extends Check implements PostPredictionCheck {
                     player.getSetbackTeleportUtil().cheatVehicleInterpolationDelay = Integer.MAX_VALUE; // Set to max until player accepts the new position
 
                     // Make sure bukkit also knows the player got teleported out of their vehicle, can't do this async
-                    FoliaScheduler.getEntityScheduler().execute(player.bukkitPlayer, GrimAPI.INSTANCE.getPlugin(), () -> {
+                    FoliaScheduler.getEntityScheduler().execute(player.bukkitPlayer, VoltAPI.INSTANCE.getPlugin(), () -> {
                         if (player.bukkitPlayer != null) {
                             Entity vehicle = player.bukkitPlayer.getVehicle();
                             if (vehicle != null) {

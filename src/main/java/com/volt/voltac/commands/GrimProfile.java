@@ -1,6 +1,6 @@
 package com.volt.voltac.commands;
 
-import com.volt.voltac.GrimAPI;
+import com.volt.voltac.VoltAPI;
 import com.volt.voltac.player.GrimPlayer;
 import com.volt.voltac.utils.anticheat.MessageUtil;
 import com.volt.voltac.utils.anticheat.MultiLibUtil;
@@ -26,20 +26,20 @@ public class GrimProfile extends BaseCommand {
 
         // Short circuit due to minimum java requirements for MultiLib
         if (PacketEvents.getAPI().getServerManager().getVersion().isNewerThanOrEquals(ServerVersion.V_1_18) && MultiLibUtil.isExternalPlayer(target.getPlayer())) {
-            String alertString = GrimAPI.INSTANCE.getConfigManager().getConfig().getStringElse("player-not-this-server", "%prefix% &cThis player isn't on this server!");
+            String alertString = VoltAPI.INSTANCE.getConfigManager().getConfig().getStringElse("player-not-this-server", "%prefix% &cThis player isn't on this server!");
             sender.sendMessage(MessageUtil.format(alertString));
             return;
         }
 
-        GrimPlayer grimPlayer = GrimAPI.INSTANCE.getPlayerDataManager().getPlayer(target.getPlayer());
+        GrimPlayer grimPlayer = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(target.getPlayer());
         if (grimPlayer == null) {
-            String message = GrimAPI.INSTANCE.getConfigManager().getConfig().getStringElse("player-not-found", "%prefix% &cPlayer is exempt or offline!");
+            String message = VoltAPI.INSTANCE.getConfigManager().getConfig().getStringElse("player-not-found", "%prefix% &cPlayer is exempt or offline!");
             sender.sendMessage(MessageUtil.format(message));
             return;
         }
 
-        for (String message : GrimAPI.INSTANCE.getConfigManager().getConfig().getStringList("profile")) {
-            message = GrimAPI.INSTANCE.getExternalAPI().replaceVariables(grimPlayer, message, true);
+        for (String message : VoltAPI.INSTANCE.getConfigManager().getConfig().getStringList("profile")) {
+            message = VoltAPI.INSTANCE.getExternalAPI().replaceVariables(grimPlayer, message, true);
             sender.sendMessage(message);
         }
     }

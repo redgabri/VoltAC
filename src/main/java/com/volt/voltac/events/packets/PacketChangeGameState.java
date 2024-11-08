@@ -1,6 +1,6 @@
 package com.volt.voltac.events.packets;
 
-import com.volt.voltac.GrimAPI;
+import com.volt.voltac.VoltAPI;
 import com.volt.voltac.checks.Check;
 import com.volt.voltac.checks.type.PacketCheck;
 import com.volt.voltac.player.GrimPlayer;
@@ -35,7 +35,7 @@ public class PacketChangeGameState extends Check implements PacketCheck {
                     }
 
                     if (previous == GameMode.SPECTATOR && player.gamemode != GameMode.SPECTATOR) {
-                        GrimAPI.INSTANCE.getSpectateManager().handlePlayerStopSpectating(player.playerUUID);
+                        VoltAPI.INSTANCE.getSpectateManager().handlePlayerStopSpectating(player.playerUUID);
                     }
                 });
             }

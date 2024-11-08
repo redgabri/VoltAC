@@ -1,6 +1,6 @@
 package com.volt.voltac.checks.impl.misc;
 
-import com.volt.voltac.GrimAPI;
+import com.volt.voltac.VoltAPI;
 import com.volt.voltac.checks.Check;
 import com.volt.voltac.checks.impl.exploit.ExploitA;
 import com.volt.voltac.checks.type.PacketCheck;
@@ -39,9 +39,9 @@ public class ClientBrand extends Check implements PacketCheck {
 
                 brand = new String(minusLength).replace(" (Velocity)", ""); //removes velocity's brand suffix
                 if (player.checkManager.getPrePredictionCheck(ExploitA.class).checkString(brand)) brand = "sent log4j";
-                if (!GrimAPI.INSTANCE.getConfigManager().isIgnoredClient(brand)) {
-                    String message = GrimAPI.INSTANCE.getConfigManager().getConfig().getStringElse("client-brand-format", "%prefix% &f%player% joined using %brand%");
-                    message = GrimAPI.INSTANCE.getExternalAPI().replaceVariables(getPlayer(), message, true);
+                if (!VoltAPI.INSTANCE.getConfigManager().isIgnoredClient(brand)) {
+                    String message = VoltAPI.INSTANCE.getConfigManager().getConfig().getStringElse("client-brand-format", "%prefix% &f%player% joined using %brand%");
+                    message = VoltAPI.INSTANCE.getExternalAPI().replaceVariables(getPlayer(), message, true);
                     // sendMessage is async safe while broadcast isn't due to adventure
                     for (Player player : Bukkit.getOnlinePlayers()) {
                         if (player.hasPermission("grim.brand")) {

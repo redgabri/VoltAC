@@ -1,6 +1,6 @@
 package com.volt.voltac.manager;
 
-import com.volt.voltac.GrimAPI;
+import com.volt.voltac.VoltAPI;
 import com.volt.voltac.manager.init.Initable;
 import com.volt.voltac.player.GrimPlayer;
 import com.volt.voltac.utils.anticheat.LogUtil;
@@ -26,8 +26,8 @@ public class DiscordManager implements Initable {
     @Override
     public void start() {
         try {
-            if (!GrimAPI.INSTANCE.getConfigManager().getConfig().getBooleanElse("enabled", false)) return;
-            String webhook = GrimAPI.INSTANCE.getConfigManager().getConfig().getStringElse("webhook", "");
+            if (!VoltAPI.INSTANCE.getConfigManager().getConfig().getBooleanElse("enabled", false)) return;
+            String webhook = VoltAPI.INSTANCE.getConfigManager().getConfig().getStringElse("webhook", "");
             if (webhook.isEmpty()) {
                 LogUtil.warn("Discord webhook is empty, disabling Discord alerts");
                 client = null;
@@ -41,15 +41,15 @@ public class DiscordManager implements Initable {
             client = WebhookClient.withId(Long.parseUnsignedLong(matcher.group(1)), matcher.group(2));
             client.setTimeout(15000); // Requests expire after 15 seconds
 
-            embedTitle = GrimAPI.INSTANCE.getConfigManager().getConfig().getStringElse("embed-title", "**Grim Alert**");
+            embedTitle = VoltAPI.INSTANCE.getConfigManager().getConfig().getStringElse("embed-title", "**Grim Alert**");
 
             try {
-                embedColor = Color.decode(GrimAPI.INSTANCE.getConfigManager().getConfig().getStringElse("embed-color", "#00FFFF")).getRGB();
+                embedColor = Color.decode(VoltAPI.INSTANCE.getConfigManager().getConfig().getStringElse("embed-color", "#00FFFF")).getRGB();
             } catch (NumberFormatException e) {
                 LogUtil.warn("Discord embed color is invalid");
             }
             StringBuilder sb = new StringBuilder();
-            for (String string : GrimAPI.INSTANCE.getConfigManager().getConfig().getStringListElse("violation-content", getDefaultContents())) {
+            for (String string : VoltAPI.INSTANCE.getConfigManager().getConfig().getStringListElse("violation-content", getDefaultContents())) {
                 sb.append(string).append("\n");
             }
             staticContent = sb.toString();
@@ -76,7 +76,7 @@ public class DiscordManager implements Initable {
             String content = staticContent;
             content = content.replace("%check%", checkName);
             content = content.replace("%violations%", violations);
-            content = GrimAPI.INSTANCE.getExternalAPI().replaceVariables(player, content, false);
+            content = VoltAPI.INSTANCE.getExternalAPI().replaceVariables(player, content, false);
             content = content.replace("_", "\\_");
 
             WebhookEmbedBuilder embed = new WebhookEmbedBuilder()

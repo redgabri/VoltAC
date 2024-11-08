@@ -1,6 +1,6 @@
 package com.volt.voltac.manager;
 
-import com.volt.voltac.GrimAPI;
+import com.volt.voltac.VoltAPI;
 import ac.grim.grimac.api.alerts.AlertManager;
 import com.volt.voltac.utils.anticheat.MessageUtil;
 import lombok.Getter;
@@ -24,12 +24,12 @@ public class AlertManagerImpl implements AlertManager {
     @Override
     public void toggleAlerts(Player player) {
         if (!enabledAlerts.remove(player)) {
-            String alertString = GrimAPI.INSTANCE.getConfigManager().getConfig().getStringElse("alerts-enabled", "%prefix% &fAlerts enabled");
+            String alertString = VoltAPI.INSTANCE.getConfigManager().getConfig().getStringElse("alerts-enabled", "%prefix% &fAlerts enabled");
             alertString = MessageUtil.format(alertString);
             player.sendMessage(alertString);
             enabledAlerts.add(player);
         } else {
-            String alertString = GrimAPI.INSTANCE.getConfigManager().getConfig().getStringElse("alerts-disabled", "%prefix% &fAlerts disabled");
+            String alertString = VoltAPI.INSTANCE.getConfigManager().getConfig().getStringElse("alerts-disabled", "%prefix% &fAlerts disabled");
             alertString = MessageUtil.format(alertString);
             player.sendMessage(alertString);
         }
@@ -43,12 +43,12 @@ public class AlertManagerImpl implements AlertManager {
     @Override
     public void toggleVerbose(Player player) {
         if (!enabledVerbose.remove(player)) {
-            String alertString = GrimAPI.INSTANCE.getConfigManager().getConfig().getStringElse("verbose-enabled", "%prefix% &fVerbose enabled");
+            String alertString = VoltAPI.INSTANCE.getConfigManager().getConfig().getStringElse("verbose-enabled", "%prefix% &fVerbose enabled");
             alertString = MessageUtil.format(alertString);
             player.sendMessage(alertString);
             enabledVerbose.add(player);
         } else {
-            String alertString = GrimAPI.INSTANCE.getConfigManager().getConfig().getStringElse("verbose-disabled", "%prefix% &fVerbose disabled");
+            String alertString = VoltAPI.INSTANCE.getConfigManager().getConfig().getStringElse("verbose-disabled", "%prefix% &fVerbose disabled");
             alertString = MessageUtil.format(alertString);
             player.sendMessage(alertString);
         }

@@ -1,6 +1,6 @@
 package com.volt.voltac.checks.impl.misc;
 
-import com.volt.voltac.GrimAPI;
+import com.volt.voltac.VoltAPI;
 import com.volt.voltac.checks.Check;
 import com.volt.voltac.checks.CheckData;
 import com.volt.voltac.checks.type.PacketCheck;
@@ -107,7 +107,7 @@ public class FastBreak extends Check implements PacketCheck {
                 }
 
                 if (blockBreakBalance > 1000) { // If more than a second of advantage
-                    FoliaScheduler.getEntityScheduler().execute(player.bukkitPlayer, GrimAPI.INSTANCE.getPlugin(), () -> {
+                    FoliaScheduler.getEntityScheduler().execute(player.bukkitPlayer, VoltAPI.INSTANCE.getPlugin(), () -> {
                         Player bukkitPlayer = player.bukkitPlayer;
                         if (bukkitPlayer == null || !bukkitPlayer.isOnline()) return;
 

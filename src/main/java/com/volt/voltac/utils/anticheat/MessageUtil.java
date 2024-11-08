@@ -1,6 +1,6 @@
 package com.volt.voltac.utils.anticheat;
 
-import com.volt.voltac.GrimAPI;
+import com.volt.voltac.VoltAPI;
 import com.github.retrooper.packetevents.PacketEvents;
 import com.github.retrooper.packetevents.manager.server.ServerVersion;
 import com.github.retrooper.packetevents.util.Vector3f;
@@ -29,7 +29,7 @@ public class MessageUtil {
     }
 
     public String formatWithNoColor(String string) {
-        return string.replace("%prefix%", GrimAPI.INSTANCE.getConfigManager().getPrefix());
+        return string.replace("%prefix%", VoltAPI.INSTANCE.getConfigManager().getPrefix());
     }
 
     private static final Pattern HEX_PATTERN = Pattern.compile("#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{8})");

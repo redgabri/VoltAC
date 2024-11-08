@@ -9,7 +9,7 @@ import lombok.Getter;
 import org.bukkit.plugin.java.JavaPlugin;
 
 @Getter
-public enum GrimAPI {
+public enum VoltAPI {
     INSTANCE;
 
     private final BaseConfigManager configManager = new BaseConfigManager();
@@ -18,7 +18,7 @@ public enum GrimAPI {
     private final DiscordManager discordManager = new DiscordManager();
     private final PlayerDataManager playerDataManager = new PlayerDataManager();
     private final TickManager tickManager = new TickManager();
-    private final GrimExternalAPI externalAPI = new GrimExternalAPI(this);
+    private final VoltExternalAPI externalAPI = new VoltExternalAPI(this);
     private InitManager initManager;
     private JavaPlugin plugin;
 

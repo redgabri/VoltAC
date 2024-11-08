@@ -1,6 +1,6 @@
 package com.volt.voltac.events.packets;
 
-import com.volt.voltac.GrimAPI;
+import com.volt.voltac.VoltAPI;
 import com.volt.voltac.checks.impl.misc.ClientBrand;
 import com.volt.voltac.player.GrimPlayer;
 import com.github.retrooper.packetevents.event.PacketListenerAbstract;
@@ -18,7 +18,7 @@ public class PacketConfigurationListener extends PacketListenerAbstract {
     @Override
     public void onPacketReceive(PacketReceiveEvent event) {
         if (event.getPacketType() == PacketType.Configuration.Client.PLUGIN_MESSAGE) {
-            GrimPlayer player = GrimAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
+            GrimPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
             if (player == null) return;
             //
             WrapperConfigClientPluginMessage wrapper = new WrapperConfigClientPluginMessage(event);

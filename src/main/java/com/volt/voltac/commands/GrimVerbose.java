@@ -1,6 +1,6 @@
 package com.volt.voltac.commands;
 
-import com.volt.voltac.GrimAPI;
+import com.volt.voltac.VoltAPI;
 import co.aikar.commands.BaseCommand;
 import co.aikar.commands.annotation.CommandAlias;
 import co.aikar.commands.annotation.CommandPermission;
@@ -12,6 +12,6 @@ public class GrimVerbose extends BaseCommand {
     @Subcommand("verbose")
     @CommandPermission("grim.verbose")
     public void onVerbose(Player player) {
-        GrimAPI.INSTANCE.getAlertManager().toggleVerbose(player);
+        VoltAPI.INSTANCE.getAlertManager().toggleVerbose(player);
     }
 }

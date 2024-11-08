@@ -2,20 +2,20 @@ package com.volt.voltac;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class GrimAC extends JavaPlugin {
+public final class VoltAC extends JavaPlugin {
 
     @Override
     public void onLoad() {
-        GrimAPI.INSTANCE.load(this);
+        VoltAPI.INSTANCE.load(this);
     }
 
     @Override
     public void onDisable() {
-        GrimAPI.INSTANCE.stop(this);
+        VoltAPI.INSTANCE.stop(this);
     }
 
     @Override
     public void onEnable() {
-        GrimAPI.INSTANCE.start(this);
+        VoltAPI.INSTANCE.start(this);
     }
 }

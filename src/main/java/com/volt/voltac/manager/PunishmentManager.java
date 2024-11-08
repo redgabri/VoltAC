@@ -1,6 +1,6 @@
 package com.volt.voltac.manager;
 
-import com.volt.voltac.GrimAPI;
+import com.volt.voltac.VoltAPI;
 import ac.grim.grimac.api.AbstractCheck;
 import ac.grim.grimac.api.config.ConfigManager;
 import ac.grim.grimac.api.config.ConfigReloadable;
@@ -112,7 +112,7 @@ public class PunishmentManager implements ConfigReloadable {
                 .replace("%description%", check.getDescription())
         );
 
-        original = GrimAPI.INSTANCE.getExternalAPI().replaceVariables(player, original, true);
+        original = VoltAPI.INSTANCE.getExternalAPI().replaceVariables(player, original, true);
 
         return original;
     }
@@ -128,9 +128,9 @@ public class PunishmentManager implements ConfigReloadable {
                     String cmd = replaceAlertPlaceholders(command.getCommand(), group, check, alertString, verbose);
 
                     // Verbose that prints all flags
-                    if (GrimAPI.INSTANCE.getAlertManager().getEnabledVerbose().size() > 0 && command.command.equals("[alert]")) {
+                    if (VoltAPI.INSTANCE.getAlertManager().getEnabledVerbose().size() > 0 && command.command.equals("[alert]")) {
                         sentDebug = true;
-                        for (Player bukkitPlayer : GrimAPI.INSTANCE.getAlertManager().getEnabledVerbose()) {
+                        for (Player bukkitPlayer : VoltAPI.INSTANCE.getAlertManager().getEnabledVerbose()) {
                             bukkitPlayer.sendMessage(cmd);
                         }
                         if (printToConsole) {
@@ -149,7 +149,7 @@ public class PunishmentManager implements ConfigReloadable {
 
                             if (command.command.equals("[webhook]")) {
                                 String vl = group.violations.values().stream().filter((e) -> e == check).count() + "";
-                                GrimAPI.INSTANCE.getDiscordManager().sendAlert(player, verbose, check.getDisplayName(), vl);
+                                VoltAPI.INSTANCE.getDiscordManager().sendAlert(player, verbose, check.getDisplayName(), vl);
                             } else if (command.command.equals("[proxy]")) {
                                 ProxyAlertMessenger.sendPluginMessage(replaceAlertPlaceholders(command.getCommand(), group, check, proxyAlertString, verbose));
                             } else {
@@ -163,7 +163,7 @@ public class PunishmentManager implements ConfigReloadable {
                                 }
 
                                 String finalCmd = cmd;
-                                FoliaScheduler.getGlobalRegionScheduler().run(GrimAPI.INSTANCE.getPlugin(), (dummy) ->
+                                FoliaScheduler.getGlobalRegionScheduler().run(VoltAPI.INSTANCE.getPlugin(), (dummy) ->
                                         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), finalCmd));
                             }
                         }

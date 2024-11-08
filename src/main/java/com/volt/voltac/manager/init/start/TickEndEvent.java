@@ -1,6 +1,6 @@
 package com.volt.voltac.manager.init.start;
 
-import com.volt.voltac.GrimAPI;
+import com.volt.voltac.VoltAPI;
 import com.volt.voltac.manager.init.Initable;
 import com.volt.voltac.player.GrimPlayer;
 import com.volt.voltac.utils.lists.HookedListWrapper;
@@ -18,7 +18,7 @@ public class TickEndEvent implements Initable {
     boolean hasTicked = true;
 
     private static void tickRelMove() {
-        for (GrimPlayer player : GrimAPI.INSTANCE.getPlayerDataManager().getEntries()) {
+        for (GrimPlayer player : VoltAPI.INSTANCE.getPlayerDataManager().getEntries()) {
             if (player.disableGrim) continue; // If we aren't active don't spam extra transactions
             player.checkManager.getEntityReplication().onEndOfTickEvent();
         }
@@ -26,7 +26,7 @@ public class TickEndEvent implements Initable {
 
     @Override
     public void start() {
-        if (!GrimAPI.INSTANCE.getConfigManager().getConfig().getBooleanElse("Reach.enable-post-packet", false)) {
+        if (!VoltAPI.INSTANCE.getConfigManager().getConfig().getBooleanElse("Reach.enable-post-packet", false)) {
             return;
         }
 

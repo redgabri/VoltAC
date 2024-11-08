@@ -1,6 +1,6 @@
 package com.volt.voltac.commands;
 
-import com.volt.voltac.GrimAPI;
+import com.volt.voltac.VoltAPI;
 import com.volt.voltac.manager.init.start.SuperDebug;
 import com.volt.voltac.utils.anticheat.LogUtil;
 import com.volt.voltac.utils.anticheat.MessageUtil;
@@ -25,22 +25,22 @@ public class GrimLog extends BaseCommand {
         StringBuilder builder = SuperDebug.getFlag(flagId);
 
         if (builder == null) {
-            String failure = GrimAPI.INSTANCE.getConfigManager().getConfig().getStringElse("upload-log-not-found", "%prefix% &cUnable to find that log");
+            String failure = VoltAPI.INSTANCE.getConfigManager().getConfig().getStringElse("upload-log-not-found", "%prefix% &cUnable to find that log");
             sender.sendMessage(MessageUtil.format(failure));
         } else {
-            String uploading = GrimAPI.INSTANCE.getConfigManager().getConfig().getStringElse("upload-log-start", "%prefix% &fUploading log... please wait");
-            String success = GrimAPI.INSTANCE.getConfigManager().getConfig().getStringElse("upload-log", "%prefix% &fUploaded debug to: %url%");
-            String failure = GrimAPI.INSTANCE.getConfigManager().getConfig().getStringElse("upload-log-upload-failure", "%prefix% &cSomething went wrong while uploading this log, see console for more information.");
+            String uploading = VoltAPI.INSTANCE.getConfigManager().getConfig().getStringElse("upload-log-start", "%prefix% &fUploading log... please wait");
+            String success = VoltAPI.INSTANCE.getConfigManager().getConfig().getStringElse("upload-log", "%prefix% &fUploaded debug to: %url%");
+            String failure = VoltAPI.INSTANCE.getConfigManager().getConfig().getStringElse("upload-log-upload-failure", "%prefix% &cSomething went wrong while uploading this log, see console for more information.");
 
             sender.sendMessage(MessageUtil.format(uploading));
 
-            FoliaScheduler.getAsyncScheduler().runNow(GrimAPI.INSTANCE.getPlugin(), (dummy) -> {
+            FoliaScheduler.getAsyncScheduler().runNow(VoltAPI.INSTANCE.getPlugin(), (dummy) -> {
                 try {
                     URL mUrl = new URL("https://paste.grim.ac/data/post");
                     HttpURLConnection urlConn = (HttpURLConnection) mUrl.openConnection();
                     urlConn.setDoOutput(true);
                     urlConn.setRequestMethod("POST");
-                    urlConn.addRequestProperty("User-Agent", "GrimAC/" + GrimAPI.INSTANCE.getExternalAPI().getGrimVersion());
+                    urlConn.addRequestProperty("User-Agent", "GrimAC/" + VoltAPI.INSTANCE.getExternalAPI().getGrimVersion());
                     urlConn.addRequestProperty("Content-Type", "text/yaml"); // Not really yaml, but looks nicer than plaintext
                     urlConn.setRequestProperty("Content-Length", Integer.toString(builder.length()));
                     urlConn.getOutputStream().write(builder.toString().getBytes(StandardCharsets.UTF_8));

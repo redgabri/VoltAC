@@ -1,6 +1,6 @@
 package com.volt.voltac.player;
 
-import com.volt.voltac.GrimAPI;
+import com.volt.voltac.VoltAPI;
 import ac.grim.grimac.api.AbstractCheck;
 import ac.grim.grimac.api.GrimUser;
 import ac.grim.grimac.api.config.ConfigManager;
@@ -463,7 +463,7 @@ public class GrimPlayer implements GrimUser {
         }
         user.closeConnection();
         if (bukkitPlayer != null) {
-            FoliaScheduler.getEntityScheduler().execute(bukkitPlayer, GrimAPI.INSTANCE.getPlugin(), () -> {
+            FoliaScheduler.getEntityScheduler().execute(bukkitPlayer, VoltAPI.INSTANCE.getPlugin(), () -> {
                 bukkitPlayer.kickPlayer(textReason);
             }, null, 1);
         }
@@ -482,8 +482,8 @@ public class GrimPlayer implements GrimUser {
             timedOut();
         }
 
-        if (!GrimAPI.INSTANCE.getPlayerDataManager().shouldCheck(user)) {
-            GrimAPI.INSTANCE.getPlayerDataManager().remove(user);
+        if (!VoltAPI.INSTANCE.getPlayerDataManager().shouldCheck(user)) {
+            VoltAPI.INSTANCE.getPlayerDataManager().remove(user);
         }
 
         if (packetTracker == null && ViaVersionUtil.isAvailable() && playerUUID != null) {
@@ -532,7 +532,7 @@ public class GrimPlayer implements GrimUser {
         if (bukkitPlayer == null) return;
         this.noModifyPacketPermission = bukkitPlayer.hasPermission("grim.nomodifypacket");
         this.noSetbackPermission = bukkitPlayer.hasPermission("grim.nosetback");
-        FoliaScheduler.getAsyncScheduler().runNow(GrimAPI.INSTANCE.getPlugin(), t -> {
+        FoliaScheduler.getAsyncScheduler().runNow(VoltAPI.INSTANCE.getPlugin(), t -> {
             for (AbstractCheck check : checkManager.allChecks.values()) {
                 if (check instanceof Check) {
                     ((Check) check).updateExempted();
@@ -774,6 +774,6 @@ public class GrimPlayer implements GrimUser {
 
     @Override
     public void reload() {
-        reload(GrimAPI.INSTANCE.getConfigManager().getConfig());
+        reload(VoltAPI.INSTANCE.getConfigManager().getConfig());
     }
 }

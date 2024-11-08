@@ -1,6 +1,6 @@
 package com.volt.voltac.commands;
 
-import com.volt.voltac.GrimAPI;
+import com.volt.voltac.VoltAPI;
 import com.volt.voltac.utils.anticheat.MessageUtil;
 import co.aikar.commands.BaseCommand;
 import co.aikar.commands.annotation.CommandAlias;
@@ -15,7 +15,7 @@ public class GrimReload extends BaseCommand {
     public void onReload(CommandSender sender) {
         //reload config
         sender.sendMessage(MessageUtil.format("%prefix% &7Reloading config..."));
-        GrimAPI.INSTANCE.getExternalAPI().reloadAsync().exceptionally(throwable -> false)
+        VoltAPI.INSTANCE.getExternalAPI().reloadAsync().exceptionally(throwable -> false)
                 .thenAccept(bool -> {
                     if (bool) {
                         sender.sendMessage(MessageUtil.format("%prefix% &fConfig has been reloaded."));

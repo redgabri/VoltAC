@@ -1,6 +1,6 @@
 package com.volt.voltac.commands;
 
-import com.volt.voltac.GrimAPI;
+import com.volt.voltac.VoltAPI;
 import com.volt.voltac.utils.anticheat.MessageUtil;
 import co.aikar.commands.BaseCommand;
 import co.aikar.commands.annotation.CommandAlias;
@@ -15,7 +15,7 @@ public class GrimHelp extends BaseCommand {
     @Subcommand("help")
     @CommandPermission("grim.help")
     public void onHelp(CommandSender sender) {
-        for (String string : GrimAPI.INSTANCE.getConfigManager().getConfig().getStringList("help")) {
+        for (String string : VoltAPI.INSTANCE.getConfigManager().getConfig().getStringList("help")) {
             string = MessageUtil.format(string);
             sender.sendMessage(string);
         }

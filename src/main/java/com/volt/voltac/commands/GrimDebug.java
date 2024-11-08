@@ -1,6 +1,6 @@
 package com.volt.voltac.commands;
 
-import com.volt.voltac.GrimAPI;
+import com.volt.voltac.VoltAPI;
 import com.volt.voltac.player.GrimPlayer;
 import co.aikar.commands.BaseCommand;
 import co.aikar.commands.annotation.*;
@@ -38,7 +38,7 @@ public class GrimDebug extends BaseCommand {
             return null;
         }
 
-        GrimPlayer grimPlayer = GrimAPI.INSTANCE.getPlayerDataManager().getPlayer(targetPlayer);
+        GrimPlayer grimPlayer = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(targetPlayer);
         if (grimPlayer == null) {
             User user = PacketEvents.getAPI().getPlayerManager().getUser(targetPlayer);
             sender.sendMessage(ChatColor.RED + "This player is exempt from all checks!");
@@ -46,7 +46,7 @@ public class GrimDebug extends BaseCommand {
             if (user == null) {
                 sender.sendMessage(ChatColor.RED + "Unknown PacketEvents user");
             } else {
-                boolean isExempt = GrimAPI.INSTANCE.getPlayerDataManager().shouldCheck(user);
+                boolean isExempt = VoltAPI.INSTANCE.getPlayerDataManager().shouldCheck(user);
                 if (!isExempt) {
                     sender.sendMessage(ChatColor.RED + "User connection state: " + user.getConnectionState());
                 }

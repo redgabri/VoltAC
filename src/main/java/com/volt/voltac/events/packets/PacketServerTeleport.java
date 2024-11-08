@@ -1,6 +1,6 @@
 package com.volt.voltac.events.packets;
 
-import com.volt.voltac.GrimAPI;
+import com.volt.voltac.VoltAPI;
 import com.volt.voltac.player.GrimPlayer;
 import com.volt.voltac.utils.data.Pair;
 import com.github.retrooper.packetevents.PacketEvents;
@@ -27,7 +27,7 @@ public class PacketServerTeleport extends PacketListenerAbstract {
         if (event.getPacketType() == PacketType.Play.Server.PLAYER_POSITION_AND_LOOK) {
            WrapperPlayServerPlayerPositionAndLook teleport = new WrapperPlayServerPlayerPositionAndLook(event);
 
-            GrimPlayer player = GrimAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
+            GrimPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
 
             Vector3d pos = new Vector3d(teleport.getX(), teleport.getY(), teleport.getZ());
 
@@ -98,7 +98,7 @@ public class PacketServerTeleport extends PacketListenerAbstract {
         if (event.getPacketType() == PacketType.Play.Server.VEHICLE_MOVE) {
             WrapperPlayServerVehicleMove vehicleMove = new WrapperPlayServerVehicleMove(event);
 
-            GrimPlayer player = GrimAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
+            GrimPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
             if (player == null) return;
 
             player.sendTransaction();

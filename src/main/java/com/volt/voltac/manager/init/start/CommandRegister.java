@@ -1,6 +1,6 @@
 package com.volt.voltac.manager.init.start;
 
-import com.volt.voltac.GrimAPI;
+import com.volt.voltac.VoltAPI;
 import ac.grim.grimac.commands.*;
 import ac.grim.volt.commands.*;
 import com.volt.voltac.commands.*;
@@ -12,7 +12,7 @@ public class CommandRegister implements Initable {
     public void start() {
         // This does not make Grim require paper
         // It only enables new features such as asynchronous tab completion on paper
-        PaperCommandManager commandManager = new PaperCommandManager(GrimAPI.INSTANCE.getPlugin());
+        PaperCommandManager commandManager = new PaperCommandManager(VoltAPI.INSTANCE.getPlugin());
 
         commandManager.registerCommand(new GrimPerf());
         commandManager.registerCommand(new GrimDebug());

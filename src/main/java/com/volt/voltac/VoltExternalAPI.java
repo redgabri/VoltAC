@@ -28,11 +28,11 @@ import java.util.function.Function;
 
 //This is used for grim's external API. It has its own class just for organization.
 
-public class GrimExternalAPI implements GrimAbstractAPI, ConfigReloadObserver, Initable {
+public class VoltExternalAPI implements GrimAbstractAPI, ConfigReloadObserver, Initable {
 
-    private final GrimAPI api;
+    private final VoltAPI api;
 
-    public GrimExternalAPI(GrimAPI api) {
+    public VoltExternalAPI(VoltAPI api) {
         this.api = api;
     }
 
@@ -84,7 +84,7 @@ public class GrimExternalAPI implements GrimAbstractAPI, ConfigReloadObserver, I
 
     @Override
     public String getGrimVersion() {
-        PluginDescriptionFile description = GrimAPI.INSTANCE.getPlugin().getDescription();
+        PluginDescriptionFile description = VoltAPI.INSTANCE.getPlugin().getDescription();
         return description.getVersion();
     }
 
@@ -106,7 +106,7 @@ public class GrimExternalAPI implements GrimAbstractAPI, ConfigReloadObserver, I
 
     @Override
     public AlertManager getAlertManager() {
-        return GrimAPI.INSTANCE.getAlertManager();
+        return VoltAPI.INSTANCE.getAlertManager();
     }
 
     @Override
@@ -121,7 +121,7 @@ public class GrimExternalAPI implements GrimAbstractAPI, ConfigReloadObserver, I
     // on load, load the config & register the service
     public void load() {
         reload(configManagerFile);
-        Bukkit.getServicesManager().register(GrimAbstractAPI.class, this, GrimAPI.INSTANCE.getPlugin(), ServicePriority.Normal);
+        Bukkit.getServicesManager().register(GrimAbstractAPI.class, this, VoltAPI.INSTANCE.getPlugin(), ServicePriority.Normal);
     }
 
     // handles any config loading that's needed to be done after load
@@ -129,7 +129,7 @@ public class GrimExternalAPI implements GrimAbstractAPI, ConfigReloadObserver, I
     public void start() {
         started = true;
         try {
-            GrimAPI.INSTANCE.getConfigManager().start();
+            VoltAPI.INSTANCE.getConfigManager().start();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -138,7 +138,7 @@ public class GrimExternalAPI implements GrimAbstractAPI, ConfigReloadObserver, I
     @Override
     public void reload(ConfigManager config) {
         if (config.isLoadedAsync() && started) {
-            FoliaScheduler.getAsyncScheduler().runNow(GrimAPI.INSTANCE.getPlugin(),
+            FoliaScheduler.getAsyncScheduler().runNow(VoltAPI.INSTANCE.getPlugin(),
                     o -> successfulReload(config));
         } else {
             successfulReload(config);
@@ -149,7 +149,7 @@ public class GrimExternalAPI implements GrimAbstractAPI, ConfigReloadObserver, I
     public CompletableFuture<Boolean> reloadAsync(ConfigManager config) {
         if (config.isLoadedAsync() && started) {
             CompletableFuture<Boolean> future = new CompletableFuture<>();
-            FoliaScheduler.getAsyncScheduler().runNow(GrimAPI.INSTANCE.getPlugin(),
+            FoliaScheduler.getAsyncScheduler().runNow(VoltAPI.INSTANCE.getPlugin(),
                     o -> future.complete(successfulReload(config)));
             return future;
         }
@@ -159,16 +159,16 @@ public class GrimExternalAPI implements GrimAbstractAPI, ConfigReloadObserver, I
     private boolean successfulReload(ConfigManager config) {
         try {
             config.reload();
-            GrimAPI.INSTANCE.getConfigManager().load(config);
-            if (started) GrimAPI.INSTANCE.getConfigManager().start();
+            VoltAPI.INSTANCE.getConfigManager().load(config);
+            if (started) VoltAPI.INSTANCE.getConfigManager().start();
             onReload(config);
-            if (started) FoliaScheduler.getAsyncScheduler().runNow(GrimAPI.INSTANCE.getPlugin(),
+            if (started) FoliaScheduler.getAsyncScheduler().runNow(VoltAPI.INSTANCE.getPlugin(),
                     o -> Bukkit.getPluginManager().callEvent(new GrimReloadEvent(true)));
             return true;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        if (started) FoliaScheduler.getAsyncScheduler().runNow(GrimAPI.INSTANCE.getPlugin(),
+        if (started) FoliaScheduler.getAsyncScheduler().runNow(VoltAPI.INSTANCE.getPlugin(),
                 o -> Bukkit.getPluginManager().callEvent(new GrimReloadEvent(false)));
         return false;
     }
@@ -184,12 +184,12 @@ public class GrimExternalAPI implements GrimAbstractAPI, ConfigReloadObserver, I
         // Update variables
         updateVariables();
         // Restart
-        GrimAPI.INSTANCE.getDiscordManager().start();
-        GrimAPI.INSTANCE.getSpectateManager().start();
+        VoltAPI.INSTANCE.getDiscordManager().start();
+        VoltAPI.INSTANCE.getSpectateManager().start();
         // Don't reload players if the plugin hasn't started yet
         if (!started) return;
         // Reload checks for all players
-        for (GrimPlayer grimPlayer : GrimAPI.INSTANCE.getPlayerDataManager().getEntries()) {
+        for (GrimPlayer grimPlayer : VoltAPI.INSTANCE.getPlayerDataManager().getEntries()) {
             ChannelHelper.runInEventLoop(grimPlayer.user.getChannel(), () -> {
                 grimPlayer.updatePermissions();
                 grimPlayer.reload(configManager);
@@ -208,7 +208,7 @@ public class GrimExternalAPI implements GrimAbstractAPI, ConfigReloadObserver, I
         variableReplacements.putIfAbsent("%tps%", user -> String.format("%.2f", SpigotReflectionUtil.getTPS()));
         variableReplacements.putIfAbsent("%version%", GrimUser::getVersionName);
         // static variables
-        staticReplacements.putIfAbsent("%prefix%", ChatColor.translateAlternateColorCodes('&', GrimAPI.INSTANCE.getConfigManager().getPrefix()));
+        staticReplacements.putIfAbsent("%prefix%", ChatColor.translateAlternateColorCodes('&', VoltAPI.INSTANCE.getConfigManager().getPrefix()));
         staticReplacements.putIfAbsent("%grim_version%", getGrimVersion());
     }
 

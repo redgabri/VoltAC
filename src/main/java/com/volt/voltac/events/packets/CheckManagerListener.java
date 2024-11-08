@@ -1,6 +1,6 @@
 package com.volt.voltac.events.packets;
 
-import com.volt.voltac.GrimAPI;
+import com.volt.voltac.VoltAPI;
 import com.volt.voltac.checks.impl.badpackets.BadPacketsX;
 import com.volt.voltac.checks.impl.badpackets.BadPacketsZ;
 import com.volt.voltac.events.packets.patch.ResyncWorldUtil;
@@ -384,7 +384,7 @@ public class CheckManagerListener extends PacketListenerAbstract {
     @Override
     public void onPacketReceive(PacketReceiveEvent event) {
         if (event.getConnectionState() != ConnectionState.PLAY) return;
-        GrimPlayer player = GrimAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
+        GrimPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
         if (player == null) return;
 
         // Determine if teleport BEFORE we call the pre-prediction vehicle
@@ -837,7 +837,7 @@ public class CheckManagerListener extends PacketListenerAbstract {
     @Override
     public void onPacketSend(PacketSendEvent event) {
         if (event.getConnectionState() != ConnectionState.PLAY) return;
-        GrimPlayer player = GrimAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
+        GrimPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
         if (player == null) return;
 
         player.checkManager.onPacketSend(event);

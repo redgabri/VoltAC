@@ -1,6 +1,6 @@
 package com.volt.voltac.manager.init.load;
 
-import com.volt.voltac.GrimAPI;
+import com.volt.voltac.VoltAPI;
 import com.volt.voltac.manager.init.Initable;
 import com.volt.voltac.utils.anticheat.LogUtil;
 import com.github.retrooper.packetevents.PacketEvents;
@@ -19,7 +19,7 @@ public class PacketEventsInit implements Initable {
     @Override
     public void start() {
         LogUtil.info("Loading PacketEvents...");
-        PacketEvents.setAPI(SpigotPacketEventsBuilder.build(GrimAPI.INSTANCE.getPlugin()));
+        PacketEvents.setAPI(SpigotPacketEventsBuilder.build(VoltAPI.INSTANCE.getPlugin()));
         PacketEvents.getAPI().getSettings()
                 .bStats(true)
                 .fullStackTrace(true)

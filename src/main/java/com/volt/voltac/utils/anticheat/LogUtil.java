@@ -1,6 +1,6 @@
 package com.volt.voltac.utils.anticheat;
 
-import com.volt.voltac.GrimAPI;
+import com.volt.voltac.VoltAPI;
 import lombok.experimental.UtilityClass;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -22,7 +22,7 @@ public class LogUtil {
     }
 
     public Logger getLogger() {
-        return GrimAPI.INSTANCE.getPlugin().getLogger();
+        return VoltAPI.INSTANCE.getPlugin().getLogger();
     }
 
     public void console(final String info) {

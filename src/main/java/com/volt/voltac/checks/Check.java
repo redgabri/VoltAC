@@ -1,6 +1,6 @@
 package com.volt.voltac.checks;
 
-import com.volt.voltac.GrimAPI;
+import com.volt.voltac.VoltAPI;
 import ac.grim.grimac.api.AbstractCheck;
 import ac.grim.grimac.api.config.ConfigManager;
 import ac.grim.grimac.api.events.FlagEvent;
@@ -66,7 +66,7 @@ public class Check implements AbstractCheck, ConfigReloadObserver {
 
     public void updateExempted() {
         if (player.bukkitPlayer == null || checkName == null) return;
-        FoliaScheduler.getEntityScheduler().run(player.bukkitPlayer, GrimAPI.INSTANCE.getPlugin(),
+        FoliaScheduler.getEntityScheduler().run(player.bukkitPlayer, VoltAPI.INSTANCE.getPlugin(),
                 t -> exempted = player.bukkitPlayer.hasPermission("grim.exempt." + checkName.toLowerCase()),
                 () -> {});
     }
@@ -152,7 +152,7 @@ public class Check implements AbstractCheck, ConfigReloadObserver {
 
     @Override
     public void reload() {
-        reload(GrimAPI.INSTANCE.getConfigManager().getConfig());
+        reload(VoltAPI.INSTANCE.getConfigManager().getConfig());
     }
 
 }
