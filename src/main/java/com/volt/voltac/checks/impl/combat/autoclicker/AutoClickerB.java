@@ -15,10 +15,11 @@ import java.util.Deque;
 
 @CheckData(name = "AutoClickerB", configName = "AutoClicker", setback = 10)
 public class AutoClickerB extends Check implements PacketCheck {
-    private final Deque<Long> clickTimeDifferences = new ArrayDeque<>();
+    private final Deque<Long> clickTime = new ArrayDeque<>();
+    private final Deque<Double> variations = new ArrayDeque<>();
     private int flagIndex = 0;
-    private double minClickTimeDeltaVariance = 35555; // minimum allowed variance in click times
-    private int minClicksToTrack = 10; // minimum number of clicks to track
+    private int minClicksToTrack = 10;
+    private double maxVarianceDifference = 7500;
 
     public AutoClickerB(VoltPlayer player) {
         super(player);
@@ -32,15 +33,20 @@ public class AutoClickerB extends Check implements PacketCheck {
             if (interactPacket.getAction() == WrapperPlayClientInteractEntity.InteractAction.ATTACK) {
                 long currentTime = System.currentTimeMillis();
 
-                clickTimeDifferences.add(currentTime);
+                clickTime.add(currentTime);
 
-                if (clickTimeDifferences.size() >= minClicksToTrack) {
-                    // Remove the oldest timestamp to keep deque within the minClicksToTrack size
-                    clickTimeDifferences.removeFirst();
+                if (clickTime.size() >= minClicksToTrack) {
+                    clickTime.removeFirst();
 
-                    double variance = ClickUtils.getVariance(clickTimeDifferences);
+                    double variance = ClickUtils.getVariance(clickTime);
+                    variations.add(variance);
 
-                    if (variance < minClickTimeDeltaVariance) {
+                    if (variations.size() < 10) return;
+
+                    boolean allVariationsSimilar = variations.stream()
+                            .allMatch(v -> Math.abs(v - variance) <= maxVarianceDifference);
+
+                    if (allVariationsSimilar) {
                         flagIndex++;
                         if (flagIndex >= 3) {
                             flagAndAlert("Highly consistent click timing pattern detected. (Variance: " + Math.round(variance / 1000) + ")");
@@ -49,6 +55,8 @@ public class AutoClickerB extends Check implements PacketCheck {
                     } else {
                         flagIndex = 0;
                     }
+
+                    variations.removeFirst();
                 }
             }
         }
@@ -56,7 +64,7 @@ public class AutoClickerB extends Check implements PacketCheck {
 
     @Override
     public void onReload(ConfigManager config) {
-        this.minClickTimeDeltaVariance = config.getDoubleElse("AutoClicker.B.min-click-time-delta-variance", 35555);
         this.minClicksToTrack = config.getIntElse("AutoClicker.B.min-clicks-to-track", 10);
+        this.maxVarianceDifference = config.getDoubleElse("AutoClicker.B.max-variance-difference", 7500);
     }
 }
