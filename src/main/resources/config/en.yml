@@ -141,6 +141,7 @@ EntityControl:
 AutoClicker:
   #The max cps players are allowed to have
   max-cps: 30
+  #The maximu
 
 Reach:
   # How much should we expand hitboxes by? 0.0005 should detect 3.0005+ reach

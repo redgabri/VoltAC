@@ -6,7 +6,8 @@ import com.volt.voltac.checks.impl.aim.AimModulo360;
 import com.volt.voltac.checks.impl.aim.processor.AimProcessor;
 import com.volt.voltac.checks.impl.badpackets.*;
 import com.volt.voltac.checks.impl.combat.Reach;
-import com.volt.voltac.checks.impl.combat.autoclicker.AutoclickerA;
+import com.volt.voltac.checks.impl.combat.autoclicker.AutoClickerA;
+import com.volt.voltac.checks.impl.combat.autoclicker.AutoClickerB;
 import com.volt.voltac.checks.impl.crash.*;
 import com.volt.voltac.checks.impl.exploit.ExploitA;
 import com.volt.voltac.checks.impl.exploit.ExploitB;
@@ -63,7 +64,8 @@ public class CheckManager {
     public CheckManager(VoltPlayer player) {
         // Include post checks in the packet check too
         packetChecks = new ImmutableClassToInstanceMap.Builder<PacketCheck>()
-                .put(AutoclickerA.class, new AutoclickerA(player))
+                .put(AutoClickerA.class, new AutoClickerA(player))
+                .put(AutoClickerB.class, new AutoClickerB(player))
                 .put(Reach.class, new Reach(player))
                 .put(PacketEntityReplication.class, new PacketEntityReplication(player))
                 .put(PacketChangeGameState.class, new PacketChangeGameState(player))

@@ -12,13 +12,13 @@ import com.github.retrooper.packetevents.wrapper.play.client.WrapperPlayClientIn
 import java.util.LinkedList;
 import java.util.Queue;
 
-@CheckData(name = "AutoclickerA", configName = "AutoClicker", setback = 10)
-public class AutoclickerA extends Check implements PacketCheck {
+@CheckData(name = "AutoClickerA", configName = "AutoClicker", setback = 10)
+public class AutoClickerA extends Check implements PacketCheck {
     private final Queue<Long> clickTimes = new LinkedList<>();
     private int flagCount = 0;
     private double maxCps = 30;
 
-    public AutoclickerA(VoltPlayer player) {
+    public AutoClickerA(VoltPlayer player) {
         super(player);
     }
 
@@ -41,7 +41,7 @@ public class AutoclickerA extends Check implements PacketCheck {
                 if (clickTimes.size() > maxCps) {
                     flagCount++;
                     if (flagCount >= 5) {
-                        flagAndAlert("Hit CPS cap while fighting.");
+                        flagAndAlert("Hit CPS cap while fighting. (" + clickTimes.size()+" cps)");
                         flagCount = 0;
                     }
                 } else {
