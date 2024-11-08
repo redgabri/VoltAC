@@ -64,10 +64,8 @@ public class AutoClickerC extends Check implements PacketCheck {
                     }
                     variance /= (clickTimeDifferences.size() - 1);
 
-                    System.out.println(variance);
-
                     if (variance < maxClickTimeDeltaVariance) {
-                        flagAndAlert("Highly consistent click timing pattern detected. (Variance: " + Math.round(variance / 1000) + " )" + (variance < 38500 ? "(lcoc)" : ""));
+                        flagAndAlert("Highly consistent click timing pattern detected. (Variance: " + Math.round(variance / 1000) + ")" + (variance > 38500 ? "(lcoc)" : ""));
                     }
                 }
             }
