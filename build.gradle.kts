@@ -8,7 +8,7 @@ plugins {
     id("net.minecrell.plugin-yml.bukkit") version "0.6.0"
 }
 
-group = "ac.grim.grimac"
+group = "com.volt.voltac"
 version = "2.3.68"
 description = "Libre simulation anticheat designed for 1.21 with 1.8-1.21 support, powered by PacketEvents 2.0."
 java.sourceCompatibility = JavaVersion.VERSION_17
@@ -57,10 +57,9 @@ dependencies {
 }
 
 bukkit {
-    name = "GrimAC"
-    author = "GrimAC"
-    main = "ac.grim.grimac.GrimAC"
-    website = "https://grim.ac/"
+    name = "VoltAC"
+    author = "VoltAC"
+    main = "com.volt.voltac.VoltAC"
     apiVersion = "1.13"
     foliaSupported = true
 
@@ -77,47 +76,47 @@ bukkit {
     )
 
     permissions {
-        register("grim.alerts") {
+        register("volt.alerts") {
             description = "Receive alerts for violations"
             default = Permission.Default.OP
         }
 
-        register("grim.alerts.enable-on-join") {
+        register("volt.alerts.enable-on-join") {
             description = "Enable alerts on join"
             default = Permission.Default.OP
         }
 
-        register("grim.performance") {
+        register("volt.performance") {
             description = "Check performance metrics"
             default = Permission.Default.OP
         }
 
-        register("grim.profile") {
+        register("volt.profile") {
             description = "Check user profile"
             default = Permission.Default.OP
         }
 
-        register("grim.brand") {
+        register("volt.brand") {
             description = "Show client brands on join"
             default = Permission.Default.OP
         }
 
-        register("grim.sendalert") {
+        register("volt.sendalert") {
             description = "Send cheater alert"
             default = Permission.Default.OP
         }
 
-        register("grim.nosetback") {
+        register("volt.nosetback") {
             description = "Disable setback"
             default = Permission.Default.FALSE
         }
 
-        register("grim.nomodifypacket") {
+        register("volt.nomodifypacket") {
             description = "Disable modifying packets"
             default = Permission.Default.FALSE
         }
 
-        register("grim.exempt") {
+        register("volt.exempt") {
             description = "Exempt from all checks"
             default = Permission.Default.FALSE
         }

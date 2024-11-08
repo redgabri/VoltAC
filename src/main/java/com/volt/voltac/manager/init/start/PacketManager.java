@@ -1,7 +1,5 @@
 package com.volt.voltac.manager.init.start;
 
-import ac.grim.grimac.events.packets.*;
-import ac.grim.volt.events.packets.*;
 import com.volt.voltac.events.packets.*;
 import com.volt.voltac.events.packets.worldreader.BasePacketWorldReader;
 import com.volt.voltac.events.packets.worldreader.PacketWorldReaderEight;

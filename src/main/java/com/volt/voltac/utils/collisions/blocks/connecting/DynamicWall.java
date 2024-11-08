@@ -2,8 +2,6 @@ package com.volt.voltac.utils.collisions.blocks.connecting;
 
 import com.volt.voltac.player.GrimPlayer;
 import com.volt.voltac.utils.collisions.CollisionData;
-import ac.grim.grimac.utils.collisions.datatypes.*;
-import ac.grim.volt.utils.collisions.datatypes.*;
 import com.github.retrooper.packetevents.PacketEvents;
 import com.github.retrooper.packetevents.manager.server.ServerVersion;
 import com.github.retrooper.packetevents.protocol.player.ClientVersion;

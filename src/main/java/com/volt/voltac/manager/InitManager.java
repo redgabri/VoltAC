@@ -3,8 +3,6 @@ package com.volt.voltac.manager;
 import com.volt.voltac.VoltAPI;
 import com.volt.voltac.manager.init.Initable;
 import com.volt.voltac.manager.init.load.PacketEventsInit;
-import ac.grim.grimac.manager.init.start.*;
-import ac.grim.volt.manager.init.start.*;
 import com.volt.voltac.manager.init.start.*;
 import com.volt.voltac.manager.init.stop.TerminatePacketEvents;
 import com.google.common.collect.ImmutableList;

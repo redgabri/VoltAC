@@ -1,7 +1,5 @@
 package com.volt.voltac;
 
-import ac.grim.grimac.manager.*;
-import ac.grim.volt.manager.*;
 import com.volt.voltac.manager.*;
 import com.volt.voltac.manager.config.BaseConfigManager;
 import com.volt.voltac.utils.anticheat.PlayerDataManager;
