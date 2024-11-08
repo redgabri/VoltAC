@@ -12,15 +12,11 @@ import com.volt.voltac.utils.anticheat.click.ClickUtils;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.LinkedList;
-import java.util.Queue;
 
-
-@CheckData(name = "AutoClickerB", configName = "AutoClicker", setback = 10, experimental = true)
+@CheckData(name = "AutoClickerB", configName = "AutoClicker", setback = 10)
 public class AutoClickerB extends Check implements PacketCheck {
     private final Deque<Long> clickTimeDifferences = new ArrayDeque<>();
-    private final double MAX_CLICK_DIFFERENCE = 100_000_000; //This is used so this doesn't flag when a player stop clicking for some time
-    private double maxClickTimeDeltaVariance = 100000; // maximum allowed variance in click times
+    private double minClickTimeDeltaVariance = 35555; // minimum allowed variance in click times
     private int minClicksToTrack = 10; // minimum number of clicks to track
 
     public AutoClickerB(VoltPlayer player) {
@@ -43,8 +39,8 @@ public class AutoClickerB extends Check implements PacketCheck {
 
                     double variance = ClickUtils.getVariance(clickTimeDifferences);
 
-                    if (variance > maxClickTimeDeltaVariance) {
-                        flagAndAlert("Too high variance. (Variance: " + Math.round(variance / 1000) + ")");
+                    if (variance < minClickTimeDeltaVariance) {
+                        flagAndAlert("Highly consistent click timing pattern detected. (Variance: " + Math.round(variance / 1000) + ")");
                     }
                 }
             }
@@ -53,7 +49,7 @@ public class AutoClickerB extends Check implements PacketCheck {
 
     @Override
     public void onReload(ConfigManager config) {
-        this.maxClickTimeDeltaVariance = config.getDoubleElse("AutoClicker.B.max-click-time-delta-variance", 100000);
+        this.minClickTimeDeltaVariance = config.getDoubleElse("AutoClicker.B.min-click-time-delta-variance", 35555);
         this.minClicksToTrack = config.getIntElse("AutoClicker.B.min-clicks-to-track", 10);
     }
 }
