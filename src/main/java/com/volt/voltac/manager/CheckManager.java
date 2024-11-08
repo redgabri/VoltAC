@@ -8,6 +8,7 @@ import com.volt.voltac.checks.impl.badpackets.*;
 import com.volt.voltac.checks.impl.combat.Reach;
 import com.volt.voltac.checks.impl.combat.autoclicker.AutoClickerA;
 import com.volt.voltac.checks.impl.combat.autoclicker.AutoClickerB;
+import com.volt.voltac.checks.impl.combat.autoclicker.AutoClickerC;
 import com.volt.voltac.checks.impl.crash.*;
 import com.volt.voltac.checks.impl.exploit.ExploitA;
 import com.volt.voltac.checks.impl.exploit.ExploitB;
@@ -66,6 +67,7 @@ public class CheckManager {
         packetChecks = new ImmutableClassToInstanceMap.Builder<PacketCheck>()
                 .put(AutoClickerA.class, new AutoClickerA(player))
                 .put(AutoClickerB.class, new AutoClickerB(player))
+                .put(AutoClickerC.class, new AutoClickerC(player))
                 .put(Reach.class, new Reach(player))
                 .put(PacketEntityReplication.class, new PacketEntityReplication(player))
                 .put(PacketChangeGameState.class, new PacketChangeGameState(player))
