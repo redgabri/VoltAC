@@ -139,9 +139,21 @@ EntityControl:
   setbackvl: 25
 
 AutoClicker:
+  #Set a cap so people cant click more than that
   A:
     #The max cps players are allowed to have
     max-cps: 30
+
+  #Check if the time difference between a click and another is unusually high
+  B:
+    #The minimum number of clicks to track when checking click time difference
+    min-clicks-to-track: 10
+    #The maximum variance time between clicks to flag
+    #Lower = higher chance of flagging
+    max-click-time-delta-variance: 100000
+
+
+  #Check if the time difference between a click and another and detect similar patterns
   C:
     #The minimum number of clicks to track when checking click time difference
     min-clicks-to-track: 10

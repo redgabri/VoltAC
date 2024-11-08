@@ -8,16 +8,20 @@ import com.volt.voltac.player.VoltPlayer;
 import com.github.retrooper.packetevents.event.PacketReceiveEvent;
 import com.github.retrooper.packetevents.protocol.packettype.PacketType;
 import com.github.retrooper.packetevents.wrapper.play.client.WrapperPlayClientInteractEntity;
+import com.volt.voltac.utils.anticheat.click.ClickUtils;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Queue;
 
 
 @CheckData(name = "AutoClickerB", configName = "AutoClicker", setback = 10, experimental = true)
 public class AutoClickerB extends Check implements PacketCheck {
-    private final Queue<Long> clickTimes = new LinkedList<>();
-    private int flagCount = 0;
-    private double maxClickTimeDelta = 50; // maximum allowed variance in click times (in milliseconds)
+    private final Deque<Long> clickTimeDifferences = new ArrayDeque<>();
+    private final double MAX_CLICK_DIFFERENCE = 100_000_000; //This is used so this doesn't flag when a player stop clicking for some time
+    private double maxClickTimeDeltaVariance = 100000; // maximum allowed variance in click times
+    private int minClicksToTrack = 10; // minimum number of clicks to track
 
     public AutoClickerB(VoltPlayer player) {
         super(player);
@@ -28,30 +32,19 @@ public class AutoClickerB extends Check implements PacketCheck {
         if (event.getPacketType() == PacketType.Play.Client.INTERACT_ENTITY) {
             WrapperPlayClientInteractEntity interactPacket = new WrapperPlayClientInteractEntity(event);
 
-            // Check if the player is attacking an entity
             if (interactPacket.getAction() == WrapperPlayClientInteractEntity.InteractAction.ATTACK) {
                 long currentTime = System.currentTimeMillis();
-                clickTimes.add(currentTime);
 
-                // Remove old click times from the queue
-                while (!clickTimes.isEmpty() && currentTime - clickTimes.peek() > 1000) {
-                    clickTimes.poll();
-                }
+                clickTimeDifferences.add(currentTime);
 
-                // Only check the click pattern if the player is clicking more than 7 CPS
-                if (clickTimes.size() > 7) {
-                    // Check the variance in click times
-                    if (clickTimes.size() >= 2) {
-                        long timeDelta = clickTimes.toArray(new Long[0])[clickTimes.size() - 1] - clickTimes.toArray(new Long[0])[clickTimes.size() - 2];
-                        if (Math.abs(timeDelta - clickTimes.toArray(new Long[0])[clickTimes.size() - 2] + clickTimes.toArray(new Long[0])[clickTimes.size() - 3]) < maxClickTimeDelta) {
-                            flagCount++;
-                            if (flagCount >= 5) {
-                                flagAndAlert("Suspicious click timing pattern detected.");
-                                flagCount = 0;
-                            }
-                        } else {
-                            flagCount = 0;
-                        }
+                if (clickTimeDifferences.size() >= minClicksToTrack) {
+                    // Remove the oldest timestamp to keep deque within the minClicksToTrack size
+                    clickTimeDifferences.removeFirst();
+
+                    double variance = ClickUtils.getVariance(clickTimeDifferences);
+
+                    if (variance > maxClickTimeDeltaVariance) {
+                        flagAndAlert("Too high variance. (Variance: " + Math.round(variance / 1000) + ")");
                     }
                 }
             }
@@ -60,6 +53,7 @@ public class AutoClickerB extends Check implements PacketCheck {
 
     @Override
     public void onReload(ConfigManager config) {
-        this.maxClickTimeDelta = config.getDoubleElse("AutoClicker.max-click-time-delta", 50);
+        this.maxClickTimeDeltaVariance = config.getDoubleElse("AutoClicker.B.max-click-time-delta-variance", 100000);
+        this.minClicksToTrack = config.getIntElse("AutoClicker.B.min-clicks-to-track", 10);
     }
 }
