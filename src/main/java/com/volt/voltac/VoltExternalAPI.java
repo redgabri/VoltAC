@@ -82,7 +82,7 @@ public class VoltExternalAPI implements GrimAbstractAPI, ConfigReloadObserver, I
         }
     }
 
-    public String getVoltVersion() {
+    public String getGrimVersion() {
         PluginDescriptionFile description = VoltAPI.INSTANCE.getPlugin().getDescription();
         return description.getVersion();
     }
@@ -208,7 +208,7 @@ public class VoltExternalAPI implements GrimAbstractAPI, ConfigReloadObserver, I
         variableReplacements.putIfAbsent("%version%", GrimUser::getVersionName);
         // static variables
         staticReplacements.putIfAbsent("%prefix%", ChatColor.translateAlternateColorCodes('&', VoltAPI.INSTANCE.getConfigManager().getPrefix()));
-        staticReplacements.putIfAbsent("%grim_version%", getVoltVersion());
+        staticReplacements.putIfAbsent("%grim_version%", getGrimVersion());
     }
 
 }

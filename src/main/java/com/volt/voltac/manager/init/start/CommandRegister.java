@@ -8,20 +8,20 @@ import co.aikar.commands.PaperCommandManager;
 public class CommandRegister implements Initable {
     @Override
     public void start() {
-        // This does not make Grim require paper
+        // This does not make Volt require paper
         // It only enables new features such as asynchronous tab completion on paper
         PaperCommandManager commandManager = new PaperCommandManager(VoltAPI.INSTANCE.getPlugin());
 
-        commandManager.registerCommand(new GrimPerf());
-        commandManager.registerCommand(new GrimDebug());
+        commandManager.registerCommand(new VoltPerf());
+        commandManager.registerCommand(new VoltDebug());
         commandManager.registerCommand(new VoltAlerts());
-        commandManager.registerCommand(new GrimProfile());
-        commandManager.registerCommand(new GrimSendAlert());
-        commandManager.registerCommand(new GrimHelp());
-        commandManager.registerCommand(new GrimReload());
-        commandManager.registerCommand(new GrimSpectate());
-        commandManager.registerCommand(new GrimStopSpectating());
-        commandManager.registerCommand(new GrimLog());
+        commandManager.registerCommand(new VoltProfile());
+        commandManager.registerCommand(new VoltSendAlert());
+        commandManager.registerCommand(new VoltHelp());
+        commandManager.registerCommand(new VoltReload());
+        commandManager.registerCommand(new VoltSpectate());
+        commandManager.registerCommand(new VoltStopSpectating());
+        commandManager.registerCommand(new VoltLog());
         commandManager.registerCommand(new VoltVerbose());
     }
 }
