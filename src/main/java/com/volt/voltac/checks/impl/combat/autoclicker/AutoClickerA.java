@@ -12,10 +12,10 @@ import com.github.retrooper.packetevents.wrapper.play.client.WrapperPlayClientIn
 import java.util.LinkedList;
 import java.util.Queue;
 
+//Check CPS cap
 @CheckData(name = "AutoClickerA", configName = "AutoClicker", setback = 10)
 public class AutoClickerA extends Check implements PacketCheck {
     private final Queue<Long> clickTimes = new LinkedList<>();
-    private int flagCount = 0;
     private double maxCps = 30;
 
     public AutoClickerA(VoltPlayer player) {
@@ -39,13 +39,7 @@ public class AutoClickerA extends Check implements PacketCheck {
 
                 // Check if the player is clicking too fast
                 if (clickTimes.size() > maxCps) {
-                    flagCount++;
-                    if (flagCount >= 5) {
-                        flagAndAlert("Hit CPS cap while fighting. (" + clickTimes.size()+" cps)");
-                        flagCount = 0;
-                    }
-                } else {
-                    flagCount = 0;
+                    flagAndAlert("Hit CPS cap while fighting. (" + clickTimes.size()+" cps)");
                 }
             }
         }
