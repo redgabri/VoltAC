@@ -15,7 +15,7 @@ import java.util.Deque;
 @CheckData(name = "AutoClickerC", configName = "AutoClicker", setback = 10)
 public class AutoClickerC extends Check implements PacketCheck {
     private final Deque<Long> clickTimeDifferences = new ArrayDeque<>();
-    private double maxClickTimeDeltaVariance = 40f; // minimum allowed variance in click times
+    private double maxClickTimeDeltaVariance = 40000; // minimum allowed variance in click times
     private int minClicksToTrack = 10; // minimum number of clicks to track
 
     public AutoClickerC(VoltPlayer player) {
@@ -64,8 +64,10 @@ public class AutoClickerC extends Check implements PacketCheck {
                     }
                     variance /= (clickTimeDifferences.size() - 1);
 
-                    if (variance / 1000 < maxClickTimeDeltaVariance) {
-                        flagAndAlert("Highly consistent click timing pattern detected. (Variance: " + variance + " ms)");
+                    System.out.println(variance);
+
+                    if (variance < maxClickTimeDeltaVariance) {
+                        flagAndAlert("Highly consistent click timing pattern detected. (Variance: " + Math.round(variance / 1000) + " )" + (variance < 38500 ? "(lcoc)" : ""));
                     }
                 }
             }
@@ -74,7 +76,7 @@ public class AutoClickerC extends Check implements PacketCheck {
 
     @Override
     public void onReload(ConfigManager config) {
-        this.maxClickTimeDeltaVariance = config.getDoubleElse("AutoClicker.max-click-time-delta-variance", 10);
+        this.maxClickTimeDeltaVariance = config.getDoubleElse("AutoClicker.max-click-time-delta-variance", 40000);
         this.minClicksToTrack = config.getIntElse("AutoClicker.min-clicks-to-track", 10);
     }
 }
