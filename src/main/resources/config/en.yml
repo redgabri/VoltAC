@@ -142,10 +142,12 @@ AutoClicker:
   A:
     #The max cps players are allowed to have
     max-cps: 30
-  B:
+  C:
     #The minimum number of clicks to track when checking click time difference
     min-clicks-to-track: 10
     #The minimim variance time between clicks to flag
+    #Higher = higher chance of flagging
+    #40000+ can cause problems for people using double click/butterfly click
     min-click-time-delta-variance: 35000
 
 Reach:
