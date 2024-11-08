@@ -139,9 +139,14 @@ EntityControl:
   setbackvl: 25
 
 AutoClicker:
-  #The max cps players are allowed to have
-  max-cps: 30
-  #The maximu
+  A:
+    #The max cps players are allowed to have
+    max-cps: 30
+  B:
+    #The minimum number of clicks to track when checking click time difference
+    min-clicks-to-track: 10
+    #The minimim variance time between clicks to flag
+    min-click-time-delta-variance: 35000
 
 Reach:
   # How much should we expand hitboxes by? 0.0005 should detect 3.0005+ reach

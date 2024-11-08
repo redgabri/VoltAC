@@ -74,7 +74,7 @@ public class AutoClickerC extends Check implements PacketCheck {
 
     @Override
     public void onReload(ConfigManager config) {
-        this.maxClickTimeDeltaVariance = config.getDoubleElse("AutoClicker.max-click-time-delta-variance", 40000);
-        this.minClicksToTrack = config.getIntElse("AutoClicker.min-clicks-to-track", 10);
+        this.maxClickTimeDeltaVariance = config.getDoubleElse("AutoClicker.C.min-click-time-delta-variance", 35555);
+        this.minClicksToTrack = config.getIntElse("AutoClicker.C.min-clicks-to-track", 10);
     }
 }

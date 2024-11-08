@@ -12,7 +12,7 @@ import com.github.retrooper.packetevents.wrapper.play.client.WrapperPlayClientIn
 import java.util.LinkedList;
 import java.util.Queue;
 
-//Experimental check
+
 @CheckData(name = "AutoClickerB", configName = "AutoClicker", setback = 10, experimental = true)
 public class AutoClickerB extends Check implements PacketCheck {
     private final Queue<Long> clickTimes = new LinkedList<>();

@@ -47,6 +47,6 @@ public class AutoClickerA extends Check implements PacketCheck {
 
     @Override
     public void onReload(ConfigManager config) {
-        this.maxCps = config.getDoubleElse("AutoClicker.max-cps", 30);
+        this.maxCps = config.getDoubleElse("AutoClicker.A.max-cps", 30);
     }
 }
