@@ -16,6 +16,7 @@ import java.util.Deque;
 @CheckData(name = "AutoClickerB", configName = "AutoClicker", setback = 10)
 public class AutoClickerB extends Check implements PacketCheck {
     private final Deque<Long> clickTimeDifferences = new ArrayDeque<>();
+    private int flagIndex = 0;
     private double minClickTimeDeltaVariance = 35555; // minimum allowed variance in click times
     private int minClicksToTrack = 10; // minimum number of clicks to track
 
@@ -40,7 +41,13 @@ public class AutoClickerB extends Check implements PacketCheck {
                     double variance = ClickUtils.getVariance(clickTimeDifferences);
 
                     if (variance < minClickTimeDeltaVariance) {
-                        flagAndAlert("Highly consistent click timing pattern detected. (Variance: " + Math.round(variance / 1000) + ")");
+                        flagIndex++;
+                        if (flagIndex >= 3) {
+                            flagAndAlert("Highly consistent click timing pattern detected. (Variance: " + Math.round(variance / 1000) + ")");
+                            flagIndex = 0;
+                        }
+                    } else {
+                        flagIndex = 0;
                     }
                 }
             }
