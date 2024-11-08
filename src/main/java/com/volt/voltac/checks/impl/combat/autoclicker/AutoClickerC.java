@@ -8,6 +8,7 @@ import com.volt.voltac.player.VoltPlayer;
 import com.github.retrooper.packetevents.event.PacketReceiveEvent;
 import com.github.retrooper.packetevents.protocol.packettype.PacketType;
 import com.github.retrooper.packetevents.wrapper.play.client.WrapperPlayClientInteractEntity;
+import com.volt.voltac.utils.anticheat.click.ClickUtils;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
@@ -15,7 +16,7 @@ import java.util.Deque;
 @CheckData(name = "AutoClickerC", configName = "AutoClicker", setback = 10)
 public class AutoClickerC extends Check implements PacketCheck {
     private final Deque<Long> clickTimeDifferences = new ArrayDeque<>();
-    private double maxClickTimeDeltaVariance = 35555; // minimum allowed variance in click times
+    private double minClickTimeDeltaVariance = 35555; // minimum allowed variance in click times
     private int minClicksToTrack = 10; // minimum number of clicks to track
 
     public AutoClickerC(VoltPlayer player) {
@@ -36,35 +37,9 @@ public class AutoClickerC extends Check implements PacketCheck {
                     // Remove the oldest timestamp to keep deque within the minClicksToTrack size
                     clickTimeDifferences.removeFirst();
 
-                    // Calculate time differences between consecutive timestamps
-                    long previousTime = -1;
-                    double sumDifferences = 0.0;
-                    double maxDifference = 0.0;
-                    double minDifference = Double.MAX_VALUE;
+                    double variance = ClickUtils.getVariance(clickTimeDifferences);
 
-                    for (long clickTime : clickTimeDifferences) {
-                        if (previousTime != -1) {
-                            long diff = clickTime - previousTime;
-                            sumDifferences += diff;
-                            maxDifference = Math.max(maxDifference, diff);
-                            minDifference = Math.min(minDifference, diff);
-                        }
-                        previousTime = clickTime;
-                    }
-
-                    // Calculate the variance in click time differences
-                    double mean = sumDifferences / (clickTimeDifferences.size() - 1);
-                    double variance = 0.0;
-                    for (long clickTime : clickTimeDifferences) {
-                        if (previousTime != -1) {
-                            long diff = clickTime - previousTime;
-                            variance += Math.pow(diff - mean, 2);
-                        }
-                        previousTime = clickTime;
-                    }
-                    variance /= (clickTimeDifferences.size() - 1);
-
-                    if (variance < maxClickTimeDeltaVariance) {
+                    if (variance < minClickTimeDeltaVariance) {
                         flagAndAlert("Highly consistent click timing pattern detected. (Variance: " + Math.round(variance / 1000) + ")");
                     }
                 }
@@ -74,7 +49,7 @@ public class AutoClickerC extends Check implements PacketCheck {
 
     @Override
     public void onReload(ConfigManager config) {
-        this.maxClickTimeDeltaVariance = config.getDoubleElse("AutoClicker.C.min-click-time-delta-variance", 35555);
+        this.minClickTimeDeltaVariance = config.getDoubleElse("AutoClicker.C.min-click-time-delta-variance", 35555);
         this.minClicksToTrack = config.getIntElse("AutoClicker.C.min-clicks-to-track", 10);
     }
 }
