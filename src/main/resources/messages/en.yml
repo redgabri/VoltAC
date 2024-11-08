@@ -1,7 +1,7 @@
 # You can use hex codes too, in the format #FFFFFF or #ffffff.
 
 # \u00BB is » (double >>), ANSI and UTF-8 interpret this differently... you may even see ? due to this
-prefix: "&bGrim &8\u00BB"
+prefix: "&eVolt &8\u00BB"
 
 alerts-enabled: "%prefix% &fAlerts enabled"
 alerts-disabled: "%prefix% &fAlerts disabled"
@@ -25,29 +25,29 @@ upload-log-upload-failure: "%prefix% &cSomething went wrong while uploading this
 # %experimental%
 # %vl% - violations
 # %verbose% - extra information from the check such as offsets, not all checks will add information
-alerts-format: "%prefix% &f%player% &bfailed &f%check_name%%experimental% &f(x&c%vl%&f) &7%verbose%"
-alerts-format-proxy: "%prefix% &f[&cproxy&f] &f%player% &bfailed &f%check_name%%experimental% &f(x&c%vl%&f) &7%verbose%"
+alerts-format: "%prefix% &f%player% &efailed &f%check_name%%experimental% &f(x&c%vl%&f) &7%verbose%"
+alerts-format-proxy: "%prefix% &f[&cproxy&f] &f%player% &efailed &f%check_name%%experimental% &f(x&c%vl%&f) &7%verbose%"
 experimental-symbol: "*"
 
 profile:
   - "&7======================"
-  - "%prefix% &bProfile for &f%player%"
-  - "&bPing: &f%ping%"
-  - "&bVersion: &f%version%"
-  - "&bClient Brand: &f%brand%"
-  - "&bHorizontal Sensitivity: &f%h_sensitivity%%"
-  - "&bVertical Sensitivity: &f%v_sensitivity%%"
-  - "&bFastMath Enabled: &f%fast_math%"
+  - "%prefix% &eProfile for &f%player%"
+  - "&ePing: &f%ping%"
+  - "&eVersion: &f%version%"
+  - "&eClient Brand: &f%brand%"
+  - "&eHorizontal Sensitivity: &f%h_sensitivity%%"
+  - "&eVertical Sensitivity: &f%v_sensitivity%%"
+  - "&eFastMath Enabled: &f%fast_math%"
   - "&7======================"
 help:
   - "&7======================"
-  - "/grim alerts &f- &7Toggle alerts"
-  - "/grim profile <player> &f- &7View player info"
-  - "/grim help &f- &7View this help message"
-  - "/grim debug <player> &f- &7Developer Prediction output"
-  - "/grim perf &f- &7Developer ms/prediction"
-  - "/grim reload &f- &7Reloads the config"
-  - "/grim spectate <player> &f- &7Spectate a player"
-  - "/grim verbose &f- &7Shows every flag to you, without buffers"
-  - "/grim log [0-255] &f- &7Uploads a debug log for prediction flags"
+  - "/Volt alerts &f- &7Toggle alerts"
+  - "/Volt profile <player> &f- &7View player info"
+  - "/Volt help &f- &7View this help message"
+  - "/Volt debug <player> &f- &7Developer Prediction output"
+  - "/Volt perf &f- &7Developer ms/prediction"
+  - "/Volt reload &f- &7Reloads the config"
+  - "/Volt spectate <player> &f- &7Spectate a player"
+  - "/Volt verbose &f- &7Shows every flag to you, without buffers"
+  - "/Volt log [0-255] &f- &7Uploads a debug log for prediction flags"
   - "&7======================"

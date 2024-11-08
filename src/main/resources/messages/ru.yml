@@ -1,7 +1,7 @@
 # Вы также можете использовать шестнадцатеричные коды, в формате #FFFFFF или #ffffff.
 
 # \u00BB это " (двойной >>), ANSI и UTF-8 интерпретируют это по-разному... вы можете даже увидеть "?" из-за этого
-prefix: "&bGrim &8\u00BB"
+prefix: "&eVolt &8\u00BB"
 
 alerts-enabled: "%prefix% &fОповещения включены"
 alerts-disabled: "%prefix% &fОповещения отключены"
@@ -25,29 +25,29 @@ upload-log-upload-failure: "%prefix% &cЧто-то пошло не так при
 # %experimental%
 # %vl% - нарушения
 # %verbose% - дополнительная информация от проверки, например, смещения, не все проверки добавляют информацию.
-alerts-format: "%prefix% &f%player% &bпровалил &f%check_name%%experimental% &f(x&c%vl%&f) &7%verbose%"
-alerts-format-proxy: "%prefix% &f[&cproxy&f] &f%player% &bпровалил &f%check_name%%experimental% &f(x&c%vl%&f) &7%verbose%"
+alerts-format: "%prefix% &f%player% &eпровалил &f%check_name%%experimental% &f(x&c%vl%&f) &7%verbose%"
+alerts-format-proxy: "%prefix% &f[&cproxy&f] &f%player% &eпровалил &f%check_name%%experimental% &f(x&c%vl%&f) &7%verbose%"
 experimental-symbol: "*"
 
 profile:
   - "&7======================"
-  - "%prefix% &bПрофиль для &f%player%"
-  - "&bПинг: &f%ping%"
-  - "&bВерсия: &f%version%"
-  - "&bБренд клиента: &f%brand%"
-  - "&bГоризонтальная чувствительность: &f%h_sensitivity%%"
-  - "&bВертикальная чувствительность: &f%v_sensitivity%%"
-  - "&bFastMath Включено: &f%fast_math%"
+  - "%prefix% &eПрофиль для &f%player%"
+  - "&eПинг: &f%ping%"
+  - "&eВерсия: &f%version%"
+  - "&eБренд клиента: &f%brand%"
+  - "&eГоризонтальная чувствительность: &f%h_sensitivity%%"
+  - "&eВертикальная чувствительность: &f%v_sensitivity%%"
+  - "&eFastMath Включено: &f%fast_math%"
   - "&7======================"
 help:
   - "&7======================"
-  - "/grim alerts &f- &7Включить/выключить оповещения"
-  - "/grim profile <игрок> &f- &7Просмотреть информацию об игроке"
-  - "/grim help &f- &7Просмотреть это сообщение помощи"
-  - "/grim debug <игрок> &f- &7Вывод прогноза разработчика"
-  - "/grim perf &f- &7Вывод производительности Grim для разработчиков"
-  - "/grim reload &f- &7Перезагружает конфигурацию"
-  - "/grim spectate <игрок> &f- &7Наблюдать за игроком"
-  - "/grim verbose &f- &7Показывает все флаги без буферов"
-  - "/grim log [0-255] &f- &7Загружает журнал отладки для флагов предсказания"
+  - "/Volt alerts &f- &7Включить/выключить оповещения"
+  - "/Volt profile <игрок> &f- &7Просмотреть информацию об игроке"
+  - "/Volt help &f- &7Просмотреть это сообщение помощи"
+  - "/Volt debug <игрок> &f- &7Вывод прогноза разработчика"
+  - "/Volt perf &f- &7Вывод производительности Volt для разработчиков"
+  - "/Volt reload &f- &7Перезагружает конфигурацию"
+  - "/Volt spectate <игрок> &f- &7Наблюдать за игроком"
+  - "/Volt verbose &f- &7Показывает все флаги без буферов"
+  - "/Volt log [0-255] &f- &7Загружает журнал отладки для флагов предсказания"
   - "&7======================"

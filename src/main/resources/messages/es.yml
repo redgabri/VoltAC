@@ -1,7 +1,7 @@
 # También puedes usar códigos hexadecimales, en el formato #FFFFFF o #ffffff.
 
 # \u00BB es » (doble >>), ANSI y UTF-8 interpreta esto diferente... puede que incluso veas "?" debido a esto.
-prefix: "&bGrim &8\u00BB"
+prefix: "&eVolt &8\u00BB"
 
 alerts-enabled: "%prefix% &fAlertas habilitadas"
 alerts-disabled: "%prefix% &fAlertas deshabilitadas"
@@ -25,29 +25,29 @@ upload-log-upload-failure: "%prefix% &cAlgo salio mal mientras subíamos ese reg
 # %experimental%
 # %vl% - violaciones
 # %verbose% - información extra de la comprobación como compensaciones. No todas añadirán informacion.
-alerts-format: "%prefix% &f%player% &bfalló &f%check_name%%experimental% &f(x&c%vl%&f) &7%verbose%"
-alerts-format-proxy: "%prefix% &f[&cproxy&f] &f%player% &bfailed &f%check_name%%experimental% &f(x&c%vl%&f) &7%verbose%"
+alerts-format: "%prefix% &f%player% &efalló &f%check_name%%experimental% &f(x&c%vl%&f) &7%verbose%"
+alerts-format-proxy: "%prefix% &f[&cproxy&f] &f%player% &efailed &f%check_name%%experimental% &f(x&c%vl%&f) &7%verbose%"
 experimental-symbol: "*"
 
 profile:
   - "&7======================"
-  - "%prefix% &bPerfil de &f%player%"
-  - "&bPing: &f%ping%"
-  - "&bVersión: &f%version%"
-  - "&bMarca del cliente: &f%brand%"
-  - "&bSensibilidad horizontal: &f%h_sensitivity%%"
-  - "&bSensibilidad vertical: &f%v_sensitivity%%"
-  - "&bFastMath habilitado: &f%fast_math%"
+  - "%prefix% &ePerfil de &f%player%"
+  - "&ePing: &f%ping%"
+  - "&eVersión: &f%version%"
+  - "&eMarca del cliente: &f%brand%"
+  - "&eSensibilidad horizontal: &f%h_sensitivity%%"
+  - "&eSensibilidad vertical: &f%v_sensitivity%%"
+  - "&eFastMath habilitado: &f%fast_math%"
   - "&7======================"
 help:
   - "&7======================"
-  - "/grim alerts &f- &7Alternar alertas"
-  - "/grim profile <player> &f- &7Mostrar informacion del jugador"
-  - "/grim help &f- &7Mostrar este mensaje de ayuda"
-  - "/grim debug <player> &f- &7Salida de predicciones para desarrolladores"
-  - "/grim perf &f- &7ms/predicción para los desarrolladores"
-  - "/grim reload &f- &7Recarga la configuración"
-  - "/grim spectate <player> &f- &7Espectar a un jugador"
-  - "/grim verbose &f- &7Te muestra todo aviso, sin buffers"
-  - "/grim log [0-255] &f- &7Sube un registro de depuración para avisos de predicciones"
+  - "/Volt alerts &f- &7Alternar alertas"
+  - "/Volt profile <player> &f- &7Mostrar informacion del jugador"
+  - "/Volt help &f- &7Mostrar este mensaje de ayuda"
+  - "/Volt debug <player> &f- &7Salida de predicciones para desarrolladores"
+  - "/Volt perf &f- &7ms/predicción para los desarrolladores"
+  - "/Volt reload &f- &7Recarga la configuración"
+  - "/Volt spectate <player> &f- &7Espectar a un jugador"
+  - "/Volt verbose &f- &7Te muestra todo aviso, sin buffers"
+  - "/Volt log [0-255] &f- &7Sube un registro de depuración para avisos de predicciones"
   - "&7======================"

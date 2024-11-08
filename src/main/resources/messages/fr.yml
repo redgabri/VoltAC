@@ -1,7 +1,7 @@
 # Vous pouvez également utiliser des codes hexadécimaux, au format #FFFFFF ou #ffffff.
 
 # \u00BB se traduit par » (double >>). Les interprétations diffèrent entre les normes ANSI et UTF-8... vous pouvez même voir ? en raison de cela
-prefix: "&bGrim &8\u00BB"
+prefix: "&eVolt &8\u00BB"
 
 alerts-enabled: "%prefix% &fAlertes activées"
 alerts-disabled: "%prefix% &fAlertes désactivées"
@@ -25,29 +25,29 @@ upload-log-upload-failure: "%prefix% &cUne erreur est survenue lors du téléver
 # %experimental%
 # %vl% - violations
 # %verbose% - Informations supplémentaires sur les vérifivations comme les écarts, toutes les vérifications n'ajoutent pas d'information
-alerts-format: "%prefix% &f%player% &ba échoué &f%check_name%%experimental% &f(x&c%vl%&f) &7%verbose%"
-alerts-format-proxy: "%prefix% &f[&cproxy&f] &f%player% &ba échoué &f%check_name%%experimental% &f(x&c%vl%&f) &7%verbose%"
+alerts-format: "%prefix% &f%player% &ea échoué &f%check_name%%experimental% &f(x&c%vl%&f) &7%verbose%"
+alerts-format-proxy: "%prefix% &f[&cproxy&f] &f%player% &ea échoué &f%check_name%%experimental% &f(x&c%vl%&f) &7%verbose%"
 experimental-symbol: "*"
 
 profile:
   - "&7======================"
-  - "%prefix% &bProfil de &f%player%"
-  - "&bPing: &f%ping%"
-  - "&bVersion du client : &f%version%"
-  - "&bNature du client : &f%brand%"
-  - "&bSensibilité Horizontale : &f%h_sensitivity%%"
-  - "&bSensibilité Verticale : &f%v_sensitivity%%"
-  - "&bFastMath est activé : &f%fast_math%"
+  - "%prefix% &eProfil de &f%player%"
+  - "&ePing: &f%ping%"
+  - "&eVersion du client : &f%version%"
+  - "&eNature du client : &f%brand%"
+  - "&eSensibilité Horizontale : &f%h_sensitivity%%"
+  - "&eSensibilité Verticale : &f%v_sensitivity%%"
+  - "&eFastMath est activé : &f%fast_math%"
   - "&7======================"
 help:
   - "&7======================"
-  - "/grim alerts &f- &7Activer/Désactiver les alertes"
-  - "/grim profile <player> &f- &7Voir le profil du joueur"
-  - "/grim help &f- &7Afficher l'aide"
-  - "/grim debug <player> &f- &7Afficher les informations de débogage du joueur"
-  - "/grim perf &f- &7Afficher les informations de performance"
-  - "/grim reload &f- &7Recharger la configuration"
-  - "/grim spectate <player> &f- &7Regarder un joueur"
-  - "/grim verbose &f- &7Affiche chaqu'une de vos violations, sans tampons"
-  - "/grim log [0-255] &f- &7Téléverse un journal de débogage pour les indicateurs de prédiction"
+  - "/Volt alerts &f- &7Activer/Désactiver les alertes"
+  - "/Volt profile <player> &f- &7Voir le profil du joueur"
+  - "/Volt help &f- &7Afficher l'aide"
+  - "/Volt debug <player> &f- &7Afficher les informations de débogage du joueur"
+  - "/Volt perf &f- &7Afficher les informations de performance"
+  - "/Volt reload &f- &7Recharger la configuration"
+  - "/Volt spectate <player> &f- &7Regarder un joueur"
+  - "/Volt verbose &f- &7Affiche chaqu'une de vos violations, sans tampons"
+  - "/Volt log [0-255] &f- &7Téléverse un journal de débogage pour les indicateurs de prédiction"
   - "&7======================"
