@@ -1,7 +1,7 @@
 package com.volt.voltac.events.packets.patch;
 
 import com.volt.voltac.VoltAPI;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.collisions.datatypes.SimpleCollisionBox;
 import com.volt.voltac.utils.math.GrimMath;
 import com.github.retrooper.packetevents.PacketEvents;
@@ -20,16 +20,16 @@ import java.util.HashMap;
 public class ResyncWorldUtil {
     static HashMap<BlockData, Integer> blockDataToId = new HashMap<>();
 
-    public static void resyncPosition(GrimPlayer player, Vector3i pos) {
+    public static void resyncPosition(VoltPlayer player, Vector3i pos) {
         resyncPositions(player, pos.getX(), pos.getY(), pos.getZ(), pos.getX(), pos.getY(), pos.getZ());
     }
 
-    public static void resyncPositions(GrimPlayer player, SimpleCollisionBox box) {
+    public static void resyncPositions(VoltPlayer player, SimpleCollisionBox box) {
         resyncPositions(player, GrimMath.floor(box.minX), GrimMath.floor(box.minY), GrimMath.floor(box.minZ),
                 GrimMath.ceil(box.maxX), GrimMath.ceil(box.maxY), GrimMath.ceil(box.maxZ));
     }
 
-    public static void resyncPositions(GrimPlayer player, int minBlockX, int mY, int minBlockZ, int maxBlockX, int mxY, int maxBlockZ) {
+    public static void resyncPositions(VoltPlayer player, int minBlockX, int mY, int minBlockZ, int maxBlockX, int mxY, int maxBlockZ) {
         // Check the 4 corners of the player world for loaded chunks before calling event
         if (!player.compensatedWorld.isChunkLoaded(minBlockX >> 4, minBlockZ >> 4) || !player.compensatedWorld.isChunkLoaded(minBlockX >> 4, maxBlockZ >> 4)
                 || !player.compensatedWorld.isChunkLoaded(maxBlockX >> 4, minBlockZ >> 4) || !player.compensatedWorld.isChunkLoaded(maxBlockX >> 4, maxBlockZ >> 4))

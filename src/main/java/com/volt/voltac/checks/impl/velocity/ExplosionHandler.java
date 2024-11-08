@@ -4,7 +4,7 @@ import ac.grim.grimac.api.config.ConfigManager;
 import com.volt.voltac.checks.Check;
 import com.volt.voltac.checks.CheckData;
 import com.volt.voltac.checks.type.PostPredictionCheck;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.anticheat.update.PredictionComplete;
 import com.volt.voltac.utils.data.VectorData;
 import com.volt.voltac.utils.data.VelocityData;
@@ -38,7 +38,7 @@ public class ExplosionHandler extends Check implements PostPredictionCheck {
     double offsetToFlag;
     double setbackVL;
 
-    public ExplosionHandler(GrimPlayer player) {
+    public ExplosionHandler(VoltPlayer player) {
         super(player);
     }
 

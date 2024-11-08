@@ -1,6 +1,6 @@
 package com.volt.voltac.utils.team;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.github.retrooper.packetevents.protocol.player.UserProfile;
 import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerTeams;
 import lombok.Getter;
@@ -11,12 +11,12 @@ import java.util.Set;
 
 public final class EntityTeam {
 
-    private final GrimPlayer player;
+    private final VoltPlayer player;
     @Getter private final String name;
     @Getter private final Set<String> entries = new HashSet<>();
     @Getter private WrapperPlayServerTeams.CollisionRule collisionRule;
 
-    public EntityTeam(GrimPlayer player, String name) {
+    public EntityTeam(VoltPlayer player, String name) {
         this.player = player;
         this.name = name;
     }

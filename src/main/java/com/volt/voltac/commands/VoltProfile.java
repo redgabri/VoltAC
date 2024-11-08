@@ -1,7 +1,7 @@
 package com.volt.voltac.commands;
 
 import com.volt.voltac.VoltAPI;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.anticheat.MessageUtil;
 import com.volt.voltac.utils.anticheat.MultiLibUtil;
 import co.aikar.commands.BaseCommand;
@@ -15,10 +15,10 @@ import com.github.retrooper.packetevents.manager.server.ServerVersion;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-@CommandAlias("grim|grimac")
-public class GrimProfile extends BaseCommand {
+@CommandAlias("volt|voltac")
+public class VoltProfile extends BaseCommand {
     @Subcommand("profile")
-    @CommandPermission("grim.profile")
+    @CommandPermission("volt.profile")
     @CommandCompletion("@players")
     public void onConsoleDebug(CommandSender sender, OnlinePlayer target) {
         Player player = null;
@@ -31,15 +31,15 @@ public class GrimProfile extends BaseCommand {
             return;
         }
 
-        GrimPlayer grimPlayer = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(target.getPlayer());
-        if (grimPlayer == null) {
+        VoltPlayer voltPlayer = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(target.getPlayer());
+        if (voltPlayer == null) {
             String message = VoltAPI.INSTANCE.getConfigManager().getConfig().getStringElse("player-not-found", "%prefix% &cPlayer is exempt or offline!");
             sender.sendMessage(MessageUtil.format(message));
             return;
         }
 
         for (String message : VoltAPI.INSTANCE.getConfigManager().getConfig().getStringList("profile")) {
-            message = VoltAPI.INSTANCE.getExternalAPI().replaceVariables(grimPlayer, message, true);
+            message = VoltAPI.INSTANCE.getExternalAPI().replaceVariables(voltPlayer, message, true);
             sender.sendMessage(message);
         }
     }

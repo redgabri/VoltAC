@@ -1,6 +1,6 @@
 package com.volt.voltac.utils.inventory.slot;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.inventory.EquipmentType;
 import com.volt.voltac.utils.inventory.InventoryStorage;
 import com.github.retrooper.packetevents.PacketEvents;
@@ -26,7 +26,7 @@ public class EquipmentSlot extends Slot {
         return type == EquipmentType.getEquipmentSlotForItem(p_39746_);
     }
 
-    public boolean mayPickup(GrimPlayer p_39744_) {
+    public boolean mayPickup(VoltPlayer p_39744_) {
         ItemStack itemstack = this.getItem();
         return (itemstack.isEmpty() || p_39744_.gamemode == GameMode.CREATIVE || itemstack.getEnchantmentLevel(EnchantmentTypes.BINDING_CURSE, PacketEvents.getAPI().getServerManager().getVersion().toClientVersion()) == 0) && super.mayPickup(p_39744_);
     }

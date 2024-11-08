@@ -2,7 +2,7 @@ package com.volt.voltac.checks.impl.misc;
 
 import ac.grim.grimac.api.config.ConfigManager;
 import com.volt.voltac.checks.type.BlockPlaceCheck;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.anticheat.update.BlockPlace;
 import com.github.retrooper.packetevents.util.Vector3i;
 import org.bukkit.Material;
@@ -14,7 +14,7 @@ public class GhostBlockMitigation extends BlockPlaceCheck {
     private boolean allow;
     private int distance;
 
-    public GhostBlockMitigation(GrimPlayer player) {
+    public GhostBlockMitigation(VoltPlayer player) {
         super(player);
     }
 

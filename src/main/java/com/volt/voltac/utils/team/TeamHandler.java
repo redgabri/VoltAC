@@ -2,7 +2,7 @@ package com.volt.voltac.utils.team;
 
 import com.volt.voltac.checks.Check;
 import com.volt.voltac.checks.type.PacketCheck;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.data.packetentity.PacketEntity;
 import com.github.retrooper.packetevents.event.PacketSendEvent;
 import com.github.retrooper.packetevents.protocol.packettype.PacketType;
@@ -18,7 +18,7 @@ public class TeamHandler extends Check implements PacketCheck {
     private final Map<String, EntityTeam> entityTeams = new Object2ObjectOpenHashMap<>();
     private final Map<String, EntityTeam> entityToTeam = new Object2ObjectOpenHashMap<>();
 
-    public TeamHandler(GrimPlayer player) {
+    public TeamHandler(VoltPlayer player) {
         super(player);
     }
 

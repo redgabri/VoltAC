@@ -5,7 +5,7 @@ import ac.grim.grimac.api.config.ConfigManager;
 import com.volt.voltac.checks.Check;
 import com.volt.voltac.checks.CheckData;
 import com.volt.voltac.checks.type.PostPredictionCheck;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.anticheat.update.PredictionComplete;
 import com.volt.voltac.utils.data.Pair;
 import com.volt.voltac.utils.data.VectorData;
@@ -36,7 +36,7 @@ public class KnockbackHandler extends Check implements PostPredictionCheck {
 
     double threshold;
 
-    public KnockbackHandler(GrimPlayer player) {
+    public KnockbackHandler(VoltPlayer player) {
         super(player);
     }
 
@@ -46,7 +46,7 @@ public class KnockbackHandler extends Check implements PostPredictionCheck {
             WrapperPlayServerEntityVelocity velocity = new WrapperPlayServerEntityVelocity(event);
             int entityId = velocity.getEntityId();
 
-            GrimPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
+            VoltPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
             if (player == null) return;
 
             // Detect whether this knockback packet affects the player or if it is useless

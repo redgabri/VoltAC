@@ -7,7 +7,7 @@ import ac.grim.grimac.api.config.ConfigManager;
 import ac.grim.grimac.api.events.GrimReloadEvent;
 import com.volt.voltac.manager.config.ConfigManagerFileImpl;
 import com.volt.voltac.manager.init.Initable;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.anticheat.LogUtil;
 import com.volt.voltac.utils.common.ConfigReloadObserver;
 import com.github.retrooper.packetevents.netty.channel.ChannelHelper;
@@ -82,8 +82,7 @@ public class VoltExternalAPI implements GrimAbstractAPI, ConfigReloadObserver, I
         }
     }
 
-    @Override
-    public String getGrimVersion() {
+    public String getVoltVersion() {
         PluginDescriptionFile description = VoltAPI.INSTANCE.getPlugin().getDescription();
         return description.getVersion();
     }
@@ -189,10 +188,10 @@ public class VoltExternalAPI implements GrimAbstractAPI, ConfigReloadObserver, I
         // Don't reload players if the plugin hasn't started yet
         if (!started) return;
         // Reload checks for all players
-        for (GrimPlayer grimPlayer : VoltAPI.INSTANCE.getPlayerDataManager().getEntries()) {
-            ChannelHelper.runInEventLoop(grimPlayer.user.getChannel(), () -> {
-                grimPlayer.updatePermissions();
-                grimPlayer.reload(configManager);
+        for (VoltPlayer voltPlayer : VoltAPI.INSTANCE.getPlayerDataManager().getEntries()) {
+            ChannelHelper.runInEventLoop(voltPlayer.user.getChannel(), () -> {
+                voltPlayer.updatePermissions();
+                voltPlayer.reload(configManager);
             });
         }
     }
@@ -209,7 +208,7 @@ public class VoltExternalAPI implements GrimAbstractAPI, ConfigReloadObserver, I
         variableReplacements.putIfAbsent("%version%", GrimUser::getVersionName);
         // static variables
         staticReplacements.putIfAbsent("%prefix%", ChatColor.translateAlternateColorCodes('&', VoltAPI.INSTANCE.getConfigManager().getPrefix()));
-        staticReplacements.putIfAbsent("%grim_version%", getGrimVersion());
+        staticReplacements.putIfAbsent("%grim_version%", getVoltVersion());
     }
 
 }

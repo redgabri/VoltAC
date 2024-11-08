@@ -1,7 +1,7 @@
 package com.volt.voltac.predictionengine;
 
 import com.volt.voltac.checks.impl.movement.NoSlowC;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.collisions.datatypes.SimpleCollisionBox;
 import com.volt.voltac.utils.data.attribute.ValuedAttribute;
 import com.volt.voltac.utils.data.packetentity.PacketEntity;
@@ -21,17 +21,17 @@ import org.bukkit.util.Vector;
 import java.util.Optional;
 
 public class PlayerBaseTick {
-    GrimPlayer player;
+    VoltPlayer player;
 
-    public PlayerBaseTick(GrimPlayer player) {
+    public PlayerBaseTick(VoltPlayer player) {
         this.player = player;
     }
 
-    public static boolean canEnterPose(GrimPlayer player, Pose pose, double x, double y, double z) {
+    public static boolean canEnterPose(VoltPlayer player, Pose pose, double x, double y, double z) {
         return Collisions.isEmpty(player, getBoundingBoxForPose(player, pose, x, y, z).expand(-1.0E-7D));
     }
 
-    protected static SimpleCollisionBox getBoundingBoxForPose(GrimPlayer player, Pose pose, double x, double y, double z) {
+    protected static SimpleCollisionBox getBoundingBoxForPose(VoltPlayer player, Pose pose, double x, double y, double z) {
         final float scale = (float) player.compensatedEntities.getSelf().getAttributeValue(Attributes.GENERIC_SCALE);
         final float width = pose.width * scale;
         final float height = pose.height * scale;

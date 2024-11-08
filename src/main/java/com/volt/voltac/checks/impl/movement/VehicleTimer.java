@@ -1,7 +1,7 @@
 package com.volt.voltac.checks.impl.movement;
 
 import com.volt.voltac.checks.CheckData;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.github.retrooper.packetevents.protocol.packettype.PacketType;
 import com.github.retrooper.packetevents.protocol.packettype.PacketTypeCommon;
 
@@ -9,7 +9,7 @@ import com.github.retrooper.packetevents.protocol.packettype.PacketTypeCommon;
 public class VehicleTimer extends TimerCheck {
     boolean isDummy = false;
 
-    public VehicleTimer(GrimPlayer player) {
+    public VehicleTimer(VoltPlayer player) {
         super(player);
     }
 

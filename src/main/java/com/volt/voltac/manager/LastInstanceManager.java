@@ -2,7 +2,7 @@ package com.volt.voltac.manager;
 
 import com.volt.voltac.checks.Check;
 import com.volt.voltac.checks.type.PostPredictionCheck;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.anticheat.update.PredictionComplete;
 import com.volt.voltac.utils.data.LastInstance;
 
@@ -12,7 +12,7 @@ import java.util.List;
 public class LastInstanceManager extends Check implements PostPredictionCheck {
     private final List<LastInstance> instances = new ArrayList<>();
 
-    public LastInstanceManager(GrimPlayer player) {
+    public LastInstanceManager(VoltPlayer player) {
         super(player);
     }
 

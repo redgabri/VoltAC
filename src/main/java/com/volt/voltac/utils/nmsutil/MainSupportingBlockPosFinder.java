@@ -1,6 +1,6 @@
 package com.volt.voltac.utils.nmsutil;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.collisions.datatypes.SimpleCollisionBox;
 import com.volt.voltac.utils.data.MainSupportingBlockData;
 import com.github.retrooper.packetevents.util.Vector3d;
@@ -13,7 +13,7 @@ import java.util.concurrent.atomic.AtomicReference;
 
 @UtilityClass
 public class MainSupportingBlockPosFinder {
-    public MainSupportingBlockData findMainSupportingBlockPos(GrimPlayer player, MainSupportingBlockData lastSupportingBlock, Vector3d lastMovement, SimpleCollisionBox maxPose, boolean isOnGround) {
+    public MainSupportingBlockData findMainSupportingBlockPos(VoltPlayer player, MainSupportingBlockData lastSupportingBlock, Vector3d lastMovement, SimpleCollisionBox maxPose, boolean isOnGround) {
         if (!isOnGround) {
             return new MainSupportingBlockData(null, false);
         }
@@ -34,7 +34,7 @@ public class MainSupportingBlockPosFinder {
         return new MainSupportingBlockData(null, true);
     }
 
-    private Optional<Vector3i> findSupportingBlock(GrimPlayer player, SimpleCollisionBox searchBox) {
+    private Optional<Vector3i> findSupportingBlock(VoltPlayer player, SimpleCollisionBox searchBox) {
         Vector3d playerPos = new Vector3d(player.x, player.y, player.z);
 
         AtomicReference<Vector3i> bestBlockPos = new AtomicReference<>();

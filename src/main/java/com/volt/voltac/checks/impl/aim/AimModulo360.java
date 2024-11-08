@@ -3,7 +3,7 @@ package com.volt.voltac.checks.impl.aim;
 import com.volt.voltac.checks.Check;
 import com.volt.voltac.checks.CheckData;
 import com.volt.voltac.checks.type.RotationCheck;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.anticheat.update.RotationUpdate;
 
 // Based on Kauri AimA,
@@ -13,7 +13,7 @@ import com.volt.voltac.utils.anticheat.update.RotationUpdate;
 public class AimModulo360 extends Check implements RotationCheck {
     float lastDeltaYaw;
 
-    public AimModulo360(GrimPlayer playerData) {
+    public AimModulo360(VoltPlayer playerData) {
         super(playerData);
     }
 

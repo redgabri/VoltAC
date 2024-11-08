@@ -8,10 +8,10 @@ import co.aikar.commands.annotation.CommandPermission;
 import co.aikar.commands.annotation.Subcommand;
 import org.bukkit.command.CommandSender;
 
-@CommandAlias("grim|grimac")
-public class GrimReload extends BaseCommand {
+@CommandAlias("volt|voltac")
+public class VoltReload extends BaseCommand {
     @Subcommand("reload")
-    @CommandPermission("grim.reload")
+    @CommandPermission("volt.reload")
     public void onReload(CommandSender sender) {
         //reload config
         sender.sendMessage(MessageUtil.format("%prefix% &7Reloading config..."));

@@ -1,6 +1,6 @@
 package com.volt.voltac.utils.inventory.inventory;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.inventory.Inventory;
 import com.github.retrooper.packetevents.PacketEvents;
 import com.github.retrooper.packetevents.manager.server.ServerVersion;
@@ -57,7 +57,7 @@ public enum MenuType {
     }
 
 
-    public static AbstractContainerMenu getMenuFromID(GrimPlayer player, Inventory playerInventory, MenuType type) {
+    public static AbstractContainerMenu getMenuFromID(VoltPlayer player, Inventory playerInventory, MenuType type) {
         switch (type) {
             case GENERIC_9x1:
             case GENERIC_9x2:
@@ -75,7 +75,7 @@ public enum MenuType {
         }
     }
 
-    public static AbstractContainerMenu getMenuFromString(GrimPlayer player, Inventory inventory, String legacyType, int slots, int horse) {
+    public static AbstractContainerMenu getMenuFromString(VoltPlayer player, Inventory inventory, String legacyType, int slots, int horse) {
         switch (legacyType) {
             case "minecraft:chest":
             case "minecraft:container":

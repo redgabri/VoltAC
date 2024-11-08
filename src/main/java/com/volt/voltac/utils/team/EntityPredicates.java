@@ -1,6 +1,6 @@
 package com.volt.voltac.utils.team;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.data.packetentity.PacketEntity;
 import com.github.retrooper.packetevents.protocol.player.GameMode;
 import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerTeams;
@@ -9,7 +9,7 @@ import java.util.function.Predicate;
 
 public final class EntityPredicates {
 
-    public static Predicate<GrimPlayer> canBePushedBy(GrimPlayer player, PacketEntity entity, TeamHandler teamHandler) {
+    public static Predicate<VoltPlayer> canBePushedBy(VoltPlayer player, PacketEntity entity, TeamHandler teamHandler) {
         if (player.gamemode == GameMode.SPECTATOR) return p -> false;
         final EntityTeam entityTeam = teamHandler.getEntityTeam(entity).orElse(null);
         WrapperPlayServerTeams.CollisionRule collisionRule = entityTeam == null ? WrapperPlayServerTeams.CollisionRule.ALWAYS : entityTeam.getCollisionRule();

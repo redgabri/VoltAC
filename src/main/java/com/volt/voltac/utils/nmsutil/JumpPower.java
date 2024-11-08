@@ -1,6 +1,6 @@
 package com.volt.voltac.utils.nmsutil;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.github.retrooper.packetevents.protocol.attribute.Attributes;
 import com.github.retrooper.packetevents.protocol.player.ClientVersion;
 import com.github.retrooper.packetevents.protocol.potion.PotionTypes;
@@ -10,7 +10,7 @@ import org.bukkit.util.Vector;
 import java.util.OptionalInt;
 
 public class JumpPower {
-    public static void jumpFromGround(GrimPlayer player, Vector vector) {
+    public static void jumpFromGround(VoltPlayer player, Vector vector) {
         float jumpPower = getJumpPower(player);
 
         final OptionalInt jumpBoost = player.compensatedEntities.getPotionLevelForPlayer(PotionTypes.JUMP_BOOST);
@@ -28,11 +28,11 @@ public class JumpPower {
         }
     }
 
-    public static float getJumpPower(GrimPlayer player) {
+    public static float getJumpPower(VoltPlayer player) {
         return (float) player.compensatedEntities.getSelf().getAttributeValue(Attributes.GENERIC_JUMP_STRENGTH) * getPlayerJumpFactor(player);
     }
 
-    public static float getPlayerJumpFactor(GrimPlayer player) {
+    public static float getPlayerJumpFactor(VoltPlayer player) {
         return BlockProperties.onHoneyBlock(player, player.mainSupportingBlockData, new Vector3d(player.lastX, player.lastY, player.lastZ)) ? 0.5f : 1f;
     }
 }

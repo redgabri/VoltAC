@@ -1,6 +1,6 @@
 package com.volt.voltac.utils.collisions.blocks.connecting;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.collisions.datatypes.CollisionBox;
 import com.volt.voltac.utils.collisions.datatypes.ComplexCollisionBox;
 import com.volt.voltac.utils.collisions.datatypes.HexCollisionBox;
@@ -43,7 +43,7 @@ public class DynamicConnecting {
         return avoxelshape;
     }
 
-    public boolean connectsTo(GrimPlayer player, ClientVersion v, int currX, int currY, int currZ, BlockFace direction) {
+    public boolean connectsTo(VoltPlayer player, ClientVersion v, int currX, int currY, int currZ, BlockFace direction) {
         WrappedBlockState targetBlock = player.compensatedWorld.getWrappedBlockStateAt(currX + direction.getModX(), currY + direction.getModY(), currZ + direction.getModZ());
         WrappedBlockState currBlock = player.compensatedWorld.getWrappedBlockStateAt(currX, currY, currZ);
         StateType target = targetBlock.getType();
@@ -118,7 +118,7 @@ public class DynamicConnecting {
         return i;
     }
 
-    public boolean checkCanConnect(GrimPlayer player, WrappedBlockState state, StateType one, StateType two, BlockFace direction) {
+    public boolean checkCanConnect(VoltPlayer player, WrappedBlockState state, StateType one, StateType two, BlockFace direction) {
         return false;
     }
 

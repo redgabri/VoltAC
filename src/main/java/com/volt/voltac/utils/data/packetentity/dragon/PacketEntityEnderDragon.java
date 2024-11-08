@@ -1,6 +1,6 @@
 package com.volt.voltac.utils.data.packetentity.dragon;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.data.packetentity.PacketEntity;
 import com.github.retrooper.packetevents.protocol.entity.type.EntityTypes;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
@@ -13,7 +13,7 @@ public final class PacketEntityEnderDragon extends PacketEntity {
 
     private final List<PacketEntityEnderDragonPart> parts = new ArrayList<>();
 
-    public PacketEntityEnderDragon(GrimPlayer player, UUID uuid, int entityID, double x, double y, double z) {
+    public PacketEntityEnderDragon(VoltPlayer player, UUID uuid, int entityID, double x, double y, double z) {
         super(player, uuid, EntityTypes.ENDER_DRAGON, x, y, z);
         final Int2ObjectOpenHashMap<PacketEntity> entityMap = player.compensatedEntities.entityMap;
         parts.add(new PacketEntityEnderDragonPart(player, DragonPart.HEAD, x, y, z, 1.0F, 1.0F));

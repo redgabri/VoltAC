@@ -2,7 +2,7 @@ package com.volt.voltac.checks.type;
 
 import ac.grim.grimac.api.config.ConfigManager;
 import com.volt.voltac.checks.Check;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.anticheat.update.BlockPlace;
 import com.volt.voltac.utils.collisions.HitboxData;
 import com.volt.voltac.utils.collisions.datatypes.CollisionBox;
@@ -21,7 +21,7 @@ public class BlockPlaceCheck extends Check implements RotationCheck, PostPredict
 
     protected int cancelVL;
 
-    public BlockPlaceCheck(GrimPlayer player) {
+    public BlockPlaceCheck(VoltPlayer player) {
         super(player);
     }
 

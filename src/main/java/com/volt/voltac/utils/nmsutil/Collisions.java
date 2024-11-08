@@ -1,7 +1,7 @@
 package com.volt.voltac.utils.nmsutil;
 
 import com.volt.voltac.events.packets.PacketWorldBorder;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.chunks.Column;
 import com.volt.voltac.utils.collisions.CollisionData;
 import com.volt.voltac.utils.collisions.datatypes.CollisionBox;
@@ -57,7 +57,7 @@ public class Collisions {
             Arrays.asList(Axis.Y, Axis.X, Axis.Z),
             Arrays.asList(Axis.Y, Axis.Z, Axis.X));
 
-    public static boolean slowCouldPointThreeHitGround(GrimPlayer player, double x, double y, double z) {
+    public static boolean slowCouldPointThreeHitGround(VoltPlayer player, double x, double y, double z) {
         SimpleCollisionBox oldBB = player.boundingBox;
         player.boundingBox = GetBoundingBox.getBoundingBoxFromPosAndSize(player, x, y, z, 0.6f, 0.06f);
 
@@ -71,11 +71,11 @@ public class Collisions {
     }
 
     // Call this when there isn't uncertainty on the Y axis
-    public static Vector collide(GrimPlayer player, double desiredX, double desiredY, double desiredZ) {
+    public static Vector collide(VoltPlayer player, double desiredX, double desiredY, double desiredZ) {
         return collide(player, desiredX, desiredY, desiredZ, desiredY, null);
     }
 
-    public static Vector collide(GrimPlayer player, double desiredX, double desiredY, double desiredZ, double clientVelY, VectorData data) {
+    public static Vector collide(VoltPlayer player, double desiredX, double desiredY, double desiredZ, double clientVelY, VectorData data) {
         if (desiredX == 0 && desiredY == 0 && desiredZ == 0) return new Vector();
 
         final SimpleCollisionBox grabBoxesBB = player.boundingBox.copy();
@@ -201,7 +201,7 @@ public class Collisions {
         return fs;
     }
 
-    public static boolean addWorldBorder(GrimPlayer player, SimpleCollisionBox wantedBB, List<SimpleCollisionBox> listOfBlocks, boolean onlyCheckCollide) {
+    public static boolean addWorldBorder(VoltPlayer player, SimpleCollisionBox wantedBB, List<SimpleCollisionBox> listOfBlocks, boolean onlyCheckCollide) {
         // Worldborders were added in 1.8
         // Don't add to border unless the player is colliding with it and is near it
         if (player.getClientVersion().isNewerThanOrEquals(ClientVersion.V_1_8)) {
@@ -253,7 +253,7 @@ public class Collisions {
     }
 
     // This is mostly taken from Tuinity collisions
-    public static boolean getCollisionBoxes(GrimPlayer player, SimpleCollisionBox wantedBB, List<SimpleCollisionBox> listOfBlocks, boolean onlyCheckCollide) {
+    public static boolean getCollisionBoxes(VoltPlayer player, SimpleCollisionBox wantedBB, List<SimpleCollisionBox> listOfBlocks, boolean onlyCheckCollide) {
         SimpleCollisionBox expandedBB = wantedBB.copy();
 
         boolean collided = addWorldBorder(player, wantedBB, listOfBlocks, onlyCheckCollide);
@@ -372,7 +372,7 @@ public class Collisions {
         return new Vector(x, y, z);
     }
 
-    public static boolean isEmpty(GrimPlayer player, SimpleCollisionBox playerBB) {
+    public static boolean isEmpty(VoltPlayer player, SimpleCollisionBox playerBB) {
         return !getCollisionBoxes(player, playerBB, null, true);
     }
 
@@ -380,7 +380,7 @@ public class Collisions {
         return vector.getX() * vector.getX() + vector.getZ() * vector.getZ();
     }
 
-    public static Vector maybeBackOffFromEdge(Vector vec3, GrimPlayer player, boolean overrideVersion) {
+    public static Vector maybeBackOffFromEdge(Vector vec3, VoltPlayer player, boolean overrideVersion) {
         if (!player.isFlying && player.isSneaking && isAboveGround(player)) {
             double x = vec3.getX();
             double z = vec3.getZ();
@@ -428,13 +428,13 @@ public class Collisions {
         return vec3;
     }
 
-    public static boolean isAboveGround(GrimPlayer player) {
+    public static boolean isAboveGround(VoltPlayer player) {
         // https://bugs.mojang.com/browse/MC-2404
         return player.lastOnGround || (player.getClientVersion().isNewerThanOrEquals(ClientVersion.V_1_16_2) && (player.fallDistance < player.getMaxUpStep() &&
                 !isEmpty(player, player.boundingBox.copy().offset(0.0, player.fallDistance - player.getMaxUpStep(), 0.0))));
     }
 
-    public static void handleInsideBlocks(GrimPlayer player) {
+    public static void handleInsideBlocks(VoltPlayer player) {
         // Use the bounding box for after the player's movement is applied
         double expandAmount = player.getClientVersion().isNewerThanOrEquals(ClientVersion.V_1_19_4) ? 1e-7 : 0.001;
         SimpleCollisionBox aABB = player.compensatedEntities.getSelf().inVehicle() ? GetBoundingBox.getCollisionBoxForPlayer(player, player.x, player.y, player.z).expand(-expandAmount) : player.boundingBox.copy().expand(-expandAmount);
@@ -533,7 +533,7 @@ public class Collisions {
         }
     }
 
-    private static boolean isSlidingDown(Vector vector, GrimPlayer player, int locationX, int locationY,
+    private static boolean isSlidingDown(Vector vector, VoltPlayer player, int locationX, int locationY,
                                          int locationZ) {
         if (player.onGround) {
             return false;
@@ -551,7 +551,7 @@ public class Collisions {
     }
 
     // 0.03 hack
-    public static boolean checkStuckSpeed(GrimPlayer player, double expand) {
+    public static boolean checkStuckSpeed(VoltPlayer player, double expand) {
         // Use the bounding box for after the player's movement is applied
         SimpleCollisionBox aABB = GetBoundingBox.getCollisionBoxForPlayer(player, player.x, player.y, player.z).expand(expand);
 
@@ -585,7 +585,7 @@ public class Collisions {
         return false;
     }
 
-    public static boolean suffocatesAt(GrimPlayer player, SimpleCollisionBox playerBB) {
+    public static boolean suffocatesAt(VoltPlayer player, SimpleCollisionBox playerBB) {
         // Blocks are stored in YZX order
         for (int y = (int) Math.floor(playerBB.minY); y < Math.ceil(playerBB.maxY); y++) {
             for (int z = (int) Math.floor(playerBB.minZ); z < Math.ceil(playerBB.maxZ); z++) {
@@ -609,7 +609,7 @@ public class Collisions {
         return false;
     }
 
-    public static boolean doesBlockSuffocate(GrimPlayer player, int x, int y, int z) {
+    public static boolean doesBlockSuffocate(VoltPlayer player, int x, int y, int z) {
         WrappedBlockState data = player.compensatedWorld.getWrappedBlockStateAt(x, y, z);
         StateType mat = data.getType();
 
@@ -648,7 +648,7 @@ public class Collisions {
     }
 
     // Thanks Tuinity
-    public static boolean hasMaterial(GrimPlayer player, SimpleCollisionBox checkBox, Predicate<Pair<WrappedBlockState, Vector3d>> searchingFor) {
+    public static boolean hasMaterial(VoltPlayer player, SimpleCollisionBox checkBox, Predicate<Pair<WrappedBlockState, Vector3d>> searchingFor) {
         int minBlockX = (int) Math.floor(checkBox.minX);
         int maxBlockX = (int) Math.floor(checkBox.maxX);
         int minBlockY = (int) Math.floor(checkBox.minY);
@@ -712,7 +712,7 @@ public class Collisions {
     }
 
     // Thanks Tuinity
-    public static void forEachCollisionBox(GrimPlayer player, SimpleCollisionBox checkBox, Consumer<Vector3d> searchingFor) {
+    public static void forEachCollisionBox(VoltPlayer player, SimpleCollisionBox checkBox, Consumer<Vector3d> searchingFor) {
         int minBlockX = (int) Math.floor(checkBox.minX - COLLISION_EPSILON) - 1;
         int maxBlockX = (int) Math.floor(checkBox.maxX + COLLISION_EPSILON) + 1;
         int minBlockY = (int) Math.floor(checkBox.minY - COLLISION_EPSILON) - 1;
@@ -790,7 +790,7 @@ public class Collisions {
         }
     }
 
-    public static boolean onClimbable(GrimPlayer player, double x, double y, double z) {
+    public static boolean onClimbable(VoltPlayer player, double x, double y, double z) {
         WrappedBlockState blockState = player.compensatedWorld.getWrappedBlockStateAt(x, y, z);
         StateType blockMaterial = blockState.getType();
 
@@ -811,7 +811,7 @@ public class Collisions {
         return trapdoorUsableAsLadder(player, x, y, z, blockState);
     }
 
-    public static boolean trapdoorUsableAsLadder(GrimPlayer player, double x, double y, double z, WrappedBlockState blockData) {
+    public static boolean trapdoorUsableAsLadder(VoltPlayer player, double x, double y, double z, WrappedBlockState blockData) {
         if (!BlockTags.TRAPDOORS.contains(blockData.getType())) return false;
         // Feature implemented in 1.9
         if (player.getClientVersion().isOlderThanOrEquals(ClientVersion.V_1_8)) return false;

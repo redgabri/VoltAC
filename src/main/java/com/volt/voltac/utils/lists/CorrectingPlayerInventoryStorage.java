@@ -1,7 +1,7 @@
 package com.volt.voltac.utils.lists;
 
 import com.volt.voltac.VoltAPI;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.inventory.Inventory;
 import com.volt.voltac.utils.inventory.InventoryStorage;
 import com.github.retrooper.packetevents.protocol.item.ItemStack;
@@ -39,7 +39,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class CorrectingPlayerInventoryStorage extends InventoryStorage {
 
-    GrimPlayer player;
+    VoltPlayer player;
     // The key for this map is the inventory slot ID
     // The value for this map is the transaction that we care about
     Map<Integer, Integer> serverIsCurrentlyProcessingThesePredictions = new HashMap<>();
@@ -51,7 +51,7 @@ public class CorrectingPlayerInventoryStorage extends InventoryStorage {
             Arrays.asList("CHEST", "DISPENSER", "DROPPER", "PLAYER", "ENDER_CHEST", "SHULKER_BOX", "BARREL", "CRAFTING", "CREATIVE")
     );
 
-    public CorrectingPlayerInventoryStorage(GrimPlayer player, int size) {
+    public CorrectingPlayerInventoryStorage(VoltPlayer player, int size) {
         super(size);
         this.player = player;
     }

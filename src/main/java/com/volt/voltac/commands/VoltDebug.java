@@ -1,7 +1,7 @@
 package com.volt.voltac.commands;
 
 import com.volt.voltac.VoltAPI;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import co.aikar.commands.BaseCommand;
 import co.aikar.commands.annotation.*;
 import co.aikar.commands.bukkit.contexts.OnlinePlayer;
@@ -12,34 +12,34 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
-@CommandAlias("grim|grimac")
-public class GrimDebug extends BaseCommand {
+@CommandAlias("volt|voltac")
+public class VoltDebug extends BaseCommand {
     @Subcommand("debug")
-    @CommandPermission("grim.debug")
+    @CommandPermission("volt.debug")
     @CommandCompletion("@players")
     public void onDebug(CommandSender sender, @Optional OnlinePlayer target) {
         Player player = null;
         if (sender instanceof Player) player = (Player) sender;
 
-        GrimPlayer grimPlayer = parseTarget(sender, player, target);
-        if (grimPlayer == null) return;
+        VoltPlayer voltPlayer = parseTarget(sender, player, target);
+        if (voltPlayer == null) return;
 
         if (sender instanceof ConsoleCommandSender) { // Just debug to console to reduce complexity...
-            grimPlayer.checkManager.getDebugHandler().toggleConsoleOutput();
+            voltPlayer.checkManager.getDebugHandler().toggleConsoleOutput();
         } else { // This sender is a player
-            grimPlayer.checkManager.getDebugHandler().toggleListener(player);
+            voltPlayer.checkManager.getDebugHandler().toggleListener(player);
         }
     }
 
-    private GrimPlayer parseTarget(CommandSender sender, Player player, OnlinePlayer target) {
+    private VoltPlayer parseTarget(CommandSender sender, Player player, OnlinePlayer target) {
         Player targetPlayer = target == null ? player : target.getPlayer();
         if (player == null && target == null) {
             sender.sendMessage(ChatColor.RED + "You must specify a target as the console!");
             return null;
         }
 
-        GrimPlayer grimPlayer = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(targetPlayer);
-        if (grimPlayer == null) {
+        VoltPlayer voltPlayer = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(targetPlayer);
+        if (voltPlayer == null) {
             User user = PacketEvents.getAPI().getPlayerManager().getUser(targetPlayer);
             sender.sendMessage(ChatColor.RED + "This player is exempt from all checks!");
 
@@ -53,21 +53,21 @@ public class GrimDebug extends BaseCommand {
             }
         }
 
-        return grimPlayer;
+        return voltPlayer;
     }
 
     @Subcommand("consoledebug")
-    @CommandPermission("grim.consoledebug")
+    @CommandPermission("volt.consoledebug")
     @CommandCompletion("@players")
     public void onConsoleDebug(CommandSender sender, @Optional OnlinePlayer target) {
         Player player = null;
         if (sender instanceof Player) player = (Player) sender;
 
-        GrimPlayer grimPlayer = parseTarget(sender, player, target);
-        if (grimPlayer == null) return;
+        VoltPlayer voltPlayer = parseTarget(sender, player, target);
+        if (voltPlayer == null) return;
 
-        boolean isOutput = grimPlayer.checkManager.getDebugHandler().toggleConsoleOutput();
+        boolean isOutput = voltPlayer.checkManager.getDebugHandler().toggleConsoleOutput();
 
-        sender.sendMessage("Console output for " + (grimPlayer.bukkitPlayer == null ? grimPlayer.user.getProfile().getName() : grimPlayer.bukkitPlayer.getName()) + " is now " + isOutput);
+        sender.sendMessage("Console output for " + (voltPlayer.bukkitPlayer == null ? voltPlayer.user.getProfile().getName() : voltPlayer.bukkitPlayer.getName()) + " is now " + isOutput);
     }
 }

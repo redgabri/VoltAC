@@ -2,7 +2,7 @@ package com.volt.voltac.manager;
 
 import com.volt.voltac.VoltAPI;
 import com.volt.voltac.manager.init.Initable;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerPlayerInfo;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -29,13 +29,13 @@ public class SpectateManager implements Initable {
         return spectatingPlayers.containsKey(uuid);
     }
 
-    public boolean shouldHidePlayer(GrimPlayer receiver, WrapperPlayServerPlayerInfo.PlayerData playerData) {
+    public boolean shouldHidePlayer(VoltPlayer receiver, WrapperPlayServerPlayerInfo.PlayerData playerData) {
         return playerData.getUser() != null
                 && playerData.getUser().getUUID() != null
                 && shouldHidePlayer(receiver, playerData.getUser().getUUID());
     }
 
-    public boolean shouldHidePlayer(GrimPlayer receiver, UUID uuid) {
+    public boolean shouldHidePlayer(VoltPlayer receiver, UUID uuid) {
         return !Objects.equals(uuid, receiver.playerUUID) // don't hide to yourself
                 && (spectatingPlayers.containsKey(uuid) || hiddenPlayers.contains(uuid)) //hide if you are a spectator
                 && !(receiver.playerUUID != null && (spectatingPlayers.containsKey(receiver.playerUUID) || hiddenPlayers.contains(receiver.playerUUID))) // don't hide to other spectators

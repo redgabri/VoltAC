@@ -1,13 +1,13 @@
 package com.volt.voltac.utils.nmsutil;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.github.retrooper.packetevents.protocol.world.states.WrappedBlockState;
 import com.github.retrooper.packetevents.protocol.world.states.enums.Thickness;
 import com.github.retrooper.packetevents.protocol.world.states.enums.VerticalDirection;
 import com.github.retrooper.packetevents.protocol.world.states.type.StateTypes;
 
 public class Dripstone {
-    public static WrappedBlockState update(GrimPlayer player, WrappedBlockState toPlace, int x, int y, int z, boolean secondaryUse) {
+    public static WrappedBlockState update(VoltPlayer player, WrappedBlockState toPlace, int x, int y, int z, boolean secondaryUse) {
         VerticalDirection primaryDirection = toPlace.getVerticalDirection();
         VerticalDirection opposite = toPlace.getVerticalDirection() == VerticalDirection.UP ? VerticalDirection.DOWN : VerticalDirection.UP;
 

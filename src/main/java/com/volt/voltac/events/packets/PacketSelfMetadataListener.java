@@ -2,7 +2,7 @@ package com.volt.voltac.events.packets;
 
 import com.volt.voltac.VoltAPI;
 import com.volt.voltac.checks.impl.movement.NoSlowD;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.nmsutil.WatchableIndexUtil;
 import com.github.retrooper.packetevents.PacketEvents;
 import com.github.retrooper.packetevents.event.PacketListenerAbstract;
@@ -34,7 +34,7 @@ public class PacketSelfMetadataListener extends PacketListenerAbstract {
         if (event.getPacketType() == PacketType.Play.Server.ENTITY_METADATA) {
             WrapperPlayServerEntityMetadata entityMetadata = new WrapperPlayServerEntityMetadata(event);
 
-            GrimPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
+            VoltPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
             if (player == null)
                 return;
 
@@ -228,7 +228,7 @@ public class PacketSelfMetadataListener extends PacketListenerAbstract {
         if (event.getPacketType() == PacketType.Play.Server.USE_BED) {
             WrapperPlayServerUseBed bed = new WrapperPlayServerUseBed(event);
 
-            GrimPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
+            VoltPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
             if (player != null && player.entityID == bed.getEntityId()) {
                 // Split so packet received after transaction
                 player.latencyUtils.addRealTimeTask(player.lastTransactionSent.get(), () -> {
@@ -241,7 +241,7 @@ public class PacketSelfMetadataListener extends PacketListenerAbstract {
         if (event.getPacketType() == PacketType.Play.Server.ENTITY_ANIMATION) {
             WrapperPlayServerEntityAnimation animation = new WrapperPlayServerEntityAnimation(event);
 
-            GrimPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
+            VoltPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
             if (player != null && player.entityID == animation.getEntityId()
                     && animation.getType() == WrapperPlayServerEntityAnimation.EntityAnimationType.WAKE_UP) {
                 // Split so packet received before transaction

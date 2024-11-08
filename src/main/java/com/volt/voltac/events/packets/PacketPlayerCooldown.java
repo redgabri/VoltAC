@@ -1,7 +1,7 @@
 package com.volt.voltac.events.packets;
 
 import com.volt.voltac.VoltAPI;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.github.retrooper.packetevents.event.PacketListenerAbstract;
 import com.github.retrooper.packetevents.event.PacketListenerPriority;
 import com.github.retrooper.packetevents.event.PacketSendEvent;
@@ -19,7 +19,7 @@ public class PacketPlayerCooldown extends PacketListenerAbstract {
         if (event.getPacketType() == PacketType.Play.Server.SET_COOLDOWN) {
             WrapperPlayServerSetCooldown cooldown = new WrapperPlayServerSetCooldown(event);
 
-            GrimPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
+            VoltPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
             if (player == null) return;
 
             int lastTransactionSent = player.lastTransactionSent.get();

@@ -2,7 +2,7 @@ package com.volt.voltac.utils.latency;
 
 import com.volt.voltac.checks.Check;
 import com.volt.voltac.checks.type.PacketCheck;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.anticheat.update.BlockPlace;
 import com.volt.voltac.utils.inventory.EquipmentType;
 import com.volt.voltac.utils.inventory.Inventory;
@@ -51,7 +51,7 @@ public class CompensatedInventory extends Check implements PacketCheck {
     int openWindowID = 0;
     public int stateID = 0; // Don't mess up the last sent state ID by changing it
 
-    public CompensatedInventory(GrimPlayer playerData) {
+    public CompensatedInventory(VoltPlayer playerData) {
         super(playerData);
 
         CorrectingPlayerInventoryStorage storage = new CorrectingPlayerInventoryStorage(player, 46);

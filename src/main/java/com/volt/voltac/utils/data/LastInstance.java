@@ -1,9 +1,9 @@
 package com.volt.voltac.utils.data;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 
 public class LastInstance {
-    public LastInstance(GrimPlayer player) {
+    public LastInstance(VoltPlayer player) {
         player.lastInstanceManager.addInstance(this);
     }
 

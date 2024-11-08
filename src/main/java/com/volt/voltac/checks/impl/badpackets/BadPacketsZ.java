@@ -3,7 +3,7 @@ package com.volt.voltac.checks.impl.badpackets;
 import com.volt.voltac.checks.Check;
 import com.volt.voltac.checks.CheckData;
 import com.volt.voltac.checks.type.PacketCheck;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.anticheat.MessageUtil;
 import com.github.retrooper.packetevents.PacketEvents;
 import com.github.retrooper.packetevents.event.PacketReceiveEvent;
@@ -18,7 +18,7 @@ import static com.volt.voltac.utils.nmsutil.BlockBreakSpeed.getBlockDamage;
 
 @CheckData(name = "BadPacketsZ", experimental = true)
 public class BadPacketsZ extends Check implements PacketCheck {
-    public BadPacketsZ(final GrimPlayer player) {
+    public BadPacketsZ(final VoltPlayer player) {
         super(player);
     }
 

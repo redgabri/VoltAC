@@ -29,7 +29,7 @@ import com.volt.voltac.events.packets.PacketEntityReplication;
 import com.volt.voltac.events.packets.PacketPlayerAbilities;
 import com.volt.voltac.events.packets.PacketWorldBorder;
 import com.volt.voltac.manager.init.start.SuperDebug;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.predictionengine.GhostBlockDetector;
 import com.volt.voltac.predictionengine.SneakingEstimator;
 import com.volt.voltac.utils.anticheat.update.*;
@@ -59,7 +59,7 @@ public class CheckManager {
 
     public ClassToInstanceMap<AbstractCheck> allChecks;
 
-    public CheckManager(GrimPlayer player) {
+    public CheckManager(VoltPlayer player) {
         // Include post checks in the packet check too
         packetChecks = new ImmutableClassToInstanceMap.Builder<PacketCheck>()
                 .put(Reach.class, new Reach(player))

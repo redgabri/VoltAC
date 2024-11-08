@@ -2,12 +2,12 @@ package com.volt.voltac.checks.impl.movement;
 
 import com.volt.voltac.checks.Check;
 import com.volt.voltac.checks.type.VehicleCheck;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.anticheat.update.PositionUpdate;
 import com.volt.voltac.utils.anticheat.update.VehiclePositionUpdate;
 
 public class VehiclePredictionRunner extends Check implements VehicleCheck {
-    public VehiclePredictionRunner(GrimPlayer playerData) {
+    public VehiclePredictionRunner(VoltPlayer playerData) {
         super(playerData);
     }
 

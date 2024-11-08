@@ -3,7 +3,7 @@ package com.volt.voltac.checks.impl.prediction;
 import com.volt.voltac.checks.Check;
 import com.volt.voltac.checks.CheckData;
 import com.volt.voltac.checks.type.PostPredictionCheck;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.anticheat.update.PredictionComplete;
 import com.github.retrooper.packetevents.PacketEvents;
 import com.github.retrooper.packetevents.manager.server.ServerVersion;
@@ -12,7 +12,7 @@ import com.github.retrooper.packetevents.protocol.player.GameMode;
 @CheckData(name = "GroundSpoof", configName = "GroundSpoof", setback = 10, decay = 0.01)
 public class NoFallB extends Check implements PostPredictionCheck {
 
-    public NoFallB(GrimPlayer player) {
+    public NoFallB(VoltPlayer player) {
         super(player);
     }
 

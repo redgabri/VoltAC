@@ -1,6 +1,6 @@
 package com.volt.voltac.utils.data.attribute;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.math.GrimMath;
 import com.github.retrooper.packetevents.protocol.attribute.Attribute;
 import com.github.retrooper.packetevents.protocol.player.ClientVersion;
@@ -59,7 +59,7 @@ public final class ValuedAttribute {
      * @param requiredVersion the required version for the attribute
      * @return this instance for chaining
      */
-    public ValuedAttribute requiredVersion(GrimPlayer player, ClientVersion requiredVersion) {
+    public ValuedAttribute requiredVersion(VoltPlayer player, ClientVersion requiredVersion) {
         withSetRewriter((oldValue, newValue) -> {
             if (player.getClientVersion().isOlderThan(requiredVersion)) {
                 return oldValue;

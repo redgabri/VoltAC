@@ -1,7 +1,7 @@
 package com.volt.voltac.events.packets;
 
 import com.volt.voltac.VoltAPI;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.github.retrooper.packetevents.PacketEvents;
 import com.github.retrooper.packetevents.event.PacketListenerAbstract;
 import com.github.retrooper.packetevents.event.PacketListenerPriority;
@@ -30,7 +30,7 @@ public class PacketHidePlayerInfo extends PacketListenerAbstract {
             if (PacketEvents.getAPI().getServerManager().getVersion().isOlderThanOrEquals(ServerVersion.V_1_12_2))
                 return;
 
-            GrimPlayer receiver = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
+            VoltPlayer receiver = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
 
             if (receiver == null) { // Exempt
                 return;
@@ -57,7 +57,7 @@ public class PacketHidePlayerInfo extends PacketListenerAbstract {
                 }
             }
         } else if (event.getPacketType() == PacketType.Play.Server.PLAYER_INFO_UPDATE) {
-            GrimPlayer receiver = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
+            VoltPlayer receiver = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
             if (receiver == null) return;
             //create wrappers
             WrapperPlayServerPlayerInfoUpdate wrapper = new WrapperPlayServerPlayerInfoUpdate(event);

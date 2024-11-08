@@ -1,6 +1,6 @@
 package com.volt.voltac.predictionengine.predictions;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.data.VectorData;
 import com.volt.voltac.utils.math.GrimMath;
 import org.bukkit.util.Vector;
@@ -10,7 +10,7 @@ import java.util.Set;
 
 public class PredictionEngineLava extends PredictionEngine {
     @Override
-    public void addJumpsToPossibilities(GrimPlayer player, Set<VectorData> existingVelocities) {
+    public void addJumpsToPossibilities(VoltPlayer player, Set<VectorData> existingVelocities) {
         for (VectorData vector : new HashSet<>(existingVelocities)) {
             if (player.couldSkipTick && vector.isZeroPointZeroThree()) {
                 double extraVelFromVertTickSkipUpwards = GrimMath.clamp(player.actualMovement.getY(), vector.vector.clone().getY(), vector.vector.clone().getY() + 0.05f);

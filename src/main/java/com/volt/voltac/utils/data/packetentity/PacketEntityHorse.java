@@ -1,6 +1,6 @@
 package com.volt.voltac.utils.data.packetentity;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.data.attribute.ValuedAttribute;
 import com.github.retrooper.packetevents.PacketEvents;
 import com.github.retrooper.packetevents.manager.server.ServerVersion;
@@ -17,7 +17,7 @@ public class PacketEntityHorse extends PacketEntityTrackXRot {
     public boolean hasSaddle = false;
     public boolean isTame = false;
 
-    public PacketEntityHorse(GrimPlayer player, UUID uuid, EntityType type, double x, double y, double z, float xRot) {
+    public PacketEntityHorse(VoltPlayer player, UUID uuid, EntityType type, double x, double y, double z, float xRot) {
         super(player, uuid, type, x, y, z, xRot);
         setAttribute(Attributes.GENERIC_STEP_HEIGHT, 1.0f);
 

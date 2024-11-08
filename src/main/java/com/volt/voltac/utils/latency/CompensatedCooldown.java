@@ -2,7 +2,7 @@ package com.volt.voltac.utils.latency;
 
 import com.volt.voltac.checks.Check;
 import com.volt.voltac.checks.type.PositionCheck;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.anticheat.update.PositionUpdate;
 import com.volt.voltac.utils.data.CooldownData;
 import com.github.retrooper.packetevents.protocol.item.type.ItemType;
@@ -19,7 +19,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class CompensatedCooldown extends Check implements PositionCheck {
     private final ConcurrentHashMap<ItemType, CooldownData> itemCooldownMap = new ConcurrentHashMap<>();
 
-    public CompensatedCooldown(GrimPlayer playerData) {
+    public CompensatedCooldown(VoltPlayer playerData) {
         super(playerData);
     }
 

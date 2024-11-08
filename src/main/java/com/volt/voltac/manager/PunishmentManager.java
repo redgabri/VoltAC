@@ -7,7 +7,7 @@ import ac.grim.grimac.api.config.ConfigReloadable;
 import ac.grim.grimac.api.events.CommandExecuteEvent;
 import com.volt.voltac.checks.Check;
 import com.volt.voltac.events.packets.ProxyAlertMessenger;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.anticheat.LogUtil;
 import com.volt.voltac.utils.anticheat.MessageUtil;
 import io.github.retrooper.packetevents.util.folia.FoliaScheduler;
@@ -19,7 +19,7 @@ import org.bukkit.entity.Player;
 import java.util.*;
 
 public class PunishmentManager implements ConfigReloadable {
-    GrimPlayer player;
+    VoltPlayer player;
     List<PunishGroup> groups = new ArrayList<>();
     String experimentalSymbol = "*";
     private String alertString;
@@ -27,7 +27,7 @@ public class PunishmentManager implements ConfigReloadable {
     private boolean printToConsole;
     private String proxyAlertString = "";
 
-    public PunishmentManager(GrimPlayer player) {
+    public PunishmentManager(VoltPlayer player) {
         this.player = player;
     }
 
@@ -117,7 +117,7 @@ public class PunishmentManager implements ConfigReloadable {
         return original;
     }
 
-    public boolean handleAlert(GrimPlayer player, String verbose, Check check) {
+    public boolean handleAlert(VoltPlayer player, String verbose, Check check) {
         boolean sentDebug = false;
 
         // Check commands

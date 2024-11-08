@@ -1,13 +1,13 @@
 package com.volt.voltac.predictionengine.movementtick;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.data.packetentity.PacketEntityRideable;
 import com.volt.voltac.utils.nmsutil.Collisions;
 import com.github.retrooper.packetevents.protocol.player.ClientVersion;
 
 public class MovementTickerRideable extends MovementTickerLivingVehicle {
 
-    public MovementTickerRideable(GrimPlayer player) {
+    public MovementTickerRideable(VoltPlayer player) {
         super(player);
 
         // If the player has carrot/fungus on a stick, otherwise the player has no control

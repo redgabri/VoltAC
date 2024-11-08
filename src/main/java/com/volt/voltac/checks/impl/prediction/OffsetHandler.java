@@ -5,7 +5,7 @@ import ac.grim.grimac.api.events.CompletePredictionEvent;
 import com.volt.voltac.checks.Check;
 import com.volt.voltac.checks.CheckData;
 import com.volt.voltac.checks.type.PostPredictionCheck;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.anticheat.update.PredictionComplete;
 import org.bukkit.Bukkit;
 
@@ -25,7 +25,7 @@ public class OffsetHandler extends Check implements PostPredictionCheck {
 
     private static final AtomicInteger flags = new AtomicInteger(0);
 
-    public OffsetHandler(GrimPlayer player) {
+    public OffsetHandler(VoltPlayer player) {
         super(player);
     }
 

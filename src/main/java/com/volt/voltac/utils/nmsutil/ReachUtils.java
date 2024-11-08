@@ -1,7 +1,7 @@
 package com.volt.voltac.utils.nmsutil;
 
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.collisions.datatypes.SimpleCollisionBox;
 import com.volt.voltac.utils.data.Pair;
 import com.volt.voltac.utils.math.VectorUtils;
@@ -153,7 +153,7 @@ public class ReachUtils {
     }
 
     // Look vector accounting for optifine FastMath, and client version differences
-    public static Vector getLook(GrimPlayer player, float yaw, float pitch) {
+    public static Vector getLook(VoltPlayer player, float yaw, float pitch) {
         if (player.getClientVersion().isOlderThanOrEquals(ClientVersion.V_1_12_2)) {
             float f = player.trigHandler.cos(-yaw * 0.017453292F - (float)Math.PI);
             float f1 = player.trigHandler.sin(-yaw * 0.017453292F - (float)Math.PI);
@@ -175,7 +175,7 @@ public class ReachUtils {
         return vec.getX() > self.minX && vec.getX() < self.maxX && (vec.getY() > self.minY && vec.getY() < self.maxY && vec.getZ() > self.minZ && vec.getZ() < self.maxZ);
     }
 
-    public static double getMinReachToBox(GrimPlayer player, SimpleCollisionBox targetBox) {
+    public static double getMinReachToBox(VoltPlayer player, SimpleCollisionBox targetBox) {
         boolean giveMovementThresholdLenience = player.packetStateData.didLastMovementIncludePosition || player.getClientVersion().isNewerThanOrEquals(ClientVersion.V_1_9);
         if (player.getClientVersion().isOlderThanOrEquals(ClientVersion.V_1_8)) targetBox.expand(0.1);
 

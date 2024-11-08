@@ -2,7 +2,7 @@ package com.volt.voltac.checks.impl.scaffolding;
 
 import com.volt.voltac.checks.CheckData;
 import com.volt.voltac.checks.type.BlockPlaceCheck;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.anticheat.MessageUtil;
 import com.volt.voltac.utils.anticheat.update.BlockPlace;
 import com.volt.voltac.utils.anticheat.update.PredictionComplete;
@@ -18,7 +18,7 @@ import java.util.List;
 
 @CheckData(name = "MultiPlace", experimental = true)
 public class MultiPlace extends BlockPlaceCheck {
-    public MultiPlace(GrimPlayer player) {
+    public MultiPlace(VoltPlayer player) {
         super(player);
     }
 

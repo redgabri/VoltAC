@@ -3,7 +3,7 @@ package com.volt.voltac.events.packets;
 import ac.grim.grimac.api.config.ConfigManager;
 import com.volt.voltac.checks.Check;
 import com.volt.voltac.checks.type.PacketCheck;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.anticheat.LogUtil;
 import com.volt.voltac.utils.data.TrackerData;
 import com.volt.voltac.utils.data.packetentity.PacketEntity;
@@ -54,7 +54,7 @@ public class PacketEntityReplication extends Check implements PacketCheck {
 
     // Maximum ping when a firework boost is removed from the player.
 
-    public PacketEntityReplication(GrimPlayer player) {
+    public PacketEntityReplication(VoltPlayer player) {
         super(player);
     }
 
@@ -485,7 +485,7 @@ public class PacketEntityReplication extends Check implements PacketCheck {
         });
     }
 
-    private boolean isDirectlyAffectingPlayer(GrimPlayer player, int entityID) {
+    private boolean isDirectlyAffectingPlayer(VoltPlayer player, int entityID) {
         // The attributes for this entity is active, currently
         return (player.compensatedEntities.serverPlayerVehicle == null && entityID == player.entityID) ||
                 (player.compensatedEntities.serverPlayerVehicle != null && entityID == player.compensatedEntities.serverPlayerVehicle);

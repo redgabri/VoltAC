@@ -2,7 +2,7 @@ package com.volt.voltac.manager;
 
 import com.volt.voltac.VoltAPI;
 import com.volt.voltac.manager.init.Initable;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.anticheat.LogUtil;
 import club.minnced.discord.webhook.WebhookClient;
 import club.minnced.discord.webhook.send.WebhookEmbed;
@@ -70,7 +70,7 @@ public class DiscordManager implements Initable {
         return list;
     }
 
-    public void sendAlert(GrimPlayer player, String verbose, String checkName, String violations) {
+    public void sendAlert(VoltPlayer player, String verbose, String checkName, String violations) {
         if (client != null) {
 
             String content = staticContent;

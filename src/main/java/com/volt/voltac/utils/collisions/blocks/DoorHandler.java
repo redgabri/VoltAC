@@ -1,6 +1,6 @@
 package com.volt.voltac.utils.collisions.blocks;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.collisions.datatypes.CollisionBox;
 import com.volt.voltac.utils.collisions.datatypes.CollisionFactory;
 import com.volt.voltac.utils.collisions.datatypes.HexCollisionBox;
@@ -20,7 +20,7 @@ public class DoorHandler implements CollisionFactory {
     protected static final CollisionBox EAST_AABB = new HexCollisionBox(0.0D, 0.0D, 0.0D, 3.0D, 16.0D, 16.0D);
 
     @Override
-    public CollisionBox fetch(GrimPlayer player, ClientVersion version, WrappedBlockState block, int x, int y, int z) {
+    public CollisionBox fetch(VoltPlayer player, ClientVersion version, WrappedBlockState block, int x, int y, int z) {
         switch (fetchDirection(player, version, block, x, y, z)) {
             case NORTH:
                 return NORTH_AABB.copy();
@@ -35,7 +35,7 @@ public class DoorHandler implements CollisionFactory {
         return NoCollisionBox.INSTANCE;
     }
 
-    public BlockFace fetchDirection(GrimPlayer player, ClientVersion version, WrappedBlockState door, int x, int y, int z) {
+    public BlockFace fetchDirection(VoltPlayer player, ClientVersion version, WrappedBlockState door, int x, int y, int z) {
         BlockFace facingDirection;
         boolean isClosed;
         boolean isRightHinge;

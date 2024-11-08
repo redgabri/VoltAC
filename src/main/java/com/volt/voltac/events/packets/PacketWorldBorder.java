@@ -2,7 +2,7 @@ package com.volt.voltac.events.packets;
 
 import com.volt.voltac.checks.Check;
 import com.volt.voltac.checks.type.PacketCheck;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.math.GrimMath;
 import com.github.retrooper.packetevents.event.PacketSendEvent;
 import com.github.retrooper.packetevents.protocol.packettype.PacketType;
@@ -17,7 +17,7 @@ public class PacketWorldBorder extends Check implements PacketCheck {
     long startTime = 1;
     long endTime = 1;
 
-    public PacketWorldBorder(GrimPlayer playerData) {
+    public PacketWorldBorder(VoltPlayer playerData) {
         super(playerData);
     }
 

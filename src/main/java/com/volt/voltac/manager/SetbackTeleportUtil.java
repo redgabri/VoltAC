@@ -5,7 +5,7 @@ import com.volt.voltac.checks.Check;
 import com.volt.voltac.checks.impl.badpackets.BadPacketsN;
 import com.volt.voltac.checks.type.PostPredictionCheck;
 import com.volt.voltac.events.packets.patch.ResyncWorldUtil;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.predictionengine.predictions.PredictionEngine;
 import com.volt.voltac.predictionengine.predictions.PredictionEngineElytra;
 import com.volt.voltac.predictionengine.predictions.PredictionEngineNormal;
@@ -58,7 +58,7 @@ public class SetbackTeleportUtil extends Check implements PostPredictionCheck {
     private long lastWorldResync = 0;
 
 
-    public SetbackTeleportUtil(GrimPlayer player) {
+    public SetbackTeleportUtil(VoltPlayer player) {
         super(player);
     }
 

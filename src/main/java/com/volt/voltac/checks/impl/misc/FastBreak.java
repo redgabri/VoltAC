@@ -4,7 +4,7 @@ import com.volt.voltac.VoltAPI;
 import com.volt.voltac.checks.Check;
 import com.volt.voltac.checks.CheckData;
 import com.volt.voltac.checks.type.PacketCheck;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.math.GrimMath;
 import com.volt.voltac.utils.nmsutil.BlockBreakSpeed;
 import com.github.retrooper.packetevents.PacketEvents;
@@ -31,7 +31,7 @@ import org.bukkit.entity.Player;
 // Also based off minecraft wiki: https://minecraft.wiki/w/Breaking#Instant_breaking
 @CheckData(name = "FastBreak", experimental = false)
 public class FastBreak extends Check implements PacketCheck {
-    public FastBreak(GrimPlayer playerData) {
+    public FastBreak(VoltPlayer playerData) {
         super(playerData);
     }
 

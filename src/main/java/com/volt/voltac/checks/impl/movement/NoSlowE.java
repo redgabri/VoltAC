@@ -4,7 +4,7 @@ import com.volt.voltac.checks.Check;
 import com.volt.voltac.checks.CheckData;
 import com.volt.voltac.checks.type.PacketCheck;
 import com.volt.voltac.checks.type.PostPredictionCheck;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.anticheat.update.PredictionComplete;
 import com.github.retrooper.packetevents.event.PacketReceiveEvent;
 import com.github.retrooper.packetevents.protocol.packettype.PacketType;
@@ -14,7 +14,7 @@ import static com.github.retrooper.packetevents.protocol.potion.PotionTypes.BLIN
 
 @CheckData(name = "NoSlowE", setback = 5, experimental = true)
 public class NoSlowE extends Check implements PostPredictionCheck, PacketCheck {
-    public NoSlowE(GrimPlayer player) {
+    public NoSlowE(VoltPlayer player) {
         super(player);
     }
 

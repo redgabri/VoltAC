@@ -2,7 +2,7 @@ package com.volt.voltac.events.packets;
 
 import com.volt.voltac.VoltAPI;
 import com.volt.voltac.checks.impl.badpackets.BadPacketsS;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.data.Pair;
 import com.github.retrooper.packetevents.event.PacketListenerAbstract;
 import com.github.retrooper.packetevents.event.PacketListenerPriority;
@@ -28,7 +28,7 @@ public class PacketPingListener extends PacketListenerAbstract {
             WrapperPlayClientWindowConfirmation transaction = new WrapperPlayClientWindowConfirmation(event);
             short id = transaction.getActionId();
 
-            GrimPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
+            VoltPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
             if (player == null) return;
             player.packetStateData.lastTransactionPacketWasValid = false;
 
@@ -50,7 +50,7 @@ public class PacketPingListener extends PacketListenerAbstract {
 
         if (event.getPacketType() == PacketType.Play.Client.PONG) {
             WrapperPlayClientPong pong = new WrapperPlayClientPong(event);
-            GrimPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
+            VoltPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
             if (player == null) return;
             player.packetStateData.lastTransactionPacketWasValid = false;
 
@@ -74,7 +74,7 @@ public class PacketPingListener extends PacketListenerAbstract {
             WrapperPlayServerWindowConfirmation confirmation = new WrapperPlayServerWindowConfirmation(event);
             short id = confirmation.getActionId();
             //
-            GrimPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
+            VoltPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
             if (player == null) return;
             player.packetStateData.lastServerTransWasValid = false;
             // Vanilla always uses an ID starting from 1
@@ -91,7 +91,7 @@ public class PacketPingListener extends PacketListenerAbstract {
             WrapperPlayServerPing pong = new WrapperPlayServerPing(event);
             int id = pong.getId();
             //
-            GrimPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
+            VoltPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
             if (player == null) return;
             player.packetStateData.lastServerTransWasValid = false;
             // Check if in the short range, we only use short range

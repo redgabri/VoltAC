@@ -1,7 +1,7 @@
 package com.volt.voltac.utils.latency;
 
 import com.volt.voltac.VoltAPI;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.chunks.Column;
 import com.volt.voltac.utils.collisions.CollisionData;
 import com.volt.voltac.utils.collisions.datatypes.SimpleCollisionBox;
@@ -54,7 +54,7 @@ import java.util.*;
 public class CompensatedWorld {
     public static final ClientVersion blockVersion = PacketEvents.getAPI().getServerManager().getVersion().toClientVersion();
     private static final WrappedBlockState airData = WrappedBlockState.getByGlobalId(blockVersion, 0);
-    public final GrimPlayer player;
+    public final VoltPlayer player;
     public final Map<Long, Column> chunks;
     // Packet locations for blocks
     public Set<PistonData> activePistons = new HashSet<>();
@@ -77,7 +77,7 @@ public class CompensatedWorld {
 
     private final boolean noNegativeBlocks;
 
-    public CompensatedWorld(GrimPlayer player) {
+    public CompensatedWorld(VoltPlayer player) {
         this.player = player;
         chunks = new Long2ObjectOpenHashMap<>(81, 0.5f);
         noNegativeBlocks = player.getClientVersion().isOlderThanOrEquals(ClientVersion.V_1_16_4);

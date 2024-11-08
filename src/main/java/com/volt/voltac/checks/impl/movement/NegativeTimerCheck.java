@@ -3,14 +3,14 @@ package com.volt.voltac.checks.impl.movement;
 import ac.grim.grimac.api.config.ConfigManager;
 import com.volt.voltac.checks.CheckData;
 import com.volt.voltac.checks.type.PostPredictionCheck;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.anticheat.update.PredictionComplete;
 import com.github.retrooper.packetevents.event.PacketReceiveEvent;
 
 @CheckData(name = "NegativeTimer", configName = "NegativeTimer", setback = -1, experimental = true)
 public class NegativeTimerCheck extends TimerCheck implements PostPredictionCheck {
 
-    public NegativeTimerCheck(GrimPlayer player) {
+    public NegativeTimerCheck(VoltPlayer player) {
         super(player);
         timerBalanceRealTime = System.nanoTime() + clockDrift;
     }

@@ -1,6 +1,6 @@
 package com.volt.voltac.predictionengine.movementtick;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.predictionengine.predictions.PredictionEngineLava;
 import com.volt.voltac.predictionengine.predictions.PredictionEngineNormal;
 import com.volt.voltac.predictionengine.predictions.PredictionEngineWater;
@@ -9,7 +9,7 @@ import com.volt.voltac.utils.nmsutil.BlockProperties;
 import com.github.retrooper.packetevents.protocol.player.ClientVersion;
 
 public class MovementTickerPlayer extends MovementTicker {
-    public MovementTickerPlayer(GrimPlayer player) {
+    public MovementTickerPlayer(VoltPlayer player) {
         super(player);
     }
 

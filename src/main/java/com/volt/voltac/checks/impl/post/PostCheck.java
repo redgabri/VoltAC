@@ -4,7 +4,7 @@ import com.volt.voltac.checks.Check;
 import com.volt.voltac.checks.CheckData;
 import com.volt.voltac.checks.type.PacketCheck;
 import com.volt.voltac.checks.type.PostPredictionCheck;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.anticheat.update.PredictionComplete;
 import com.volt.voltac.utils.lists.EvictingQueue;
 import com.github.retrooper.packetevents.PacketEvents;
@@ -33,7 +33,7 @@ public class PostCheck extends Check implements PacketCheck, PostPredictionCheck
     private boolean sentFlying = false;
     private int isExemptFromSwingingCheck = Integer.MIN_VALUE;
 
-    public PostCheck(GrimPlayer playerData) {
+    public PostCheck(VoltPlayer playerData) {
         super(playerData);
     }
 

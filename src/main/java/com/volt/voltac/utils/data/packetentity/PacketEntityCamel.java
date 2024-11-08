@@ -1,6 +1,6 @@
 package com.volt.voltac.utils.data.packetentity;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.github.retrooper.packetevents.protocol.attribute.Attributes;
 import com.github.retrooper.packetevents.protocol.entity.type.EntityType;
 
@@ -10,7 +10,7 @@ public class PacketEntityCamel extends PacketEntityHorse {
 
     public boolean dashing = false; //TODO: handle camel dashing
 
-    public PacketEntityCamel(GrimPlayer player, UUID uuid, EntityType type, double x, double y, double z, float xRot) {
+    public PacketEntityCamel(VoltPlayer player, UUID uuid, EntityType type, double x, double y, double z, float xRot) {
         super(player, uuid, type, x, y, z, xRot);
 
         setAttribute(Attributes.GENERIC_JUMP_STRENGTH, 0.42f);

@@ -1,6 +1,6 @@
 package com.volt.voltac.utils.nmsutil;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.data.Pair;
 import org.bukkit.util.Vector;
 
@@ -15,14 +15,14 @@ public class Ray implements Cloneable {
         this.direction = direction;
     }
 
-    public Ray(GrimPlayer player, double x, double y, double z, float xRot, float yRot) {
+    public Ray(VoltPlayer player, double x, double y, double z, float xRot, float yRot) {
         this.origin = new Vector(x, y, z);
         this.direction = calculateDirection(player, xRot, yRot);
     }
 
     // Account for FastMath by using player's trig handler
     // Copied from hawk which probably copied it from NMS
-    public static Vector calculateDirection(GrimPlayer player, float xRot, float yRot) {
+    public static Vector calculateDirection(VoltPlayer player, float xRot, float yRot) {
         Vector vector = new Vector();
         float rotX = (float) Math.toRadians(xRot);
         float rotY = (float) Math.toRadians(yRot);

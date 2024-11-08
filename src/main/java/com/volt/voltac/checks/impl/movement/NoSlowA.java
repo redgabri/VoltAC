@@ -4,7 +4,7 @@ import ac.grim.grimac.api.config.ConfigManager;
 import com.volt.voltac.checks.Check;
 import com.volt.voltac.checks.CheckData;
 import com.volt.voltac.checks.type.PostPredictionCheck;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.anticheat.update.PredictionComplete;
 import com.github.retrooper.packetevents.protocol.player.ClientVersion;
 
@@ -17,7 +17,7 @@ public class NoSlowA extends Check implements PostPredictionCheck {
     public boolean didSlotChangeLastTick = false;
     public boolean flaggedLastTick = false;
 
-    public NoSlowA(GrimPlayer player) {
+    public NoSlowA(VoltPlayer player) {
         super(player);
     }
 

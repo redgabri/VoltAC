@@ -15,11 +15,11 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
-@CommandAlias("grim|grimac")
-public class GrimLog extends BaseCommand {
+@CommandAlias("volt|voltac")
+public class VoltLog extends BaseCommand {
 
     @Subcommand("log|logs")
-    @CommandPermission("grim.log")
+    @CommandPermission("volt.log")
     @CommandAlias("gl")
     public void onLog(CommandSender sender, int flagId) {
         StringBuilder builder = SuperDebug.getFlag(flagId);
@@ -36,11 +36,11 @@ public class GrimLog extends BaseCommand {
 
             FoliaScheduler.getAsyncScheduler().runNow(VoltAPI.INSTANCE.getPlugin(), (dummy) -> {
                 try {
-                    URL mUrl = new URL("https://paste.grim.ac/data/post");
+                    URL mUrl = new URL("https://paste.volt.ac/data/post");
                     HttpURLConnection urlConn = (HttpURLConnection) mUrl.openConnection();
                     urlConn.setDoOutput(true);
                     urlConn.setRequestMethod("POST");
-                    urlConn.addRequestProperty("User-Agent", "GrimAC/" + VoltAPI.INSTANCE.getExternalAPI().getGrimVersion());
+                    urlConn.addRequestProperty("User-Agent", "VoltAC/" + VoltAPI.INSTANCE.getExternalAPI().getVoltVersion());
                     urlConn.addRequestProperty("Content-Type", "text/yaml"); // Not really yaml, but looks nicer than plaintext
                     urlConn.setRequestProperty("Content-Length", Integer.toString(builder.length()));
                     urlConn.getOutputStream().write(builder.toString().getBytes(StandardCharsets.UTF_8));
@@ -51,7 +51,7 @@ public class GrimLog extends BaseCommand {
 
                     if (response == HttpURLConnection.HTTP_CREATED) {
                         String responseURL = urlConn.getHeaderField("Location");
-                        sender.sendMessage(MessageUtil.format(success.replace("%url%", "https://paste.grim.ac/" + responseURL)));
+                        sender.sendMessage(MessageUtil.format(success.replace("%url%", "https://paste.volt.ac/" + responseURL)));
                     } else {
                         sender.sendMessage(MessageUtil.format(failure));
                         LogUtil.error("Returned response code " + response + ": " + urlConn.getResponseMessage());

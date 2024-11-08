@@ -4,7 +4,7 @@ import com.volt.voltac.VoltAPI;
 import com.volt.voltac.checks.impl.badpackets.BadPacketsX;
 import com.volt.voltac.checks.impl.badpackets.BadPacketsZ;
 import com.volt.voltac.events.packets.patch.ResyncWorldUtil;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.anticheat.update.*;
 import com.volt.voltac.utils.blockplace.BlockPlaceResult;
 import com.volt.voltac.utils.blockplace.ConsumesBlockPlace;
@@ -64,7 +64,7 @@ public class CheckManagerListener extends PacketListenerAbstract {
     //
     // I do have to admit that I'm starting to like bifunctions/new java 8 things more than I originally did.
     // although I still don't understand Mojang's obsession with streams in some of the hottest methods... that kills performance
-    public static HitData traverseBlocks(GrimPlayer player, Vector3d start, Vector3d end, BiFunction<WrappedBlockState, Vector3i, HitData> predicate) {
+    public static HitData traverseBlocks(VoltPlayer player, Vector3d start, Vector3d end, BiFunction<WrappedBlockState, Vector3i, HitData> predicate) {
         // I guess go back by the collision epsilon?
         double endX = GrimMath.lerp(-1.0E-7D, end.x, start.x);
         double endY = GrimMath.lerp(-1.0E-7D, end.y, start.y);
@@ -130,7 +130,7 @@ public class CheckManagerListener extends PacketListenerAbstract {
         return null;
     }
 
-    private static void placeWaterLavaSnowBucket(GrimPlayer player, ItemStack held, StateType toPlace, InteractionHand hand) {
+    private static void placeWaterLavaSnowBucket(VoltPlayer player, ItemStack held, StateType toPlace, InteractionHand hand) {
         HitData data = getNearestHitResult(player, StateTypes.AIR, false);
         if (data != null) {
             BlockPlace blockPlace = new BlockPlace(player, hand, data.getPosition(), data.getClosestDirection().getFaceValue(), data.getClosestDirection(), held, data);
@@ -166,7 +166,7 @@ public class CheckManagerListener extends PacketListenerAbstract {
         }
     }
 
-    public static void handleQueuedPlaces(GrimPlayer player, boolean hasLook, float pitch, float yaw, long now) {
+    public static void handleQueuedPlaces(VoltPlayer player, boolean hasLook, float pitch, float yaw, long now) {
         // Handle queue'd block places
         BlockPlaceSnapshot snapshot;
         while ((snapshot = player.placeUseItemPackets.poll()) != null) {
@@ -207,7 +207,7 @@ public class CheckManagerListener extends PacketListenerAbstract {
         }
     }
 
-    private static void handleUseItem(GrimPlayer player, ItemStack placedWith, InteractionHand hand) {
+    private static void handleUseItem(VoltPlayer player, ItemStack placedWith, InteractionHand hand) {
         // Lilypads are USE_ITEM (THIS CAN DESYNC, WTF MOJANG)
         if (placedWith.getType() == ItemTypes.LILY_PAD) {
             placeLilypad(player, hand); // Pass a block place because lily pads have a hitbox
@@ -224,7 +224,7 @@ public class CheckManagerListener extends PacketListenerAbstract {
         }
     }
 
-    private static void handleBlockPlaceOrUseItem(PacketWrapper packet, GrimPlayer player) {
+    private static void handleBlockPlaceOrUseItem(PacketWrapper packet, VoltPlayer player) {
         // Legacy "use item" packet
         if (packet instanceof WrapperPlayClientPlayerBlockPlacement &&
                 PacketEvents.getAPI().getServerManager().getVersion().isOlderThan(ServerVersion.V_1_9)) {
@@ -322,7 +322,7 @@ public class CheckManagerListener extends PacketListenerAbstract {
         }
     }
 
-    private boolean isMojangStupid(GrimPlayer player, WrapperPlayClientPlayerFlying flying) {
+    private boolean isMojangStupid(VoltPlayer player, WrapperPlayClientPlayerFlying flying) {
         // Mojang has become less stupid!
         if (player.getClientVersion().isNewerThanOrEquals(ClientVersion.V_1_21)) return false;
 
@@ -378,7 +378,7 @@ public class CheckManagerListener extends PacketListenerAbstract {
     @Override
     public void onPacketReceive(PacketReceiveEvent event) {
         if (event.getConnectionState() != ConnectionState.PLAY) return;
-        GrimPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
+        VoltPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
         if (player == null) return;
 
         // Determine if teleport BEFORE we call the pre-prediction vehicle
@@ -581,7 +581,7 @@ public class CheckManagerListener extends PacketListenerAbstract {
         player.packetStateData.lastPacketWasTeleport = false;
     }
 
-    private static void placeBucket(GrimPlayer player, InteractionHand hand) {
+    private static void placeBucket(VoltPlayer player, InteractionHand hand) {
         HitData data = getNearestHitResult(player, null, true);
 
         if (data != null) {
@@ -637,7 +637,7 @@ public class CheckManagerListener extends PacketListenerAbstract {
         }
     }
 
-    public static void setPlayerItem(GrimPlayer player, InteractionHand hand, ItemType type) {
+    public static void setPlayerItem(VoltPlayer player, InteractionHand hand, ItemType type) {
         // Give the player a water bucket
         if (player.gamemode != GameMode.CREATIVE) {
             if (hand == InteractionHand.MAIN_HAND) {
@@ -660,7 +660,7 @@ public class CheckManagerListener extends PacketListenerAbstract {
         }
     }
 
-    private void handleFlying(GrimPlayer player, double x, double y, double z, float yaw, float pitch, boolean hasPosition, boolean hasLook, boolean onGround, TeleportAcceptData teleportData, PacketReceiveEvent event) {
+    private void handleFlying(VoltPlayer player, double x, double y, double z, float yaw, float pitch, boolean hasPosition, boolean hasLook, boolean onGround, TeleportAcceptData teleportData, PacketReceiveEvent event) {
         long now = System.currentTimeMillis();
 
         if (!hasPosition) {
@@ -747,7 +747,7 @@ public class CheckManagerListener extends PacketListenerAbstract {
         player.packetStateData.didLastMovementIncludePosition = hasPosition;
     }
 
-    private static void placeLilypad(GrimPlayer player, InteractionHand hand) {
+    private static void placeLilypad(VoltPlayer player, InteractionHand hand) {
         HitData data = getNearestHitResult(player, null, true);
 
         if (data != null) {
@@ -778,7 +778,7 @@ public class CheckManagerListener extends PacketListenerAbstract {
         }
     }
 
-    private static HitData getNearestHitResult(GrimPlayer player, StateType heldItem, boolean sourcesHaveHitbox) {
+    private static HitData getNearestHitResult(VoltPlayer player, StateType heldItem, boolean sourcesHaveHitbox) {
         Vector3d startingPos = new Vector3d(player.x, player.y + player.getEyeHeight(), player.z);
         Vector startingVec = new Vector(startingPos.getX(), startingPos.getY(), startingPos.getZ());
         Ray trace = new Ray(player, startingPos.getX(), startingPos.getY(), startingPos.getZ(), player.xRot, player.yRot);
@@ -831,7 +831,7 @@ public class CheckManagerListener extends PacketListenerAbstract {
     @Override
     public void onPacketSend(PacketSendEvent event) {
         if (event.getConnectionState() != ConnectionState.PLAY) return;
-        GrimPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
+        VoltPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
         if (player == null) return;
 
         player.checkManager.onPacketSend(event);

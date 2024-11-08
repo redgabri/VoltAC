@@ -2,7 +2,7 @@ package com.volt.voltac.checks.impl.scaffolding;
 
 import com.volt.voltac.checks.CheckData;
 import com.volt.voltac.checks.type.BlockPlaceCheck;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.anticheat.update.BlockPlace;
 import com.volt.voltac.utils.collisions.datatypes.SimpleCollisionBox;
 import com.volt.voltac.utils.data.Pair;
@@ -27,7 +27,7 @@ public class RotationPlace extends BlockPlaceCheck {
     double flagBuffer = 0; // If the player flags once, force them to play legit, or we will cancel the tick before.
     boolean ignorePost = false;
 
-    public RotationPlace(GrimPlayer player) {
+    public RotationPlace(VoltPlayer player) {
         super(player);
     }
 

@@ -3,7 +3,7 @@ package com.volt.voltac.checks.impl.groundspoof;
 import com.volt.voltac.checks.Check;
 import com.volt.voltac.checks.CheckData;
 import com.volt.voltac.checks.type.PacketCheck;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.predictionengine.GhostBlockDetector;
 import com.volt.voltac.utils.collisions.datatypes.SimpleCollisionBox;
 import com.volt.voltac.utils.nmsutil.Collisions;
@@ -22,7 +22,7 @@ public class NoFallA extends Check implements PacketCheck {
 
     public boolean flipPlayerGroundStatus = false;
 
-    public NoFallA(GrimPlayer player) {
+    public NoFallA(VoltPlayer player) {
         super(player);
     }
 

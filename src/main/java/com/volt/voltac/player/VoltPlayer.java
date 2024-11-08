@@ -68,7 +68,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 // Put variables sync'd to the netty thread in PacketStateData
 // Variables that need lag compensation should have their own class
 // Soon there will be a generic class for lag compensation
-public class GrimPlayer implements GrimUser {
+public class VoltPlayer implements GrimUser {
     public UUID playerUUID;
     public final User user;
     public int entityID;
@@ -218,7 +218,7 @@ public class GrimPlayer implements GrimUser {
     // Grim disabler 2022 still working!
     public boolean disableGrim = false;
 
-    public GrimPlayer(User user) {
+    public VoltPlayer(User user) {
         this.user = user;
         this.playerUUID = user.getUUID();
 

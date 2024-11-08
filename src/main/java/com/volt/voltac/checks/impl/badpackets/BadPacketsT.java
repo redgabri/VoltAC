@@ -3,7 +3,7 @@ package com.volt.voltac.checks.impl.badpackets;
 import com.volt.voltac.checks.Check;
 import com.volt.voltac.checks.CheckData;
 import com.volt.voltac.checks.type.PacketCheck;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.data.packetentity.PacketEntity;
 import com.github.retrooper.packetevents.event.PacketReceiveEvent;
 import com.github.retrooper.packetevents.protocol.attribute.Attributes;
@@ -14,7 +14,7 @@ import com.github.retrooper.packetevents.wrapper.play.client.WrapperPlayClientIn
 
 @CheckData(name = "BadPacketsT")
 public class BadPacketsT extends Check implements PacketCheck {
-    public BadPacketsT(final GrimPlayer player) {
+    public BadPacketsT(final VoltPlayer player) {
         super(player);
     }
 

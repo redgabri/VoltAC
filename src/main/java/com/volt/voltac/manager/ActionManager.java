@@ -2,7 +2,7 @@ package com.volt.voltac.manager;
 
 import com.volt.voltac.checks.Check;
 import com.volt.voltac.checks.type.PacketCheck;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.github.retrooper.packetevents.event.PacketReceiveEvent;
 import com.github.retrooper.packetevents.protocol.packettype.PacketType;
 import com.github.retrooper.packetevents.wrapper.play.client.WrapperPlayClientInteractEntity;
@@ -14,7 +14,7 @@ public class ActionManager extends Check implements PacketCheck {
     private boolean attacking = false;
     private long lastAttack = 0;
 
-    public ActionManager(GrimPlayer player) {
+    public ActionManager(VoltPlayer player) {
         super(player);
     }
 

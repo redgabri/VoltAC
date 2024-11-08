@@ -3,7 +3,7 @@ package com.volt.voltac.checks.impl.badpackets;
 import com.volt.voltac.checks.Check;
 import com.volt.voltac.checks.CheckData;
 import com.volt.voltac.checks.type.PacketCheck;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.github.retrooper.packetevents.PacketEvents;
 import com.github.retrooper.packetevents.event.PacketReceiveEvent;
 import com.github.retrooper.packetevents.manager.server.ServerVersion;
@@ -19,7 +19,7 @@ public class BadPacketsH extends Check implements PacketCheck {
     // I personally think 1.8 made much more sense. You swing and THEN you hit!
     private boolean sentAnimation = player.getClientVersion().isNewerThan(ClientVersion.V_1_8);
 
-    public BadPacketsH(final GrimPlayer player) {
+    public BadPacketsH(final VoltPlayer player) {
         super(player);
     }
 

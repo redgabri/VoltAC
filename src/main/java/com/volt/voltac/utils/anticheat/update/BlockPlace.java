@@ -1,6 +1,6 @@
 package com.volt.voltac.utils.anticheat.update;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.anticheat.LogUtil;
 import com.volt.voltac.utils.collisions.AxisSelect;
 import com.volt.voltac.utils.collisions.AxisUtil;
@@ -53,7 +53,7 @@ public class BlockPlace {
     @Setter
     boolean replaceClicked;
     boolean isCancelled = false;
-    GrimPlayer player;
+    VoltPlayer player;
     @Getter
     ItemStack itemStack;
     @Getter
@@ -72,7 +72,7 @@ public class BlockPlace {
 
     @Getter private final boolean block;
 
-    public BlockPlace(GrimPlayer player, InteractionHand hand, Vector3i blockPosition, int faceId, BlockFace face, ItemStack itemStack, HitData hitData) {
+    public BlockPlace(VoltPlayer player, InteractionHand hand, Vector3i blockPosition, int faceId, BlockFace face, ItemStack itemStack, HitData hitData) {
         this.player = player;
         this.hand = hand;
         this.blockPosition = blockPosition;

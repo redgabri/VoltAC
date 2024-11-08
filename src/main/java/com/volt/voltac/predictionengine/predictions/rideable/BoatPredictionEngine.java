@@ -1,6 +1,6 @@
 package com.volt.voltac.predictionengine.predictions.rideable;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.predictionengine.predictions.PredictionEngine;
 import com.volt.voltac.utils.collisions.CollisionData;
 import com.volt.voltac.utils.collisions.datatypes.SimpleCollisionBox;
@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Set;
 
 public class BoatPredictionEngine extends PredictionEngine {
-    public BoatPredictionEngine(GrimPlayer player) {
+    public BoatPredictionEngine(VoltPlayer player) {
         player.uncertaintyHandler.collidingEntities.add(0); // We don't do collisions like living entities
         player.vehicleData.midTickY = 0;
 
@@ -29,7 +29,7 @@ public class BoatPredictionEngine extends PredictionEngine {
         player.vehicleData.status = getStatus(player);
     }
 
-    private static BoatEntityStatus getStatus(GrimPlayer player) {
+    private static BoatEntityStatus getStatus(VoltPlayer player) {
         BoatEntityStatus boatentity$status = isUnderwater(player);
         if (boatentity$status != null) {
             player.vehicleData.waterLevel = player.boundingBox.maxY;
@@ -47,7 +47,7 @@ public class BoatPredictionEngine extends PredictionEngine {
         }
     }
 
-    private static BoatEntityStatus isUnderwater(GrimPlayer player) {
+    private static BoatEntityStatus isUnderwater(VoltPlayer player) {
         SimpleCollisionBox axisalignedbb = player.boundingBox;
         double d0 = axisalignedbb.maxY + 0.001D;
         int i = GrimMath.floor(axisalignedbb.minX);
@@ -76,8 +76,8 @@ public class BoatPredictionEngine extends PredictionEngine {
         return flag ? BoatEntityStatus.UNDER_WATER : null;
     }
 
-    private static boolean checkInWater(GrimPlayer grimPlayer) {
-        SimpleCollisionBox axisalignedbb = grimPlayer.boundingBox;
+    private static boolean checkInWater(VoltPlayer voltPlayer) {
+        SimpleCollisionBox axisalignedbb = voltPlayer.boundingBox;
         int i = GrimMath.floor(axisalignedbb.minX);
         int j = GrimMath.ceil(axisalignedbb.maxX);
         int k = GrimMath.floor(axisalignedbb.minY);
@@ -85,15 +85,15 @@ public class BoatPredictionEngine extends PredictionEngine {
         int i1 = GrimMath.floor(axisalignedbb.minZ);
         int j1 = GrimMath.ceil(axisalignedbb.maxZ);
         boolean flag = false;
-        grimPlayer.vehicleData.waterLevel = -Double.MAX_VALUE;
+        voltPlayer.vehicleData.waterLevel = -Double.MAX_VALUE;
 
         for (int k1 = i; k1 < j; ++k1) {
             for (int l1 = k; l1 < l; ++l1) {
                 for (int i2 = i1; i2 < j1; ++i2) {
-                    double level = grimPlayer.compensatedWorld.getWaterFluidLevelAt(k1, l1, i2);
+                    double level = voltPlayer.compensatedWorld.getWaterFluidLevelAt(k1, l1, i2);
                     if (level > 0) {
                         float f = (float) ((float) l1 + level);
-                        grimPlayer.vehicleData.waterLevel = Math.max(f, grimPlayer.vehicleData.waterLevel);
+                        voltPlayer.vehicleData.waterLevel = Math.max(f, voltPlayer.vehicleData.waterLevel);
                         flag |= axisalignedbb.minY < (double) f;
                     }
                 }
@@ -103,7 +103,7 @@ public class BoatPredictionEngine extends PredictionEngine {
         return flag;
     }
 
-    public static float getGroundFriction(GrimPlayer player) {
+    public static float getGroundFriction(VoltPlayer player) {
         SimpleCollisionBox axisalignedbb = player.boundingBox;
         SimpleCollisionBox axisalignedbb1 = new SimpleCollisionBox(axisalignedbb.minX, axisalignedbb.minY - 0.001D, axisalignedbb.minZ, axisalignedbb.maxX, axisalignedbb.minY, axisalignedbb.maxZ, false);
         int i = (int) (Math.floor(axisalignedbb1.minX) - 1);
@@ -139,7 +139,7 @@ public class BoatPredictionEngine extends PredictionEngine {
     }
 
     @Override
-    public List<VectorData> applyInputsToVelocityPossibilities(GrimPlayer player, Set<VectorData> possibleVectors, float speed) {
+    public List<VectorData> applyInputsToVelocityPossibilities(VoltPlayer player, Set<VectorData> possibleVectors, float speed) {
         List<VectorData> vectors = new ArrayList<>();
 
         for (VectorData data : possibleVectors) {
@@ -162,7 +162,7 @@ public class BoatPredictionEngine extends PredictionEngine {
     }
 
     @Override
-    public Set<VectorData> fetchPossibleStartTickVectors(GrimPlayer player) {
+    public Set<VectorData> fetchPossibleStartTickVectors(VoltPlayer player) {
         Set<VectorData> vectors = player.getPossibleVelocities();
         addFluidPushingToStartingVectors(player, vectors);
 
@@ -174,17 +174,17 @@ public class BoatPredictionEngine extends PredictionEngine {
     }
 
     @Override
-    public void endOfTick(GrimPlayer player, double d) {
+    public void endOfTick(VoltPlayer player, double d) {
         super.endOfTick(player, d);
         Collisions.handleInsideBlocks(player);
     }
 
     @Override
-    public boolean canSwimHop(GrimPlayer player) {
+    public boolean canSwimHop(VoltPlayer player) {
         return false;
     }
 
-    private void floatBoat(GrimPlayer player, Vector vector) {
+    private void floatBoat(VoltPlayer player, Vector vector) {
         double d1 = player.hasGravity ? -0.04f : 0;
         double d2 = 0.0D;
         float invFriction = 0.05F;
@@ -227,7 +227,7 @@ public class BoatPredictionEngine extends PredictionEngine {
         }
     }
 
-    public float getWaterLevelAbove(GrimPlayer player) {
+    public float getWaterLevelAbove(VoltPlayer player) {
         SimpleCollisionBox axisalignedbb = player.boundingBox;
         int i = (int) Math.floor(axisalignedbb.minX);
         int j = (int) Math.ceil(axisalignedbb.maxX);
@@ -260,7 +260,7 @@ public class BoatPredictionEngine extends PredictionEngine {
         return (float) (l + 1);
     }
 
-    private void controlBoat(GrimPlayer player, Vector vector, boolean intermediate) {
+    private void controlBoat(VoltPlayer player, Vector vector, boolean intermediate) {
         float f = 0.0F;
         if (player.vehicleData.vehicleHorizontal != 0 && (!intermediate && player.vehicleData.vehicleForward == 0)) {
             f += 0.005F;

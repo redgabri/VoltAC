@@ -4,7 +4,7 @@ import com.volt.voltac.VoltAPI;
 import ac.grim.grimac.api.AbstractCheck;
 import ac.grim.grimac.api.config.ConfigManager;
 import ac.grim.grimac.api.events.FlagEvent;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.common.ConfigReloadObserver;
 import com.github.retrooper.packetevents.protocol.packettype.PacketType;
 import com.github.retrooper.packetevents.protocol.packettype.PacketTypeCommon;
@@ -16,7 +16,7 @@ import org.bukkit.Bukkit;
 // Class from https://github.com/Tecnio/AntiCheatBase/blob/master/src/main/java/me/tecnio/anticheat/check/Check.java
 @Getter
 public class Check implements AbstractCheck, ConfigReloadObserver {
-    protected final GrimPlayer player;
+    protected final VoltPlayer player;
 
     public double violations;
     private double decay;
@@ -38,7 +38,7 @@ public class Check implements AbstractCheck, ConfigReloadObserver {
         return experimental;
     }
 
-    public Check(final GrimPlayer player) {
+    public Check(final VoltPlayer player) {
         this.player = player;
 
         final Class<?> checkClass = this.getClass();

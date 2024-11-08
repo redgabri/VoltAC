@@ -1,6 +1,6 @@
 package com.volt.voltac.utils.collisions.blocks;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.collisions.datatypes.CollisionBox;
 import com.volt.voltac.utils.collisions.datatypes.CollisionFactory;
 import com.volt.voltac.utils.collisions.datatypes.NoCollisionBox;
@@ -11,7 +11,7 @@ import com.github.retrooper.packetevents.protocol.world.states.enums.Half;
 
 public class TrapDoorHandler implements CollisionFactory {
     @Override
-    public CollisionBox fetch(GrimPlayer player, ClientVersion version, WrappedBlockState block, int x, int y, int z) {
+    public CollisionBox fetch(VoltPlayer player, ClientVersion version, WrappedBlockState block, int x, int y, int z) {
         double var2 = 0.1875;
 
         if (block.isOpen()) {

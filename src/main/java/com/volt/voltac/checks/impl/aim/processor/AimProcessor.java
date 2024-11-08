@@ -2,7 +2,7 @@ package com.volt.voltac.checks.impl.aim.processor;
 
 import com.volt.voltac.checks.Check;
 import com.volt.voltac.checks.type.RotationCheck;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.anticheat.update.RotationUpdate;
 import com.volt.voltac.utils.data.Pair;
 import com.volt.voltac.utils.lists.RunningMode;
@@ -14,7 +14,7 @@ public class AimProcessor extends Check implements RotationCheck {
     private static final int SIGNIFICANT_SAMPLES_THRESHOLD = 15;
     private static final int TOTAL_SAMPLES_THRESHOLD = 80;
 
-    public AimProcessor(GrimPlayer playerData) {
+    public AimProcessor(VoltPlayer playerData) {
         super(playerData);
     }
 

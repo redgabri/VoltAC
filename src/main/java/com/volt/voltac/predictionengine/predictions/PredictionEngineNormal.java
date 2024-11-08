@@ -1,6 +1,6 @@
 package com.volt.voltac.predictionengine.predictions;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.collisions.datatypes.SimpleCollisionBox;
 import com.volt.voltac.utils.data.VectorData;
 import com.volt.voltac.utils.math.GrimMath;
@@ -19,7 +19,7 @@ import java.util.Set;
 
 public class PredictionEngineNormal extends PredictionEngine {
 
-    public static void staticVectorEndOfTick(GrimPlayer player, Vector vector) {
+    public static void staticVectorEndOfTick(VoltPlayer player, Vector vector) {
         double adjustedY = vector.getY();
         final OptionalInt levitation = player.compensatedEntities.getPotionLevelForPlayer(PotionTypes.LEVITATION);
         if (levitation.isPresent()) {
@@ -36,7 +36,7 @@ public class PredictionEngineNormal extends PredictionEngine {
     }
 
     @Override
-    public void addJumpsToPossibilities(GrimPlayer player, Set<VectorData> existingVelocities) {
+    public void addJumpsToPossibilities(VoltPlayer player, Set<VectorData> existingVelocities) {
         for (VectorData vector : new HashSet<>(existingVelocities)) {
             Vector jump = vector.vector.clone();
 
@@ -65,7 +65,7 @@ public class PredictionEngineNormal extends PredictionEngine {
     }
 
     @Override
-    public void endOfTick(GrimPlayer player, double delta) {
+    public void endOfTick(VoltPlayer player, double delta) {
         super.endOfTick(player, delta);
 
         boolean walkingOnPowderSnow = false;
@@ -93,7 +93,7 @@ public class PredictionEngineNormal extends PredictionEngine {
     }
 
     @Override
-    public Vector handleOnClimbable(Vector vector, GrimPlayer player) {
+    public Vector handleOnClimbable(Vector vector, VoltPlayer player) {
         if (player.isClimbing) {
             // Reset fall distance when climbing
             player.fallDistance = 0;

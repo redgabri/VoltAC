@@ -2,7 +2,7 @@ package com.volt.voltac.predictionengine;
 
 import com.volt.voltac.checks.Check;
 import com.volt.voltac.checks.type.PostPredictionCheck;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.anticheat.update.PredictionComplete;
 import com.volt.voltac.utils.collisions.datatypes.SimpleCollisionBox;
 import com.volt.voltac.utils.data.packetentity.PacketEntity;
@@ -10,7 +10,7 @@ import com.github.retrooper.packetevents.protocol.player.ClientVersion;
 
 public class GhostBlockDetector extends Check implements PostPredictionCheck {
 
-    public GhostBlockDetector(GrimPlayer player) {
+    public GhostBlockDetector(VoltPlayer player) {
         super(player);
     }
 
@@ -38,7 +38,7 @@ public class GhostBlockDetector extends Check implements PostPredictionCheck {
         }
     }
 
-    public static boolean isGhostBlock(GrimPlayer player) {
+    public static boolean isGhostBlock(VoltPlayer player) {
         // Player is on glitchy block (1.8 client on anvil/wooden chest)
         if (player.uncertaintyHandler.isOrWasNearGlitchyBlock) {
             return true;

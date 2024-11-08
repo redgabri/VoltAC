@@ -2,13 +2,13 @@ package com.volt.voltac.checks.impl.flight;
 
 import com.volt.voltac.checks.Check;
 import com.volt.voltac.checks.type.PacketCheck;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.github.retrooper.packetevents.event.PacketReceiveEvent;
 import com.github.retrooper.packetevents.wrapper.play.client.WrapperPlayClientPlayerFlying;
 
 // This check catches 100% of cheaters.
 public class FlightA extends Check implements PacketCheck {
-    public FlightA(GrimPlayer player) {
+    public FlightA(VoltPlayer player) {
         super(player);
     }
 

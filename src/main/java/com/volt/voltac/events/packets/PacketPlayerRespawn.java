@@ -3,7 +3,7 @@ package com.volt.voltac.events.packets;
 import com.volt.voltac.VoltAPI;
 import com.volt.voltac.checks.impl.badpackets.BadPacketsE;
 import com.volt.voltac.checks.impl.badpackets.BadPacketsF;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.data.TrackerData;
 import com.volt.voltac.utils.data.packetentity.PacketEntitySelf;
 import com.volt.voltac.utils.enums.Pose;
@@ -68,7 +68,7 @@ public class PacketPlayerRespawn extends PacketListenerAbstract {
         if (event.getPacketType() == PacketType.Play.Server.UPDATE_HEALTH) {
             WrapperPlayServerUpdateHealth health = new WrapperPlayServerUpdateHealth(event);
 
-            GrimPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
+            VoltPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
             if (player == null) return;
             //
             if (player.packetStateData.lastFood == health.getFood()
@@ -98,7 +98,7 @@ public class PacketPlayerRespawn extends PacketListenerAbstract {
         }
 
         if (event.getPacketType() == PacketType.Play.Server.JOIN_GAME) {
-            GrimPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
+            VoltPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
             if (player == null) return;
 
             WrapperPlayServerJoinGame joinGame = new WrapperPlayServerJoinGame(event);
@@ -113,7 +113,7 @@ public class PacketPlayerRespawn extends PacketListenerAbstract {
         if (event.getPacketType() == PacketType.Play.Server.RESPAWN) {
             WrapperPlayServerRespawn respawn = new WrapperPlayServerRespawn(event);
 
-            GrimPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
+            VoltPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
             if (player == null) return;
 
             List<Runnable> tasks = event.getTasksAfterSend();
@@ -200,7 +200,7 @@ public class PacketPlayerRespawn extends PacketListenerAbstract {
         }
     }
 
-    private boolean isWorldChange(GrimPlayer player, WrapperPlayServerRespawn respawn) {
+    private boolean isWorldChange(VoltPlayer player, WrapperPlayServerRespawn respawn) {
         ClientVersion version = PacketEvents.getAPI().getServerManager().getVersion().toClientVersion();
         return respawn.getDimensionType().getId(version) != player.dimensionType.getId(version)
                 || !Objects.equals(respawn.getDimensionType().getName(), player.dimensionType.getName());

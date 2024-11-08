@@ -1,6 +1,6 @@
 package com.volt.voltac.utils.collisions;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.collisions.blocks.connecting.DynamicFence;
 import com.volt.voltac.utils.collisions.blocks.connecting.DynamicWall;
 import com.volt.voltac.utils.collisions.datatypes.*;
@@ -316,7 +316,7 @@ public enum HitboxData {
         return lookup.get(material);
     }
 
-    public static CollisionBox getBlockHitbox(GrimPlayer player, StateType heldItem, ClientVersion version, WrappedBlockState block, int x, int y, int z) {
+    public static CollisionBox getBlockHitbox(VoltPlayer player, StateType heldItem, ClientVersion version, WrappedBlockState block, int x, int y, int z) {
         HitboxData data = getData(block.getType());
 
         if (data == null) {

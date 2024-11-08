@@ -1,7 +1,7 @@
 package com.volt.voltac.events.packets;
 
 import com.volt.voltac.VoltAPI;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.collisions.datatypes.SimpleCollisionBox;
 import com.volt.voltac.utils.data.packetentity.PacketEntity;
 import com.volt.voltac.utils.data.packetentity.PacketEntityHorse;
@@ -26,7 +26,7 @@ public class PacketPlayerSteer extends PacketListenerAbstract {
         if (event.getPacketType() == PacketType.Play.Client.STEER_VEHICLE) {
             WrapperPlayClientSteerVehicle steer = new WrapperPlayClientSteerVehicle(event);
 
-            GrimPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
+            VoltPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
             if (player == null) return;
 
             float forwards = steer.getForward();

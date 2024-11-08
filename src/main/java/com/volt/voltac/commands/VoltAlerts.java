@@ -7,10 +7,10 @@ import co.aikar.commands.annotation.CommandPermission;
 import co.aikar.commands.annotation.Subcommand;
 import org.bukkit.entity.Player;
 
-@CommandAlias("grim|grimac")
-public class GrimAlerts extends BaseCommand {
+@CommandAlias("volt|voltac")
+public class VoltAlerts extends BaseCommand {
     @Subcommand("alerts")
-    @CommandPermission("grim.alerts")
+    @CommandPermission("volt.alerts")
     public void onAlerts(Player player) {
         VoltAPI.INSTANCE.getAlertManager().toggleAlerts(player);
     }

@@ -9,10 +9,10 @@ import co.aikar.commands.annotation.CommandPermission;
 import co.aikar.commands.annotation.Subcommand;
 import org.bukkit.entity.Player;
 
-@CommandAlias("grim|grimac")
-public class GrimSendAlert extends BaseCommand {
+@CommandAlias("volt|voltac")
+public class VoltSendAlert extends BaseCommand {
     @Subcommand("sendalert")
-    @CommandPermission("grim.sendalert")
+    @CommandPermission("volt.sendalert")
     public void sendAlert(String string) {
         string = MessageUtil.format(string);
 

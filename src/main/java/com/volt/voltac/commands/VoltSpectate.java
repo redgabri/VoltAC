@@ -1,7 +1,7 @@
 package com.volt.voltac.commands;
 
 import com.volt.voltac.VoltAPI;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.anticheat.MessageUtil;
 import com.volt.voltac.utils.anticheat.MultiLibUtil;
 import co.aikar.commands.BaseCommand;
@@ -17,10 +17,10 @@ import org.bukkit.GameMode;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-@CommandAlias("grim|grimac")
-public class GrimSpectate extends BaseCommand {
+@CommandAlias("volt|voltac")
+public class VoltSpectate extends BaseCommand {
     @Subcommand("spectate")
-    @CommandPermission("grim.spectate")
+    @CommandPermission("volt.spectate")
     @CommandCompletion("@players")
     public void onSpectate(CommandSender sender, @Optional OnlinePlayer target) {
         if (!(sender instanceof Player)) return;
@@ -39,14 +39,14 @@ public class GrimSpectate extends BaseCommand {
         }
         //hide player from tab list
         if (VoltAPI.INSTANCE.getSpectateManager().enable(player)) {
-            GrimPlayer grimPlayer = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(player);
-            if (grimPlayer != null) {
+            VoltPlayer voltPlayer = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(player);
+            if (voltPlayer != null) {
                 String message = VoltAPI.INSTANCE.getConfigManager().getConfig().getStringElse("spectate-return", "\n%prefix% &fClick here to return to previous location\n");
-                grimPlayer.user.sendMessage(
+                voltPlayer.user.sendMessage(
                         LegacyComponentSerializer.legacy('&')
                                 .deserialize(MessageUtil.formatWithNoColor(message))
-                                .clickEvent(ClickEvent.clickEvent(ClickEvent.Action.RUN_COMMAND, "/grim stopspectating"))
-                                .hoverEvent(HoverEvent.showText(Component.text("/grim stopspectating")))
+                                .clickEvent(ClickEvent.clickEvent(ClickEvent.Action.RUN_COMMAND, "/volt stopspectating"))
+                                .hoverEvent(HoverEvent.showText(Component.text("/volt stopspectating")))
                 );
             }
         }

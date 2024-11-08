@@ -3,7 +3,7 @@ package com.volt.voltac.manager.init.start;
 import com.volt.voltac.VoltAPI;
 import com.volt.voltac.checks.Check;
 import com.volt.voltac.checks.type.PostPredictionCheck;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.predictionengine.UncertaintyHandler;
 import com.volt.voltac.predictionengine.predictions.PredictionEngine;
 import com.volt.voltac.utils.anticheat.update.PredictionComplete;
@@ -29,7 +29,7 @@ public final class SuperDebug extends Check implements PostPredictionCheck {
     List<Vector> baseTickAddition = new EvictingQueue<>(60);
     List<Vector> baseTickWater = new EvictingQueue<>(60);
 
-    public SuperDebug(GrimPlayer player) {
+    public SuperDebug(VoltPlayer player) {
         super(player);
     }
 
@@ -62,7 +62,7 @@ public final class SuperDebug extends Check implements PostPredictionCheck {
         if (predictionComplete.getIdentifier() == 0) return; // 1 - 256 are valid possible values
 
         StringBuilder sb = new StringBuilder();
-        sb.append("Grim Version: ").append(VoltAPI.INSTANCE.getExternalAPI().getGrimVersion());
+        sb.append("Grim Version: ").append(VoltAPI.INSTANCE.getExternalAPI().getVoltVersion());
         sb.append("\n");
         sb.append("Player Name: ");
         sb.append(player.user.getName());
@@ -266,7 +266,7 @@ public final class SuperDebug extends Check implements PostPredictionCheck {
         sb.append("\n\n");
     }
 
-    private Vector getPlayerMathMovement(GrimPlayer player, Vector wantedMovement, float f2) {
+    private Vector getPlayerMathMovement(VoltPlayer player, Vector wantedMovement, float f2) {
         float f3 = player.trigHandler.sin(f2 * 0.017453292f);
         float f4 = player.trigHandler.cos(f2 * 0.017453292f);
 

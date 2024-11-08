@@ -1,17 +1,17 @@
 package com.volt.voltac.utils.math;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.github.retrooper.packetevents.protocol.player.ClientVersion;
 import lombok.Getter;
 import org.bukkit.util.Vector;
 
 public class TrigHandler {
-    GrimPlayer player;
+    VoltPlayer player;
     private double buffer = 0;
     @Getter
     private boolean isVanillaMath = true;
 
-    public TrigHandler(GrimPlayer player) {
+    public TrigHandler(VoltPlayer player) {
         this.player = player;
     }
 

@@ -1,6 +1,6 @@
 package com.volt.voltac.utils.latency;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.data.ShulkerData;
 import com.volt.voltac.utils.data.TrackerData;
 import com.volt.voltac.utils.data.attribute.ValuedAttribute;
@@ -39,12 +39,12 @@ public class CompensatedEntities {
     public Integer serverPlayerVehicle = null;
     public boolean hasSprintingAttributeEnabled = false;
 
-    GrimPlayer player;
+    VoltPlayer player;
 
     public TrackerData selfTrackedEntity;
     public PacketEntitySelf playerEntity;
 
-    public CompensatedEntities(GrimPlayer player) {
+    public CompensatedEntities(VoltPlayer player) {
         this.player = player;
         this.playerEntity = new PacketEntitySelf(player);
         this.selfTrackedEntity = new TrackerData(0, 0, 0, 0, 0, EntityTypes.PLAYER, player.lastTransactionSent.get());

@@ -2,11 +2,11 @@ package com.volt.voltac.checks.impl.movement;
 
 import com.volt.voltac.checks.Check;
 import com.volt.voltac.checks.type.PositionCheck;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.anticheat.update.PositionUpdate;
 
 public class PredictionRunner extends Check implements PositionCheck {
-    public PredictionRunner(GrimPlayer playerData) {
+    public PredictionRunner(VoltPlayer playerData) {
         super(playerData);
     }
 

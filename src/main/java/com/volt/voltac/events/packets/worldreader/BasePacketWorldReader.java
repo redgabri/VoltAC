@@ -1,7 +1,7 @@
 package com.volt.voltac.events.packets.worldreader;
 
 import com.volt.voltac.VoltAPI;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.chunks.Column;
 import com.volt.voltac.utils.data.TeleportData;
 import com.github.retrooper.packetevents.event.PacketListenerAbstract;
@@ -22,7 +22,7 @@ public class BasePacketWorldReader extends PacketListenerAbstract {
     public void onPacketSend(PacketSendEvent event) {
         if (event.getPacketType() == PacketType.Play.Server.UNLOAD_CHUNK) {
             WrapperPlayServerUnloadChunk unloadChunk = new WrapperPlayServerUnloadChunk(event);
-            GrimPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
+            VoltPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
             if (player == null) return;
 
             unloadChunk(player, unloadChunk.getChunkX(), unloadChunk.getChunkZ());
@@ -30,35 +30,35 @@ public class BasePacketWorldReader extends PacketListenerAbstract {
 
         // 1.7 and 1.8 only
         if (event.getPacketType() == PacketType.Play.Server.MAP_CHUNK_BULK) {
-            GrimPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
+            VoltPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
             if (player == null) return;
 
             handleMapChunkBulk(player, event);
         }
 
         if (event.getPacketType() == PacketType.Play.Server.CHUNK_DATA) {
-            GrimPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
+            VoltPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
             if (player == null) return;
 
             handleMapChunk(player, event);
         }
 
         if (event.getPacketType() == PacketType.Play.Server.BLOCK_CHANGE) {
-            GrimPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
+            VoltPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
             if (player == null) return;
 
             handleBlockChange(player, event);
         }
 
         if (event.getPacketType() == PacketType.Play.Server.MULTI_BLOCK_CHANGE) {
-            GrimPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
+            VoltPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
             if (player == null) return;
 
             handleMultiBlockChange(player, event);
         }
 
         if (event.getPacketType() == PacketType.Play.Server.ACKNOWLEDGE_BLOCK_CHANGES) {
-            GrimPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
+            VoltPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
             if (player == null) return;
 
             WrapperPlayServerAcknowledgeBlockChanges changes = new WrapperPlayServerAcknowledgeBlockChanges(event);
@@ -66,7 +66,7 @@ public class BasePacketWorldReader extends PacketListenerAbstract {
         }
 
         if (event.getPacketType() == PacketType.Play.Server.ACKNOWLEDGE_PLAYER_DIGGING) {
-            GrimPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
+            VoltPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
             if (player == null) return;
 
             WrapperPlayServerAcknowledgePlayerDigging ack = new WrapperPlayServerAcknowledgePlayerDigging(event);
@@ -74,7 +74,7 @@ public class BasePacketWorldReader extends PacketListenerAbstract {
         }
 
         if (event.getPacketType() == PacketType.Play.Server.CHANGE_GAME_STATE) {
-            GrimPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
+            VoltPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
             if (player == null) return;
 
             WrapperPlayServerChangeGameState newState = new WrapperPlayServerChangeGameState(event);
@@ -91,7 +91,7 @@ public class BasePacketWorldReader extends PacketListenerAbstract {
         }
     }
 
-    public void handleMapChunkBulk(GrimPlayer player, PacketSendEvent event) {
+    public void handleMapChunkBulk(VoltPlayer player, PacketSendEvent event) {
         // Only exists in 1.7 and 1.8
         WrapperPlayServerChunkDataBulk chunkData = new WrapperPlayServerChunkDataBulk(event);
         for (int i = 0; i < chunkData.getChunks().length; i++) {
@@ -99,13 +99,13 @@ public class BasePacketWorldReader extends PacketListenerAbstract {
         }
     }
 
-    public void handleMapChunk(GrimPlayer player, PacketSendEvent event) {
+    public void handleMapChunk(VoltPlayer player, PacketSendEvent event) {
         WrapperPlayServerChunkData chunkData = new WrapperPlayServerChunkData(event);
         addChunkToCache(event, player, chunkData.getColumn().getChunks(), chunkData.getColumn().isFullChunk(), chunkData.getColumn().getX(), chunkData.getColumn().getZ());
         event.setLastUsedWrapper(null);
     }
 
-    public void addChunkToCache(PacketSendEvent event, GrimPlayer player, BaseChunk[] chunks, boolean isGroundUp, int chunkX, int chunkZ) {
+    public void addChunkToCache(PacketSendEvent event, VoltPlayer player, BaseChunk[] chunks, boolean isGroundUp, int chunkX, int chunkZ) {
         double chunkCenterX = (chunkX << 4) + 8;
         double chunkCenterZ = (chunkZ << 4) + 8;
         boolean shouldPostTrans = Math.abs(player.x - chunkCenterX) < 16 && Math.abs(player.z - chunkCenterZ) < 16;
@@ -139,12 +139,12 @@ public class BasePacketWorldReader extends PacketListenerAbstract {
         }
     }
 
-    public void unloadChunk(GrimPlayer player, int x, int z) {
+    public void unloadChunk(VoltPlayer player, int x, int z) {
         if (player == null) return;
         player.compensatedWorld.removeChunkLater(x, z);
     }
 
-    public void handleBlockChange(GrimPlayer player, PacketSendEvent event) {
+    public void handleBlockChange(VoltPlayer player, PacketSendEvent event) {
         WrapperPlayServerBlockChange blockChange = new WrapperPlayServerBlockChange(event);
         int range = 16;
 
@@ -157,7 +157,7 @@ public class BasePacketWorldReader extends PacketListenerAbstract {
         player.latencyUtils.addRealTimeTask(player.lastTransactionSent.get(), () -> player.compensatedWorld.updateBlock(blockPosition.getX(), blockPosition.getY(), blockPosition.getZ(), blockChange.getBlockId()));
     }
 
-    public void handleMultiBlockChange(GrimPlayer player, PacketSendEvent event) {
+    public void handleMultiBlockChange(VoltPlayer player, PacketSendEvent event) {
         WrapperPlayServerMultiBlockChange multiBlockChange = new WrapperPlayServerMultiBlockChange(event);
 
         boolean didSend = false;

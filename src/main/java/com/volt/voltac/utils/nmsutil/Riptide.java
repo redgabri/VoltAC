@@ -1,6 +1,6 @@
 package com.volt.voltac.utils.nmsutil;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.github.retrooper.packetevents.PacketEvents;
 import com.github.retrooper.packetevents.protocol.item.ItemStack;
 import com.github.retrooper.packetevents.protocol.item.enchantment.type.EnchantmentTypes;
@@ -8,7 +8,7 @@ import com.github.retrooper.packetevents.protocol.item.type.ItemTypes;
 import org.bukkit.util.Vector;
 
 public class Riptide {
-    public static Vector getRiptideVelocity(GrimPlayer player) {
+    public static Vector getRiptideVelocity(VoltPlayer player) {
         ItemStack main = player.getInventory().getHeldItem();
         ItemStack off = player.getInventory().getOffHand();
 

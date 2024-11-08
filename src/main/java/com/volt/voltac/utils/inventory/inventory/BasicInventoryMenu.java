@@ -1,6 +1,6 @@
 package com.volt.voltac.utils.inventory.inventory;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.inventory.Inventory;
 import com.volt.voltac.utils.inventory.InventoryStorage;
 import com.volt.voltac.utils.inventory.slot.Slot;
@@ -9,7 +9,7 @@ import com.github.retrooper.packetevents.protocol.item.ItemStack;
 public class BasicInventoryMenu extends AbstractContainerMenu {
     int rows;
 
-    public BasicInventoryMenu(GrimPlayer player, Inventory playerInventory, int rows) {
+    public BasicInventoryMenu(VoltPlayer player, Inventory playerInventory, int rows) {
         super(player, playerInventory);
         this.rows = rows;
 

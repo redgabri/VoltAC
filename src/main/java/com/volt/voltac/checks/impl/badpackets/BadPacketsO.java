@@ -3,7 +3,7 @@ package com.volt.voltac.checks.impl.badpackets;
 import com.volt.voltac.checks.Check;
 import com.volt.voltac.checks.CheckData;
 import com.volt.voltac.checks.type.PacketCheck;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.data.Pair;
 import com.github.retrooper.packetevents.event.PacketReceiveEvent;
 import com.github.retrooper.packetevents.event.PacketSendEvent;
@@ -18,7 +18,7 @@ import java.util.Queue;
 public class BadPacketsO extends Check implements PacketCheck {
     Queue<Pair<Long, Long>> keepaliveMap = new LinkedList<>();
 
-    public BadPacketsO(GrimPlayer player) {
+    public BadPacketsO(VoltPlayer player) {
         super(player);
     }
 

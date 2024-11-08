@@ -1,6 +1,6 @@
 package com.volt.voltac.events.packets.worldreader;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.github.retrooper.packetevents.event.PacketSendEvent;
 import com.github.retrooper.packetevents.protocol.world.chunk.impl.v1_16.Chunk_v1_9;
 import com.github.retrooper.packetevents.protocol.world.chunk.palette.DataPalette;
@@ -14,7 +14,7 @@ import java.util.BitSet;
 
 public class PacketWorldReaderEight extends BasePacketWorldReader {
     @Override
-    public void handleMapChunkBulk(final GrimPlayer player, final PacketSendEvent event) {
+    public void handleMapChunkBulk(final VoltPlayer player, final PacketSendEvent event) {
         PacketWrapper wrapper = new PacketWrapper(event);
         ByteBuf buffer = (ByteBuf) wrapper.getBuffer();
 
@@ -46,7 +46,7 @@ public class PacketWorldReaderEight extends BasePacketWorldReader {
     }
 
     @Override
-    public void handleMapChunk(final GrimPlayer player, final PacketSendEvent event) {
+    public void handleMapChunk(final VoltPlayer player, final PacketSendEvent event) {
         PacketWrapper wrapper = new PacketWrapper(event);
 
         final int chunkX = wrapper.readInt();

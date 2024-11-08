@@ -1,6 +1,6 @@
 package com.volt.voltac.predictionengine.movementtick;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.data.packetentity.PacketEntityHorse;
 import com.volt.voltac.utils.nmsutil.Collisions;
 import com.github.retrooper.packetevents.protocol.attribute.Attributes;
@@ -9,7 +9,7 @@ import org.bukkit.util.Vector;
 
 public class MovementTickerHorse extends MovementTickerLivingVehicle {
 
-    public MovementTickerHorse(GrimPlayer player) {
+    public MovementTickerHorse(VoltPlayer player) {
         super(player);
 
         PacketEntityHorse horsePacket = (PacketEntityHorse) player.compensatedEntities.getSelf().getRiding();

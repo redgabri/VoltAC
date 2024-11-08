@@ -2,7 +2,7 @@ package com.volt.voltac.predictionengine;
 
 import com.volt.voltac.checks.Check;
 import com.volt.voltac.checks.type.PostPredictionCheck;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.anticheat.update.PredictionComplete;
 import com.volt.voltac.utils.collisions.datatypes.SimpleCollisionBox;
 import com.volt.voltac.utils.data.VectorData;
@@ -34,7 +34,7 @@ public class SneakingEstimator extends Check implements PostPredictionCheck {
     SimpleCollisionBox sneakingPotentialHiddenVelocity = new SimpleCollisionBox();
     List<VectorData> possible = new ArrayList<>();
 
-    public SneakingEstimator(GrimPlayer player) {
+    public SneakingEstimator(VoltPlayer player) {
         super(player);
     }
 

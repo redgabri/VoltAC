@@ -1,6 +1,6 @@
 package com.volt.voltac.utils.latency;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.data.Pair;
 import com.github.retrooper.packetevents.netty.channel.ChannelHelper;
 
@@ -9,9 +9,9 @@ import java.util.ListIterator;
 
 public class LatencyUtils {
     private final LinkedList<Pair<Integer, Runnable>> transactionMap = new LinkedList<>();
-    private final GrimPlayer player;
+    private final VoltPlayer player;
 
-    public LatencyUtils(GrimPlayer player) {
+    public LatencyUtils(VoltPlayer player) {
         this.player = player;
     }
 

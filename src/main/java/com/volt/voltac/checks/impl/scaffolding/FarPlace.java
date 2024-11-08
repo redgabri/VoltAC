@@ -2,7 +2,7 @@ package com.volt.voltac.checks.impl.scaffolding;
 
 import com.volt.voltac.checks.CheckData;
 import com.volt.voltac.checks.type.BlockPlaceCheck;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.anticheat.update.BlockPlace;
 import com.volt.voltac.utils.collisions.datatypes.SimpleCollisionBox;
 import com.volt.voltac.utils.math.VectorUtils;
@@ -13,7 +13,7 @@ import org.bukkit.util.Vector;
 
 @CheckData(name = "FarPlace")
 public class FarPlace extends BlockPlaceCheck {
-    public FarPlace(GrimPlayer player) {
+    public FarPlace(VoltPlayer player) {
         super(player);
     }
 

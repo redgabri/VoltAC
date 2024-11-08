@@ -4,7 +4,7 @@ import com.volt.voltac.VoltAPI;
 import com.volt.voltac.checks.Check;
 import com.volt.voltac.checks.impl.exploit.ExploitA;
 import com.volt.voltac.checks.type.PacketCheck;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.github.retrooper.packetevents.event.PacketReceiveEvent;
 import com.github.retrooper.packetevents.protocol.packettype.PacketType;
 import com.github.retrooper.packetevents.wrapper.play.client.WrapperPlayClientPluginMessage;
@@ -15,7 +15,7 @@ public class ClientBrand extends Check implements PacketCheck {
     String brand = "vanilla";
     boolean hasBrand = false;
 
-    public ClientBrand(GrimPlayer player) {
+    public ClientBrand(VoltPlayer player) {
         super(player);
     }
 

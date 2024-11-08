@@ -1,6 +1,6 @@
 package com.volt.voltac.utils.blockplace;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.anticheat.update.BlockPlace;
 import com.volt.voltac.utils.collisions.AxisUtil;
 import com.volt.voltac.utils.latency.CompensatedWorld;
@@ -16,7 +16,7 @@ import com.github.retrooper.packetevents.protocol.world.states.type.StateTypes;
 
 // HOW DIFFICULT CAN IT BE TO TELL THE SERVER THAT YOU RANG A BELL, AND NOT CREATE A GHOST BLOCK???
 public class ConsumesBlockPlace {
-    public static boolean consumesPlace(GrimPlayer player, WrappedBlockState state, BlockPlace place) {
+    public static boolean consumesPlace(VoltPlayer player, WrappedBlockState state, BlockPlace place) {
         // Hey look, it's another DESYNC MOJANG
         if (state.getType() == StateTypes.BELL) {
             return goodBellHit(state, place);

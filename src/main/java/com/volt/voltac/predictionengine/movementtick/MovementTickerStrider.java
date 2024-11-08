@@ -1,6 +1,6 @@
 package com.volt.voltac.predictionengine.movementtick;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.data.attribute.ValuedAttribute;
 import com.volt.voltac.utils.data.packetentity.PacketEntityStrider;
 import com.volt.voltac.utils.nmsutil.BlockProperties;
@@ -17,12 +17,12 @@ import java.util.ArrayList;
 
 public class MovementTickerStrider extends MovementTickerRideable {
 
-    public MovementTickerStrider(GrimPlayer player) {
+    public MovementTickerStrider(VoltPlayer player) {
         super(player);
         movementInput = new Vector(0, 0, 1);
     }
 
-    public static void floatStrider(GrimPlayer player) {
+    public static void floatStrider(VoltPlayer player) {
         if (player.wasTouchingLava) {
             if (isAbove(player) && player.compensatedWorld.getLavaFluidLevelAt((int) Math.floor(player.x), (int) Math.floor(player.y + 1), (int) Math.floor(player.z)) == 0) {
                 player.onGround = true;
@@ -32,7 +32,7 @@ public class MovementTickerStrider extends MovementTickerRideable {
         }
     }
 
-    public static boolean isAbove(GrimPlayer player) {
+    public static boolean isAbove(VoltPlayer player) {
         return player.y > Math.floor(player.y) + 0.5 - 1.0E-5F;
     }
 

@@ -58,7 +58,7 @@ dependencies {
 
 bukkit {
     name = "VoltAC"
-    author = "VoltAC"
+    author = "redgabri"
     main = "com.volt.voltac.VoltAC"
     apiVersion = "1.13"
     foliaSupported = true

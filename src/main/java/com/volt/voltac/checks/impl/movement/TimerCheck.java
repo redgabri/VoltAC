@@ -4,7 +4,7 @@ import ac.grim.grimac.api.config.ConfigManager;
 import com.volt.voltac.checks.Check;
 import com.volt.voltac.checks.CheckData;
 import com.volt.voltac.checks.type.PacketCheck;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.github.retrooper.packetevents.event.PacketReceiveEvent;
 import com.github.retrooper.packetevents.protocol.packettype.PacketType;
 import com.github.retrooper.packetevents.protocol.packettype.PacketTypeCommon;
@@ -53,7 +53,7 @@ public class TimerCheck extends Check implements PacketCheck {
     //
     // We then take the last transaction before this to increase stability with these lag spikes and
     // to guarantee that we are at least 50 ms back before adding the time
-    public TimerCheck(GrimPlayer player) {
+    public TimerCheck(VoltPlayer player) {
         super(player);
     }
 

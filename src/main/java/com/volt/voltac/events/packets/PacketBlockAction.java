@@ -1,7 +1,7 @@
 package com.volt.voltac.events.packets;
 
 import com.volt.voltac.VoltAPI;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.data.ShulkerData;
 import com.volt.voltac.utils.nmsutil.Materials;
 import com.github.retrooper.packetevents.event.PacketListenerAbstract;
@@ -26,7 +26,7 @@ public class PacketBlockAction extends PacketListenerAbstract {
     @Override
     public void onPacketSend(PacketSendEvent event) {
         if (event.getPacketType() == PacketType.Play.Server.BLOCK_ACTION) {
-            GrimPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
+            VoltPlayer player = VoltAPI.INSTANCE.getPlayerDataManager().getPlayer(event.getUser());
             if (player == null) return;
 
             WrapperPlayServerBlockAction blockAction = new WrapperPlayServerBlockAction(event);

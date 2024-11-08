@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 package com.volt.voltac.utils.data;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.collisions.datatypes.SimpleCollisionBox;
 import com.volt.voltac.utils.data.packetentity.PacketEntity;
 import com.volt.voltac.utils.nmsutil.GetBoundingBox;
@@ -33,7 +33,7 @@ public class ReachInterpolationData {
     private int interpolationStepsHighBound = 0;
     private int interpolationSteps = 1;
 
-    public ReachInterpolationData(GrimPlayer player, SimpleCollisionBox startingLocation, TrackedPosition position, PacketEntity entity) {
+    public ReachInterpolationData(VoltPlayer player, SimpleCollisionBox startingLocation, TrackedPosition position, PacketEntity entity) {
         final boolean isPointNine = !player.compensatedEntities.getSelf().inVehicle() && player.getClientVersion().isNewerThanOrEquals(ClientVersion.V_1_9);
 
         this.startingLocation = startingLocation;

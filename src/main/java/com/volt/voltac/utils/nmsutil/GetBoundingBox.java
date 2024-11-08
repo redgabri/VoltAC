@@ -1,12 +1,12 @@
 package com.volt.voltac.utils.nmsutil;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.collisions.datatypes.SimpleCollisionBox;
 import com.volt.voltac.utils.data.packetentity.PacketEntity;
 import com.github.retrooper.packetevents.protocol.attribute.Attributes;
 
 public class GetBoundingBox {
-    public static SimpleCollisionBox getCollisionBoxForPlayer(GrimPlayer player, double centerX, double centerY, double centerZ) {
+    public static SimpleCollisionBox getCollisionBoxForPlayer(VoltPlayer player, double centerX, double centerY, double centerZ) {
         if (player.compensatedEntities.getSelf().getRiding() != null) {
             return getPacketEntityBoundingBox(player, centerX, centerY, centerZ, player.compensatedEntities.getSelf().getRiding());
         }
@@ -14,7 +14,7 @@ public class GetBoundingBox {
         return getPlayerBoundingBox(player, centerX, centerY, centerZ);
     }
 
-    public static SimpleCollisionBox getPacketEntityBoundingBox(GrimPlayer player, double centerX, double minY, double centerZ, PacketEntity entity) {
+    public static SimpleCollisionBox getPacketEntityBoundingBox(VoltPlayer player, double centerX, double minY, double centerZ, PacketEntity entity) {
         float width = BoundingBoxSize.getWidth(player, entity);
         float height = BoundingBoxSize.getHeight(player, entity);
         return getBoundingBoxFromPosAndSize(entity, centerX, minY, centerZ, width, height);
@@ -24,13 +24,13 @@ public class GetBoundingBox {
     // Size shifting on 1.14+ (19w12a): 0.6 width 1.5 height
     // Size while gliding/swimming: 0.6 width 0.6 height
     // Size while sleeping: 0.2 width 0.2 height
-    public static SimpleCollisionBox getPlayerBoundingBox(GrimPlayer player, double centerX, double minY, double centerZ) {
+    public static SimpleCollisionBox getPlayerBoundingBox(VoltPlayer player, double centerX, double minY, double centerZ) {
         float width = player.pose.width;
         float height = player.pose.height;
         return getBoundingBoxFromPosAndSize(player, centerX, minY, centerZ, width, height);
     }
 
-    public static SimpleCollisionBox getBoundingBoxFromPosAndSize(GrimPlayer player, double centerX, double minY, double centerZ, float width, float height) {
+    public static SimpleCollisionBox getBoundingBoxFromPosAndSize(VoltPlayer player, double centerX, double minY, double centerZ, float width, float height) {
         return getBoundingBoxFromPosAndSize(player.compensatedEntities.getSelf(), centerX, minY, centerZ, width, height);
     }
 

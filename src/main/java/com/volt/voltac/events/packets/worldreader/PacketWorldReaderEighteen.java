@@ -1,6 +1,6 @@
 package com.volt.voltac.events.packets.worldreader;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.github.retrooper.packetevents.event.PacketSendEvent;
 import com.github.retrooper.packetevents.protocol.stream.NetStreamInput;
 import com.github.retrooper.packetevents.protocol.world.chunk.BaseChunk;
@@ -15,7 +15,7 @@ public class PacketWorldReaderEighteen extends BasePacketWorldReader {
 
     // Mojang decided to include lighting in this packet.  It's inefficient to read it, so we replace PacketEvents logic.
     @Override
-    public void handleMapChunk(GrimPlayer player, PacketSendEvent event) {
+    public void handleMapChunk(VoltPlayer player, PacketSendEvent event) {
         PacketWrapper<?> wrapper = new PacketWrapper<>(event);
 
         int x = wrapper.readInt();

@@ -1,6 +1,6 @@
 package com.volt.voltac.predictionengine.predictions.rideable;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.predictionengine.predictions.PredictionEngineWater;
 import com.volt.voltac.utils.data.VectorData;
 import org.bukkit.util.Vector;
@@ -17,12 +17,12 @@ public class PredictionEngineRideableWater extends PredictionEngineWater {
     }
 
     @Override
-    public void addJumpsToPossibilities(GrimPlayer player, Set<VectorData> existingVelocities) {
+    public void addJumpsToPossibilities(VoltPlayer player, Set<VectorData> existingVelocities) {
         PredictionEngineRideableUtils.handleJumps(player, existingVelocities);
     }
 
     @Override
-    public List<VectorData> applyInputsToVelocityPossibilities(GrimPlayer player, Set<VectorData> possibleVectors, float speed) {
+    public List<VectorData> applyInputsToVelocityPossibilities(VoltPlayer player, Set<VectorData> possibleVectors, float speed) {
         return PredictionEngineRideableUtils.applyInputsToVelocityPossibilities(movementVector, player, possibleVectors, speed);
     }
 }

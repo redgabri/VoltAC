@@ -1,6 +1,6 @@
 package com.volt.voltac.utils.inventory.slot;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.inventory.InventoryStorage;
 import com.github.retrooper.packetevents.protocol.item.ItemStack;
 
@@ -46,7 +46,7 @@ public class Slot {
         return true;
     }
 
-    public ItemStack safeTake(int p_150648_, int p_150649_, GrimPlayer p_150650_) {
+    public ItemStack safeTake(int p_150648_, int p_150649_, VoltPlayer p_150650_) {
         Optional<ItemStack> optional = this.tryRemove(p_150648_, p_150649_, p_150650_);
         optional.ifPresent((p_150655_) -> {
             this.onTake(p_150650_, p_150655_);
@@ -54,7 +54,7 @@ public class Slot {
         return optional.orElse(ItemStack.EMPTY);
     }
 
-    public Optional<ItemStack> tryRemove(int p_150642_, int p_150643_, GrimPlayer p_150644_) {
+    public Optional<ItemStack> tryRemove(int p_150642_, int p_150643_, VoltPlayer p_150644_) {
         if (!this.mayPickup(p_150644_)) {
             return Optional.empty();
         } else if (!this.allowModification(p_150644_) && p_150643_ < this.getItem().getAmount()) {
@@ -95,16 +95,16 @@ public class Slot {
         return this.container.removeItem(this.inventoryStorageSlot, p_40227_);
     }
 
-    public void onTake(GrimPlayer p_150645_, ItemStack p_150646_) {
+    public void onTake(VoltPlayer p_150645_, ItemStack p_150646_) {
 
     }
 
     // No override
-    public boolean allowModification(GrimPlayer p_150652_) {
+    public boolean allowModification(VoltPlayer p_150652_) {
         return this.mayPickup(p_150652_) && this.mayPlace(this.getItem());
     }
 
-    public boolean mayPickup(GrimPlayer p_40228_) {
+    public boolean mayPickup(VoltPlayer p_40228_) {
         return true;
     }
 }

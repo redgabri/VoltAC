@@ -3,12 +3,12 @@ package com.volt.voltac.checks.impl.aim;
 import com.volt.voltac.checks.Check;
 import com.volt.voltac.checks.CheckData;
 import com.volt.voltac.checks.type.RotationCheck;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.anticheat.update.RotationUpdate;
 
 @CheckData(name = "AimDuplicateLook")
 public class AimDuplicateLook extends Check implements RotationCheck {
-    public AimDuplicateLook(GrimPlayer playerData) {
+    public AimDuplicateLook(VoltPlayer playerData) {
         super(playerData);
     }
 

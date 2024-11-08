@@ -1,6 +1,6 @@
 package com.volt.voltac.utils.nmsutil;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.collisions.datatypes.SimpleCollisionBox;
 import com.volt.voltac.utils.data.packetentity.PacketEntity;
 import com.volt.voltac.utils.data.packetentity.PacketEntityHorse;
@@ -20,13 +20,13 @@ import com.github.retrooper.packetevents.util.Vector3d;
  */
 public final class BoundingBoxSize {
 
-    public static float getWidth(GrimPlayer player, PacketEntity packetEntity) {
+    public static float getWidth(VoltPlayer player, PacketEntity packetEntity) {
         // Turtles are the only baby animal that don't follow the * 0.5 rule
         if (packetEntity.getType() == EntityTypes.TURTLE && packetEntity.isBaby) return 0.36f;
         return getWidthMinusBaby(player, packetEntity) * (packetEntity.isBaby ? 0.5f : 1f);
     }
 
-    private static float getWidthMinusBaby(GrimPlayer player, PacketEntity packetEntity) {
+    private static float getWidthMinusBaby(VoltPlayer player, PacketEntity packetEntity) {
         final EntityType type = packetEntity.getType();
         if (EntityTypes.AXOLOTL.equals(type)) {
             return 0.75f;
@@ -123,7 +123,7 @@ public final class BoundingBoxSize {
         return 0.6f;
     }
 
-    public static Vector3d getRidingOffsetFromVehicle(PacketEntity entity, GrimPlayer player) {
+    public static Vector3d getRidingOffsetFromVehicle(PacketEntity entity, VoltPlayer player) {
         SimpleCollisionBox box = entity.getPossibleCollisionBoxes();
         double x = (box.maxX + box.minX) / 2.0;
         double y = box.minY;
@@ -178,7 +178,7 @@ public final class BoundingBoxSize {
         return new Vector3d(d0, d1, d2);
     }
 
-    public static float getHeight(GrimPlayer player, PacketEntity packetEntity) {
+    public static float getHeight(VoltPlayer player, PacketEntity packetEntity) {
         // Turtles are the only baby animal that don't follow the * 0.5 rule
         if (packetEntity.getType() == EntityTypes.TURTLE && packetEntity.isBaby) return 0.12f;
         return getHeightMinusBaby(player, packetEntity) * (packetEntity.isBaby ? 0.5f : 1f);
@@ -205,7 +205,7 @@ public final class BoundingBoxSize {
         return 0;
     }
 
-    public static double getPassengerRidingOffset(GrimPlayer player, PacketEntity packetEntity) {
+    public static double getPassengerRidingOffset(VoltPlayer player, PacketEntity packetEntity) {
         if (packetEntity instanceof PacketEntityHorse)
             return (getHeight(player, packetEntity) * 0.75) - 0.25;
 
@@ -231,7 +231,7 @@ public final class BoundingBoxSize {
         }
         return getHeight(player, packetEntity) * 0.75;
     }
-    private static float getHeightMinusBaby(GrimPlayer player, PacketEntity packetEntity) {
+    private static float getHeightMinusBaby(VoltPlayer player, PacketEntity packetEntity) {
         final EntityType type = packetEntity.getType();
         if (EntityTypes.ARMADILLO.equals(type)) {
             return 0.65f;

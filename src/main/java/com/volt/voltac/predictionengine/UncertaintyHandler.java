@@ -1,6 +1,6 @@
 package com.volt.voltac.predictionengine;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.collisions.datatypes.SimpleCollisionBox;
 import com.volt.voltac.utils.data.LastInstance;
 import com.volt.voltac.utils.data.VectorData;
@@ -18,7 +18,7 @@ import org.bukkit.util.Vector;
 import java.util.*;
 
 public class UncertaintyHandler {
-    private final GrimPlayer player;
+    private final VoltPlayer player;
     // Handles uncertainty when a piston could have pushed a player in a direction
     // Only the required amount of uncertainty is given
     public EvictingQueue<Double> pistonX = new EvictingQueue<>(5);
@@ -88,7 +88,7 @@ public class UncertaintyHandler {
     public double lastHorizontalOffset = 0;
     public double lastVerticalOffset = 0;
 
-    public UncertaintyHandler(GrimPlayer player) {
+    public UncertaintyHandler(VoltPlayer player) {
         this.player = player;
         this.lastFlyingTicks = new LastInstance(player);
         this.lastFlyingStatusChange = new LastInstance(player);

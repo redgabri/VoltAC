@@ -1,6 +1,6 @@
 package com.volt.voltac.predictionengine;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.predictionengine.predictions.PredictionEngine;
 import com.volt.voltac.utils.collisions.CollisionData;
 import com.volt.voltac.utils.collisions.datatypes.CollisionBox;
@@ -85,7 +85,7 @@ import java.util.Set;
  * increase bandwidth usage.  At least it only causes falses occasionally, and not bypasses.
  */
 public class PointThreeEstimator {
-    private final GrimPlayer player;
+    private final VoltPlayer player;
 
     // The one thing we don't need to store is if the player 0.03'd to the ground, as this sends a packet
     // seriously, why mojang.  You send the player touched the ground but not their pos.
@@ -118,7 +118,7 @@ public class PointThreeEstimator {
     @Getter
     private boolean wasAlwaysCertain = true;
 
-    public PointThreeEstimator(GrimPlayer player) {
+    public PointThreeEstimator(VoltPlayer player) {
         this.player = player;
     }
 
@@ -443,7 +443,7 @@ public class PointThreeEstimator {
         return maxYTraveled;
     }
 
-    private double iterateGravity(GrimPlayer player, double y) {
+    private double iterateGravity(VoltPlayer player, double y) {
         final OptionalInt levitation = player.compensatedEntities.getPotionLevelForPlayer(PotionTypes.LEVITATION);
         if (levitation.isPresent()) {
             // This supports both positive and negative levitation

@@ -1,6 +1,6 @@
 package com.volt.voltac.utils.collisions.blocks;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.collisions.datatypes.CollisionBox;
 import com.volt.voltac.utils.collisions.datatypes.CollisionFactory;
 import com.volt.voltac.utils.collisions.datatypes.ComplexCollisionBox;
@@ -16,7 +16,7 @@ public class PistonHeadCollision implements CollisionFactory {
     // 1.7 and 1.8 clients always have short pistons
     // 1.9 - 1.12 clients always have long pistons
     @Override
-    public CollisionBox fetch(GrimPlayer player, ClientVersion version, WrappedBlockState block, int x, int y, int z) {
+    public CollisionBox fetch(VoltPlayer player, ClientVersion version, WrappedBlockState block, int x, int y, int z) {
         // 1.13+ clients differentiate short and long, and the short vs long data is stored
         // This works correctly in 1.12-, as in the piston returns as always long
         //

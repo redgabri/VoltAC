@@ -1,6 +1,6 @@
 package com.volt.voltac.utils.collisions.datatypes;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.github.retrooper.packetevents.protocol.player.ClientVersion;
 import com.github.retrooper.packetevents.protocol.world.states.WrappedBlockState;
 
@@ -8,13 +8,13 @@ import java.util.List;
 
 public class DynamicCollisionBox implements CollisionBox {
 
-    private final GrimPlayer player;
+    private final VoltPlayer player;
     private final CollisionFactory box;
     private ClientVersion version;
     private WrappedBlockState block;
     private int x, y, z;
 
-    public DynamicCollisionBox(GrimPlayer player, ClientVersion version, CollisionFactory box, WrappedBlockState block) {
+    public DynamicCollisionBox(VoltPlayer player, ClientVersion version, CollisionFactory box, WrappedBlockState block) {
         this.player = player;
         this.version = version;
         this.box = box;

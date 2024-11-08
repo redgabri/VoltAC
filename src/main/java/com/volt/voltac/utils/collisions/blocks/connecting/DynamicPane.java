@@ -1,6 +1,6 @@
 package com.volt.voltac.utils.collisions.blocks.connecting;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.collisions.CollisionData;
 import com.volt.voltac.utils.collisions.datatypes.CollisionBox;
 import com.volt.voltac.utils.collisions.datatypes.CollisionFactory;
@@ -24,7 +24,7 @@ public class DynamicPane extends DynamicConnecting implements CollisionFactory {
     private static final CollisionBox[] COLLISION_BOXES = makeShapes(1.0F, 1.0F, 16.0F, 0.0F, 16.0F, true);
 
     @Override
-    public CollisionBox fetch(GrimPlayer player, ClientVersion version, WrappedBlockState block, int x, int y, int z) {
+    public CollisionBox fetch(VoltPlayer player, ClientVersion version, WrappedBlockState block, int x, int y, int z) {
         boolean east;
         boolean north;
         boolean south;
@@ -83,7 +83,7 @@ public class DynamicPane extends DynamicConnecting implements CollisionFactory {
     }
 
     @Override
-    public boolean checkCanConnect(GrimPlayer player, WrappedBlockState state, StateType one, StateType two, BlockFace direction) {
+    public boolean checkCanConnect(VoltPlayer player, WrappedBlockState state, StateType one, StateType two, BlockFace direction) {
         if (BlockTags.GLASS_PANES.contains(one) || one == StateTypes.IRON_BARS || one == StateTypes.CHAIN && player.getClientVersion().isOlderThan(ClientVersion.V_1_16))
             return true;
         else

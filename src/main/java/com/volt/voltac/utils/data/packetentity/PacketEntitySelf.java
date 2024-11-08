@@ -1,7 +1,7 @@
 package com.volt.voltac.utils.data.packetentity;
 
 import com.volt.voltac.checks.impl.movement.NoSlowE;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.collisions.datatypes.SimpleCollisionBox;
 import com.volt.voltac.utils.data.attribute.ValuedAttribute;
 import com.volt.voltac.utils.inventory.EnchantmentHelper;
@@ -23,17 +23,17 @@ import java.util.ArrayList;
 
 public class PacketEntitySelf extends PacketEntity {
 
-    private final GrimPlayer player;
+    private final VoltPlayer player;
     @Getter
     @Setter
     int opLevel;
 
-    public PacketEntitySelf(GrimPlayer player) {
+    public PacketEntitySelf(VoltPlayer player) {
         super(player, EntityTypes.PLAYER);
         this.player = player;
     }
 
-    public PacketEntitySelf(GrimPlayer player, PacketEntitySelf old) {
+    public PacketEntitySelf(VoltPlayer player, PacketEntitySelf old) {
         super(player, EntityTypes.PLAYER);
         this.player = player;
         this.opLevel = old.opLevel;
@@ -41,7 +41,7 @@ public class PacketEntitySelf extends PacketEntity {
     }
 
     @Override
-    protected void initAttributes(GrimPlayer player) {
+    protected void initAttributes(VoltPlayer player) {
         super.initAttributes(player);
         if (player.getClientVersion().isOlderThan(ClientVersion.V_1_8)) {
             setAttribute(Attributes.GENERIC_STEP_HEIGHT, 0.5f);
@@ -162,7 +162,7 @@ public class PacketEntitySelf extends PacketEntity {
     }
 
     @Override
-    public void onFirstTransaction(boolean relative, boolean hasPos, double relX, double relY, double relZ, GrimPlayer player) {
+    public void onFirstTransaction(boolean relative, boolean hasPos, double relX, double relY, double relZ, VoltPlayer player) {
         // Player ignores this
     }
 

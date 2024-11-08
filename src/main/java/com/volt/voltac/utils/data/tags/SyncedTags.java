@@ -1,6 +1,6 @@
 package com.volt.voltac.utils.data.tags;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.github.retrooper.packetevents.PacketEvents;
 import com.github.retrooper.packetevents.manager.server.ServerVersion;
 import com.github.retrooper.packetevents.protocol.player.ClientVersion;
@@ -25,10 +25,10 @@ public final class SyncedTags {
 
     public static final ResourceLocation CLIMBABLE = ResourceLocation.minecraft("climbable");
 
-    private final GrimPlayer player;
+    private final VoltPlayer player;
     private final Map<ResourceLocation, Map<ResourceLocation, SyncedTag<?>>> synced;
 
-    public SyncedTags(GrimPlayer player) {
+    public SyncedTags(VoltPlayer player) {
         this.player = player;
         this.synced = new HashMap<>();
         trackTags(BLOCK, id -> StateTypes.getById(VERSION.toClientVersion(), id),

@@ -7,10 +7,10 @@ import co.aikar.commands.annotation.CommandPermission;
 import co.aikar.commands.annotation.Subcommand;
 import org.bukkit.entity.Player;
 
-@CommandAlias("grim|grimac")
-public class GrimVerbose extends BaseCommand {
+@CommandAlias("volt|voltac")
+public class VoltVerbose extends BaseCommand {
     @Subcommand("verbose")
-    @CommandPermission("grim.verbose")
+    @CommandPermission("volt.verbose")
     public void onVerbose(Player player) {
         VoltAPI.INSTANCE.getAlertManager().toggleVerbose(player);
     }

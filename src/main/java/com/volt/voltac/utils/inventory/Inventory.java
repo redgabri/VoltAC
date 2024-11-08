@@ -1,6 +1,6 @@
 package com.volt.voltac.utils.inventory;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.inventory.inventory.AbstractContainerMenu;
 import com.volt.voltac.utils.inventory.slot.EquipmentSlot;
 import com.volt.voltac.utils.inventory.slot.ResultSlot;
@@ -25,7 +25,7 @@ public class Inventory extends AbstractContainerMenu {
     @Getter
     CorrectingPlayerInventoryStorage inventoryStorage;
 
-    public Inventory(GrimPlayer player, CorrectingPlayerInventoryStorage inventoryStorage) {
+    public Inventory(VoltPlayer player, CorrectingPlayerInventoryStorage inventoryStorage) {
         this.inventoryStorage = inventoryStorage;
 
         super.setPlayer(player);

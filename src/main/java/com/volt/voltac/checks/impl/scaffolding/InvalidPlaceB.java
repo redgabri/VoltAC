@@ -2,14 +2,14 @@ package com.volt.voltac.checks.impl.scaffolding;
 
 import com.volt.voltac.checks.CheckData;
 import com.volt.voltac.checks.type.BlockPlaceCheck;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.anticheat.update.BlockPlace;
 import com.github.retrooper.packetevents.PacketEvents;
 import com.github.retrooper.packetevents.manager.server.ServerVersion;
 
 @CheckData(name = "InvalidPlaceB")
 public class InvalidPlaceB extends BlockPlaceCheck {
-    public InvalidPlaceB(GrimPlayer player) {
+    public InvalidPlaceB(VoltPlayer player) {
         super(player);
     }
 

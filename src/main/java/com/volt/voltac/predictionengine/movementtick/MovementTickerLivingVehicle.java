@@ -1,6 +1,6 @@
 package com.volt.voltac.predictionengine.movementtick;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.predictionengine.predictions.rideable.PredictionEngineRideableLava;
 import com.volt.voltac.predictionengine.predictions.rideable.PredictionEngineRideableNormal;
 import com.volt.voltac.predictionengine.predictions.rideable.PredictionEngineRideableWater;
@@ -12,7 +12,7 @@ import org.bukkit.util.Vector;
 public class MovementTickerLivingVehicle extends MovementTicker {
     Vector movementInput = new Vector();
 
-    public MovementTickerLivingVehicle(GrimPlayer player) {
+    public MovementTickerLivingVehicle(VoltPlayer player) {
         super(player);
     }
 

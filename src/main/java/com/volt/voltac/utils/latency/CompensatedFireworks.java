@@ -2,7 +2,7 @@ package com.volt.voltac.utils.latency;
 
 import com.volt.voltac.checks.Check;
 import com.volt.voltac.checks.type.PostPredictionCheck;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.anticheat.update.PredictionComplete;
 
 import java.util.HashSet;
@@ -14,7 +14,7 @@ public class CompensatedFireworks extends Check implements PostPredictionCheck {
     private final Set<Integer> activeFireworks = new HashSet<>();
     private final Set<Integer> fireworksToRemoveNextTick = new HashSet<>();
 
-    public CompensatedFireworks(GrimPlayer player) {
+    public CompensatedFireworks(VoltPlayer player) {
         super(player);
     }
 

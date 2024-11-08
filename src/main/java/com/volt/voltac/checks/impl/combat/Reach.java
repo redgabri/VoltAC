@@ -19,7 +19,7 @@ import ac.grim.grimac.api.config.ConfigManager;
 import com.volt.voltac.checks.Check;
 import com.volt.voltac.checks.CheckData;
 import com.volt.voltac.checks.type.PacketCheck;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.collisions.datatypes.SimpleCollisionBox;
 import com.volt.voltac.utils.data.packetentity.PacketEntity;
 import com.volt.voltac.utils.data.packetentity.dragon.PacketEntityEnderDragonPart;
@@ -53,7 +53,7 @@ public class Reach extends Check implements PacketCheck {
     private double threshold;
     private double cancelBuffer; // For the next 4 hits after using reach, we aggressively cancel reach
 
-    public Reach(GrimPlayer player) {
+    public Reach(VoltPlayer player) {
         super(player);
     }
 

@@ -1,9 +1,9 @@
 package com.volt.voltac.utils.nmsutil;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 
 public class CheckIfChunksLoaded {
-    public static boolean isChunksUnloadedAt(GrimPlayer player, int minX, int minY, int minZ, int maxX, int maxY, int maxZ) {
+    public static boolean isChunksUnloadedAt(VoltPlayer player, int minX, int minY, int minZ, int maxX, int maxY, int maxZ) {
         if (maxY >= player.compensatedWorld.getMinHeight() && minY < player.compensatedWorld.getMaxHeight()) {
             minX = minX >> 4;
             minZ = minZ >> 4;

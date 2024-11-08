@@ -1,6 +1,6 @@
 package com.volt.voltac.predictionengine.predictions.rideable;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.predictionengine.predictions.PredictionEngine;
 import com.volt.voltac.predictionengine.predictions.PredictionEngineNormal;
 import com.volt.voltac.utils.data.VectorData;
@@ -16,7 +16,7 @@ import java.util.OptionalInt;
 import java.util.Set;
 
 public class PredictionEngineRideableUtils {
-    public static Set<VectorData> handleJumps(GrimPlayer player, Set<VectorData> possibleVectors) {
+    public static Set<VectorData> handleJumps(VoltPlayer player, Set<VectorData> possibleVectors) {
         if (!(player.compensatedEntities.getSelf().getRiding() instanceof PacketEntityHorse)) return possibleVectors;
 
         PacketEntityHorse horse = (PacketEntityHorse) player.compensatedEntities.getSelf().getRiding();
@@ -73,7 +73,7 @@ public class PredictionEngineRideableUtils {
         return possibleVectors;
     }
 
-    public static List<VectorData> applyInputsToVelocityPossibilities(Vector movementVector, GrimPlayer player, Set<VectorData> possibleVectors, float speed) {
+    public static List<VectorData> applyInputsToVelocityPossibilities(Vector movementVector, VoltPlayer player, Set<VectorData> possibleVectors, float speed) {
         List<VectorData> returnVectors = new ArrayList<>();
 
         for (VectorData possibleLastTickOutput : possibleVectors) {

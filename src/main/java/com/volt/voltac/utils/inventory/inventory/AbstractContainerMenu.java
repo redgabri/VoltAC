@@ -1,6 +1,6 @@
 package com.volt.voltac.utils.inventory.inventory;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.inventory.ClickAction;
 import com.volt.voltac.utils.inventory.Inventory;
 import com.volt.voltac.utils.inventory.slot.ResultSlot;
@@ -22,7 +22,7 @@ import java.util.Set;
 
 public abstract class AbstractContainerMenu {
     @Setter
-    protected GrimPlayer player;
+    protected VoltPlayer player;
     // Quick crafting/dragging
     int quickcraftStatus = 0;
     int quickcraftType = -1;
@@ -35,7 +35,7 @@ public abstract class AbstractContainerMenu {
     @NotNull
     ItemStack carriedItem;
 
-    public AbstractContainerMenu(GrimPlayer player, Inventory playerInventory) {
+    public AbstractContainerMenu(VoltPlayer player, Inventory playerInventory) {
         this.player = player;
         this.playerInventory = playerInventory;
         this.carriedItem = ItemStack.EMPTY;

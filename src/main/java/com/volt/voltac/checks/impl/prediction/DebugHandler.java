@@ -3,7 +3,7 @@ package com.volt.voltac.checks.impl.prediction;
 import com.volt.voltac.checks.Check;
 import com.volt.voltac.checks.CheckData;
 import com.volt.voltac.checks.type.PostPredictionCheck;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.anticheat.LogUtil;
 import com.volt.voltac.utils.anticheat.update.PredictionComplete;
 import com.volt.voltac.utils.lists.EvictingQueue;
@@ -28,7 +28,7 @@ public class DebugHandler extends Check implements PostPredictionCheck {
     EvictingQueue<String> actually = new EvictingQueue<>(5);
     EvictingQueue<String> offset = new EvictingQueue<>(5);
 
-    public DebugHandler(GrimPlayer player) {
+    public DebugHandler(VoltPlayer player) {
         super(player);
     }
 

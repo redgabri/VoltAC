@@ -1,6 +1,6 @@
 package com.volt.voltac.utils.collisions;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.predictionengine.movementtick.MovementTickerStrider;
 import com.volt.voltac.utils.collisions.blocks.*;
 import com.volt.voltac.utils.collisions.blocks.connecting.DynamicFence;
@@ -1331,14 +1331,14 @@ public enum CollisionData {
         return rawLookupMap.getOrDefault(state, DEFAULT);
     }
 
-    public CollisionBox getMovementCollisionBox(GrimPlayer player, ClientVersion version, WrappedBlockState block, int x, int y, int z) {
+    public CollisionBox getMovementCollisionBox(VoltPlayer player, ClientVersion version, WrappedBlockState block, int x, int y, int z) {
         if (this.box != null)
             return this.box.copy().offset(x, y, z);
 
         return new DynamicCollisionBox(player, version, dynamic, block).offset(x, y, z);
     }
 
-    public CollisionBox getMovementCollisionBox(GrimPlayer player, ClientVersion version, WrappedBlockState block) {
+    public CollisionBox getMovementCollisionBox(VoltPlayer player, ClientVersion version, WrappedBlockState block) {
         if (this.box != null)
             return this.box.copy();
 

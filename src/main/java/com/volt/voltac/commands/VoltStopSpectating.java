@@ -10,10 +10,10 @@ import co.aikar.commands.annotation.Subcommand;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-@CommandAlias("grim|grimac")
-public class GrimStopSpectating extends BaseCommand {
+@CommandAlias("volt|voltac")
+public class VoltStopSpectating extends BaseCommand {
     @Subcommand("stopspectating")
-    @CommandPermission("grim.spectate")
+    @CommandPermission("volt.spectate")
     @CommandCompletion("here")
     public void onStopSpectate(CommandSender sender, String[] args) {
         String string = args.length > 0 ? args[0] : null;

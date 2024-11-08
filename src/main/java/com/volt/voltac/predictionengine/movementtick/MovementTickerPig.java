@@ -1,12 +1,12 @@
 package com.volt.voltac.predictionengine.movementtick;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.data.packetentity.PacketEntityRideable;
 import com.github.retrooper.packetevents.protocol.attribute.Attributes;
 import org.bukkit.util.Vector;
 
 public class MovementTickerPig extends MovementTickerRideable {
-    public MovementTickerPig(GrimPlayer player) {
+    public MovementTickerPig(VoltPlayer player) {
         super(player);
         movementInput = new Vector(0, 0, 1);
     }

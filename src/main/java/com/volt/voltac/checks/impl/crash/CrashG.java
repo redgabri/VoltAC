@@ -3,7 +3,7 @@ package com.volt.voltac.checks.impl.crash;
 import com.volt.voltac.checks.Check;
 import com.volt.voltac.checks.CheckData;
 import com.volt.voltac.checks.type.PacketCheck;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.github.retrooper.packetevents.PacketEvents;
 import com.github.retrooper.packetevents.event.PacketReceiveEvent;
 import com.github.retrooper.packetevents.manager.server.ServerVersion;
@@ -16,7 +16,7 @@ import com.github.retrooper.packetevents.wrapper.play.client.WrapperPlayClientUs
 @CheckData(name = "CrashG")
 public class CrashG extends Check implements PacketCheck {
 
-    public CrashG(GrimPlayer player) {
+    public CrashG(VoltPlayer player) {
         super(player);
     }
 

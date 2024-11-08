@@ -1,6 +1,6 @@
 package com.volt.voltac.utils.anticheat;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.floodgate.FloodgateUtil;
 import com.github.retrooper.packetevents.PacketEvents;
 import com.github.retrooper.packetevents.manager.server.ServerVersion;
@@ -17,10 +17,10 @@ import java.util.HashSet;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class PlayerDataManager {
-    private final ConcurrentHashMap<User, GrimPlayer> playerDataMap = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<User, VoltPlayer> playerDataMap = new ConcurrentHashMap<>();
     public final Collection<User> exemptUsers = Collections.synchronizedCollection(new HashSet<>());
 
-    public GrimPlayer getPlayer(final Player player) {
+    public VoltPlayer getPlayer(final Player player) {
         if (PacketEvents.getAPI().getServerManager().getVersion().isNewerThanOrEquals(ServerVersion.V_1_18) && MultiLibUtil.isExternalPlayer(player)) return null;
 
         // Is it safe to interact with this, or is this internal PacketEvents code?
@@ -59,13 +59,13 @@ public class PlayerDataManager {
     }
 
     @Nullable
-    public GrimPlayer getPlayer(final User user) {
+    public VoltPlayer getPlayer(final User user) {
         return playerDataMap.get(user);
     }
 
     public void addUser(final User user) {
         if (shouldCheck(user)) {
-            GrimPlayer player = new GrimPlayer(user);
+            VoltPlayer player = new VoltPlayer(user);
             playerDataMap.put(user, player);
         }
     }
@@ -74,7 +74,7 @@ public class PlayerDataManager {
         playerDataMap.remove(player);
     }
 
-    public Collection<GrimPlayer> getEntries() {
+    public Collection<VoltPlayer> getEntries() {
         return playerDataMap.values();
     }
 

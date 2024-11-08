@@ -1,6 +1,6 @@
 package com.volt.voltac.predictionengine.movementtick;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.predictionengine.PlayerBaseTick;
 import com.volt.voltac.predictionengine.predictions.PredictionEngine;
 import com.volt.voltac.predictionengine.predictions.PredictionEngineElytra;
@@ -27,13 +27,13 @@ import io.github.retrooper.packetevents.util.viaversion.ViaVersionUtil;
 import org.bukkit.util.Vector;
 
 public class MovementTicker {
-    public final GrimPlayer player;
+    public final VoltPlayer player;
 
-    public MovementTicker(GrimPlayer player) {
+    public MovementTicker(VoltPlayer player) {
         this.player = player;
     }
 
-    public static void handleEntityCollisions(GrimPlayer player) {
+    public static void handleEntityCollisions(VoltPlayer player) {
         // 1.7 and 1.8 do not have player collision
         if (player.getClientVersion().isOlderThan(ClientVersion.V_1_9)
                 // Check that ViaVersion disables all collisions on a 1.8 server for 1.9+ clients

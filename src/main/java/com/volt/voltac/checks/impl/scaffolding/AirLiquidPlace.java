@@ -3,7 +3,7 @@ package com.volt.voltac.checks.impl.scaffolding;
 import ac.grim.grimac.api.config.ConfigManager;
 import com.volt.voltac.checks.CheckData;
 import com.volt.voltac.checks.type.BlockPlaceCheck;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.anticheat.update.BlockPlace;
 import com.volt.voltac.utils.nmsutil.Materials;
 import com.github.retrooper.packetevents.protocol.player.GameMode;
@@ -12,7 +12,7 @@ import com.github.retrooper.packetevents.util.Vector3i;
 
 @CheckData(name = "AirLiquidPlace")
 public class AirLiquidPlace extends BlockPlaceCheck {
-    public AirLiquidPlace(GrimPlayer player) {
+    public AirLiquidPlace(VoltPlayer player) {
         super(player);
     }
 

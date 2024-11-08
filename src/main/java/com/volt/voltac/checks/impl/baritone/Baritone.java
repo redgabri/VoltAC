@@ -4,7 +4,7 @@ import com.volt.voltac.checks.Check;
 import com.volt.voltac.checks.CheckData;
 import com.volt.voltac.checks.impl.aim.processor.AimProcessor;
 import com.volt.voltac.checks.type.RotationCheck;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.anticheat.update.RotationUpdate;
 import com.volt.voltac.utils.data.HeadRotation;
 import com.volt.voltac.utils.math.GrimMath;
@@ -12,7 +12,7 @@ import com.volt.voltac.utils.math.GrimMath;
 // This check has been patched by Baritone for a long time and it also seems to false with cinematic camera now, so it is disabled.
 @CheckData(name = "Baritone")
 public class Baritone extends Check implements RotationCheck {
-    public Baritone(GrimPlayer playerData) {
+    public Baritone(VoltPlayer playerData) {
         super(playerData);
     }
 

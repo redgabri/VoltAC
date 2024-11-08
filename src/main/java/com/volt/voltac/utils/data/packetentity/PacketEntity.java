@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 package com.volt.voltac.utils.data.packetentity;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.collisions.datatypes.SimpleCollisionBox;
 import com.volt.voltac.utils.data.ReachInterpolationData;
 import com.volt.voltac.utils.data.TrackedPosition;
@@ -57,14 +57,14 @@ public class PacketEntity extends TypedPacketEntity {
     private Map<PotionType, Integer> potionsMap = null;
     protected final Map<Attribute, ValuedAttribute> attributeMap = new IdentityHashMap<>();
 
-    public PacketEntity(GrimPlayer player, EntityType type) {
+    public PacketEntity(VoltPlayer player, EntityType type) {
         super(type);
         this.uuid = null;
         initAttributes(player);
         this.trackedServerPosition = new TrackedPosition();
     }
 
-    public PacketEntity(GrimPlayer player, UUID uuid, EntityType type, double x, double y, double z) {
+    public PacketEntity(VoltPlayer player, UUID uuid, EntityType type, double x, double y, double z) {
         super(type);
         this.uuid = uuid;
         initAttributes(player);
@@ -84,7 +84,7 @@ public class PacketEntity extends TypedPacketEntity {
         attributeMap.put(valuedAttribute.attribute(), valuedAttribute);
     }
 
-    protected void initAttributes(GrimPlayer player) {
+    protected void initAttributes(VoltPlayer player) {
         trackAttribute(ValuedAttribute.ranged(Attributes.GENERIC_SCALE, 1.0, 0.0625, 16)
                 .requiredVersion(player, ClientVersion.V_1_20_5));
         trackAttribute(ValuedAttribute.ranged(Attributes.GENERIC_STEP_HEIGHT, 0.6f, 0, 10)
@@ -120,7 +120,7 @@ public class PacketEntity extends TypedPacketEntity {
 
     // Set the old packet location to the new one
     // Set the new packet location to the updated packet location
-    public void onFirstTransaction(boolean relative, boolean hasPos, double relX, double relY, double relZ, GrimPlayer player) {
+    public void onFirstTransaction(boolean relative, boolean hasPos, double relX, double relY, double relZ, VoltPlayer player) {
         if (hasPos) {
             if (relative) {
                 // This only matters for 1.9+ clients, but it won't hurt 1.8 clients either... align for imprecision

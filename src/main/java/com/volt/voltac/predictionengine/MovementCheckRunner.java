@@ -6,7 +6,7 @@ import com.volt.voltac.checks.impl.movement.EntityControl;
 import com.volt.voltac.checks.impl.prediction.Phase;
 import com.volt.voltac.checks.type.PositionCheck;
 import com.volt.voltac.manager.SetbackTeleportUtil;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.predictionengine.movementtick.MovementTickerHorse;
 import com.volt.voltac.predictionengine.movementtick.MovementTickerPig;
 import com.volt.voltac.predictionengine.movementtick.MovementTickerPlayer;
@@ -46,7 +46,7 @@ public class MovementCheckRunner extends Check implements PositionCheck {
     // Averaged over 20000 predictions
     public static double longPredictionNanos = 0.3 * 1e6;
 
-    public MovementCheckRunner(GrimPlayer player) {
+    public MovementCheckRunner(VoltPlayer player) {
         super(player);
     }
 

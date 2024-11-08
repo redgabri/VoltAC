@@ -2,7 +2,7 @@ package com.volt.voltac.checks.impl.scaffolding;
 
 import com.volt.voltac.checks.CheckData;
 import com.volt.voltac.checks.type.BlockPlaceCheck;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.anticheat.update.BlockPlace;
 import com.volt.voltac.utils.collisions.datatypes.SimpleCollisionBox;
 import com.github.retrooper.packetevents.protocol.player.ClientVersion;
@@ -11,7 +11,7 @@ import com.github.retrooper.packetevents.protocol.world.states.type.StateTypes;
 @CheckData(name = "PositionPlace")
 public class PositionPlace extends BlockPlaceCheck {
 
-    public PositionPlace(GrimPlayer player) {
+    public PositionPlace(VoltPlayer player) {
         super(player);
     }
 

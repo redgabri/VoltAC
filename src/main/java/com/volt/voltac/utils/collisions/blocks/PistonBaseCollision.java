@@ -1,6 +1,6 @@
 package com.volt.voltac.utils.collisions.blocks;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.collisions.datatypes.CollisionBox;
 import com.volt.voltac.utils.collisions.datatypes.CollisionFactory;
 import com.volt.voltac.utils.collisions.datatypes.HexCollisionBox;
@@ -11,7 +11,7 @@ import com.github.retrooper.packetevents.protocol.world.states.WrappedBlockState
 public class PistonBaseCollision implements CollisionFactory {
 
     @Override
-    public CollisionBox fetch(GrimPlayer player, ClientVersion version, WrappedBlockState block, int x, int y, int z) {
+    public CollisionBox fetch(VoltPlayer player, ClientVersion version, WrappedBlockState block, int x, int y, int z) {
         if (!block.isExtended()) return new SimpleCollisionBox(0, 0, 0, 1, 1, 1, true);
 
         switch (block.getFacing()) {

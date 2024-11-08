@@ -3,7 +3,7 @@ package com.volt.voltac.checks.impl.crash;
 import com.volt.voltac.checks.Check;
 import com.volt.voltac.checks.CheckData;
 import com.volt.voltac.checks.type.PacketCheck;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.github.retrooper.packetevents.event.PacketReceiveEvent;
 import com.github.retrooper.packetevents.wrapper.play.client.WrapperPlayClientPlayerFlying;
 
@@ -11,7 +11,7 @@ import com.github.retrooper.packetevents.wrapper.play.client.WrapperPlayClientPl
 public class CrashA extends Check implements PacketCheck {
     private static final double HARD_CODED_BORDER = 2.9999999E7D;
 
-    public CrashA(GrimPlayer player) {
+    public CrashA(VoltPlayer player) {
         super(player);
     }
 

@@ -3,14 +3,14 @@ package com.volt.voltac.checks.impl.movement;
 import com.volt.voltac.checks.Check;
 import com.volt.voltac.checks.CheckData;
 import com.volt.voltac.checks.type.PacketCheck;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.github.retrooper.packetevents.event.PacketReceiveEvent;
 import com.github.retrooper.packetevents.wrapper.play.client.WrapperPlayClientPlayerFlying;
 
 @CheckData(name = "NoSlowB", setback = 5)
 public class NoSlowB extends Check implements PacketCheck {
 
-    public NoSlowB(GrimPlayer player) {
+    public NoSlowB(VoltPlayer player) {
         super(player);
     }
 

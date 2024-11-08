@@ -1,6 +1,6 @@
 package com.volt.voltac.utils.nmsutil;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.enums.FluidTag;
 import com.volt.voltac.utils.inventory.EnchantmentHelper;
 import com.github.retrooper.packetevents.PacketEvents;
@@ -21,7 +21,7 @@ import com.github.retrooper.packetevents.util.Vector3i;
 import java.util.OptionalInt;
 
 public class BlockBreakSpeed {
-    public static double getBlockDamage(GrimPlayer player, Vector3i position) {
+    public static double getBlockDamage(VoltPlayer player, Vector3i position) {
         // GET destroy speed
         // Starts with itemstack get destroy speed
         ItemStack tool = player.getInventory().getHeldItem();

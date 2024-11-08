@@ -3,7 +3,7 @@ package com.volt.voltac.events.packets;
 import ac.grim.grimac.api.config.ConfigManager;
 import com.volt.voltac.checks.Check;
 import com.volt.voltac.checks.type.PacketCheck;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.github.retrooper.packetevents.event.PacketReceiveEvent;
 import com.github.retrooper.packetevents.event.PacketSendEvent;
 import com.github.retrooper.packetevents.protocol.packettype.PacketType;
@@ -15,7 +15,7 @@ import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerPl
 // Else the player will fly for a tick, and we won't know about it, which is bad.
 public class PacketPlayerAbilities extends Check implements PacketCheck {
 
-    public PacketPlayerAbilities(GrimPlayer player) {
+    public PacketPlayerAbilities(VoltPlayer player) {
         super(player);
     }
 

@@ -3,7 +3,7 @@ package com.volt.voltac.checks.impl.prediction;
 import com.volt.voltac.checks.Check;
 import com.volt.voltac.checks.CheckData;
 import com.volt.voltac.checks.type.PostPredictionCheck;
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.anticheat.update.PredictionComplete;
 import com.volt.voltac.utils.collisions.datatypes.SimpleCollisionBox;
 import com.volt.voltac.utils.nmsutil.Collisions;
@@ -19,7 +19,7 @@ import java.util.List;
 public class Phase extends Check implements PostPredictionCheck {
     SimpleCollisionBox oldBB;
 
-    public Phase(GrimPlayer player) {
+    public Phase(VoltPlayer player) {
         super(player);
         oldBB = player.boundingBox;
     }

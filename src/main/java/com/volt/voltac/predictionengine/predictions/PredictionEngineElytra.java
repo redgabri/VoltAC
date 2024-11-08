@@ -1,6 +1,6 @@
 package com.volt.voltac.predictionengine.predictions;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.data.VectorData;
 import com.volt.voltac.utils.nmsutil.ReachUtils;
 import com.github.retrooper.packetevents.protocol.attribute.Attributes;
@@ -14,7 +14,7 @@ import java.util.Set;
 public class PredictionEngineElytra extends PredictionEngine {
     // Inputs have no effect on movement
     @Override
-    public List<VectorData> applyInputsToVelocityPossibilities(GrimPlayer player, Set<VectorData> possibleVectors, float speed) {
+    public List<VectorData> applyInputsToVelocityPossibilities(VoltPlayer player, Set<VectorData> possibleVectors, float speed) {
         List<VectorData> results = new ArrayList<>();
         Vector currentLook = ReachUtils.getLook(player, player.xRot, player.yRot);
 
@@ -32,7 +32,7 @@ public class PredictionEngineElytra extends PredictionEngine {
         return results;
     }
 
-    public static Vector getElytraMovement(GrimPlayer player, Vector vector, Vector lookVector) {
+    public static Vector getElytraMovement(VoltPlayer player, Vector vector, Vector lookVector) {
         float yRotRadians = player.yRot * 0.017453292F;
         double horizontalSqrt = Math.sqrt(lookVector.getX() * lookVector.getX() + lookVector.getZ() * lookVector.getZ());
         double horizontalLength = vector.clone().setY(0).length();
@@ -75,7 +75,7 @@ public class PredictionEngineElytra extends PredictionEngine {
 
     // Yes... you can jump while using an elytra as long as you are on the ground
     @Override
-    public void addJumpsToPossibilities(GrimPlayer player, Set<VectorData> existingVelocities) {
+    public void addJumpsToPossibilities(VoltPlayer player, Set<VectorData> existingVelocities) {
         new PredictionEngineNormal().addJumpsToPossibilities(player, existingVelocities);
     }
 }

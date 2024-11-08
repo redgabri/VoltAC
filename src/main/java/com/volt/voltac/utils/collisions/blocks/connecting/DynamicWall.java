@@ -1,6 +1,6 @@
 package com.volt.voltac.utils.collisions.blocks.connecting;
 
-import com.volt.voltac.player.GrimPlayer;
+import com.volt.voltac.player.VoltPlayer;
 import com.volt.voltac.utils.collisions.CollisionData;
 import com.github.retrooper.packetevents.PacketEvents;
 import com.github.retrooper.packetevents.manager.server.ServerVersion;
@@ -21,7 +21,7 @@ public class DynamicWall extends DynamicConnecting implements CollisionFactory {
     // https://bugs.mojang.com/browse/MC-94016
     private static final CollisionBox[] COLLISION_BOXES = makeShapes(4.0F, 3.0F, 24.0F, 0.0F, 24.0F, false);
 
-    public CollisionBox fetchRegularBox(GrimPlayer player, WrappedBlockState state, ClientVersion version, int x, int y, int z) {
+    public CollisionBox fetchRegularBox(VoltPlayer player, WrappedBlockState state, ClientVersion version, int x, int y, int z) {
         int north, south, west, east, up;
         north = south = west = east = up = 0;
 
@@ -113,7 +113,7 @@ public class DynamicWall extends DynamicConnecting implements CollisionFactory {
     }
 
     @Override
-    public CollisionBox fetch(GrimPlayer player, ClientVersion version, WrappedBlockState block, int x, int y, int z) {
+    public CollisionBox fetch(VoltPlayer player, ClientVersion version, WrappedBlockState block, int x, int y, int z) {
         boolean north;
         boolean south;
         boolean west;
@@ -181,7 +181,7 @@ public class DynamicWall extends DynamicConnecting implements CollisionFactory {
     }
 
     @Override
-    public boolean checkCanConnect(GrimPlayer player, WrappedBlockState state, StateType one, StateType two, BlockFace direction) {
+    public boolean checkCanConnect(VoltPlayer player, WrappedBlockState state, StateType one, StateType two, BlockFace direction) {
         return BlockTags.WALLS.contains(one) || CollisionData.getData(one).getMovementCollisionBox(player, player.getClientVersion(), state, 0, 0, 0).isSideFullBlock(direction);
     }
 }
