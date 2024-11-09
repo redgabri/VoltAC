@@ -49,7 +49,7 @@ public class AutoClickerB extends Check implements PacketCheck {
                     if (allVariationsSimilar) {
                         flagIndex++;
                         if (flagIndex >= 3) {
-                            flagAndAlert("Highly consistent click timing pattern detected. (Variance: " + Math.round(variance / 1000) + ")");
+                            flagAndAlert();
                             flagIndex = 0;
                         }
                     } else {

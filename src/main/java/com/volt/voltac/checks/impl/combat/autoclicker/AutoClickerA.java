@@ -39,7 +39,7 @@ public class AutoClickerA extends Check implements PacketCheck {
 
                 // Check if the player is clicking too fast
                 if (clickTimes.size() > maxCps) {
-                    flagAndAlert("Hit CPS cap while fighting. (" + clickTimes.size()+" cps)");
+                    flagAndAlert(clickTimes.size()+" cps");
                 }
             }
         }
